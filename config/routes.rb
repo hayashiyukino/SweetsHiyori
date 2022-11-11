@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-  end
 ## 会員用
 # URL /customers/sign_in ...
   devise_for :end_users, skip: [:passwords], controllers: {
@@ -23,13 +21,13 @@ Rails.application.routes.draw do
 #     # post_sweetses
 #     resources :post_sweetses, except: [:destroy]
 #     # end_users
-#     get 'end_users/my_page' => 'end_users#show', as: 'mypage'
-#     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
-#     get 'end_users/infomation/:id/edit' => 'end_users#edit', as: 'edit_infomation'
-#     patch 'end_users/infomation' => 'end_users#update'
-#     get 'end_users/confirm' #=> 'end_users#confirm'
-#     patch 'end_users/:id/withdraw' #=> 'end_users#withdraw', as: 'withdraw_customer'
-#     resources :end_users, only: [:index, :show]
+    # get 'end_users/my_page' => 'end_users#show', as: 'mypage'
+    # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
+    # get 'end_users/infomation/:id/edit' => 'end_users#edit', as: 'edit_infomation'
+    # patch 'end_users/infomation' => 'end_users#update'
+    # get 'end_users/confirm' #=> 'end_users#confirm'
+    # patch 'end_users/:id/withdraw' #=> 'end_users#withdraw', as: 'withdraw_customer'
+    resources :end_users, only: [:index, :show]
 
 #     # searches
 #     # get "searches" => "searches#search"
