@@ -28,16 +28,16 @@
               <ul class="navbar-nav ml-auto">
               <% if end_user_signed_in? %>
                 <li>
-                  <%= link_to end_user_path, class: "nav-link text-dark" do %>
+                  <%= link_to mypage_path, class: "nav-link text-dark" do %>
                   <i class="fas fa-user"></i>
                   マイページ
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to post_sweetses_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-gifts"></i>
-                  投稿一覧
-                  <% end %>
+                  <!--<#%= link_to post_sweets_path, class: "nav-link text-dark" do %>-->
+                  <!--<i class="fas fa-gifts"></i>-->
+                  <!--投稿一覧-->
+                  <!--<#% end %>-->
                 </li>
                 <li>
                   <%= link_to end_users_path, class: "nav-link text-dark" do %>
@@ -46,7 +46,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
+                  <%= link_to destroy_end_user_session_path, method: :delete, class: "nav-link text-dark" do %>
                   <i class="fas fa-sign-out-alt"></i>
                   ログアウト
                   <% end %>

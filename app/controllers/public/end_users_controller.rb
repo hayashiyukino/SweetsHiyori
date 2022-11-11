@@ -6,11 +6,16 @@ class Public::EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
   end
   
+  def mypage
+    @end_user = current_end_user
+  end
+  
   def index
   end
 
 
   def edit
+    @end_user = EndUser.find(params[:id])
   end
   
   
