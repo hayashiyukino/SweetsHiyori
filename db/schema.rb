@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_10_192626) do
+ActiveRecord::Schema.define(version: 2022_11_12_174712) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,68 @@ ActiveRecord::Schema.define(version: 2022_11_10_192626) do
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "end_user_id", null: false
+    t.integer "sweets_revue_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id"], name: "index_favorites_on_end_user_id"
+    t.index ["sweets_revue_id"], name: "index_favorites_on_sweets_revue_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.integer "end_user_id", null: false
+    t.integer "sweets_revue_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id"], name: "index_post_comments_on_end_user_id"
+    t.index ["sweets_revue_id"], name: "index_post_comments_on_sweets_revue_id"
+  end
+
+  create_table "revue_tag_relations", force: :cascade do |t|
+    t.integer "sweets_revue_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sweets_revue_id"], name: "index_revue_tag_relations_on_sweets_revue_id"
+    t.index ["tag_id"], name: "index_revue_tag_relations_on_tag_id"
+  end
+
+  create_table "sweets_revues", force: :cascade do |t|
+    t.integer "end_user_id", null: false
+    t.integer "genre_id", null: false
+    t.integer "revue_tag_relation_id"
+    t.integer "favorite_id"
+    t.integer "post_comment_id"
+    t.float "review_star", null: false
+    t.string "sweets_name", null: false
+    t.integer "tax_included_price", null: false
+    t.text "sweets_introduction"
+    t.string "shop_name"
+    t.string "buy_place"
+    t.boolean "post_status", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "end_users"
+  add_foreign_key "favorites", "sweets_revues"
+  add_foreign_key "post_comments", "end_users"
+  add_foreign_key "post_comments", "sweets_revues"
+  add_foreign_key "revue_tag_relations", "sweets_revues"
+  add_foreign_key "revue_tag_relations", "tags"
 end
