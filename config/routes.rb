@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get 'end_users/infomation/:id/edit' => 'end_users#edit', as: 'edit_infomation'
     patch 'end_users/infomation/:id' => 'end_users#update'
     get 'end_users/confirm' #=> 'end_users#confirm'
-    # patch 'end_users/:id/withdraw' #=> 'end_users#withdraw', as: 'withdraw_customer'
+    patch 'end_users/:id/withdraw' => 'end_users#withdraw', as: 'withdraw_end_user'
     resources :end_users, only: [:index, :show]
 
 #     # searches
