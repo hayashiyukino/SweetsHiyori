@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     # homes
     root "homes#top"
     get 'about' => 'homes#about'
-#     # post_sweetses
-#     resources :post_sweetses, except: [:destroy]
+    # post_sweetses
+    resources :post_sweets, except: [:destroy]
     # end_users
     get 'end_users/my_page' => 'end_users#mypage', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。

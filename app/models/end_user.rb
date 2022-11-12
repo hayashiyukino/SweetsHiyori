@@ -3,8 +3,9 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         #認証のキーをメールから名前へ
-         :authentication_keys => [:nickname] 
+         :authentication_keys => [:nickname]  #認証のキーをメールから名前へ
+  # 画像投稿出来るようにする     
+  has_one_attached :image
          
   validates_uniqueness_of :nickname
   validates_presence_of :nickname

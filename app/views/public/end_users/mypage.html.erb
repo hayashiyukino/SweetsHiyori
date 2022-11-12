@@ -1,1 +1,47 @@
-<h3>my_page</h3>
+<div class = "row">
+  <div class = "col-3">
+    <% if end_user_signed_in? %>
+      <p><%= current_end_user.name %>さんのマイページ</p>
+    <% end %>
+  </div>
+  <div class = "col-5">
+    <h3>
+    <% if end_user_signed_in? %>
+      <p><%= current_end_user.nickname %>の投稿一覧</p>
+    <% end %>
+    </h3>
+  </div>
+  <div class = "col-4">
+    <div class="new_postsweets_link">
+      <%= link_to new_post_sweet_path do %>
+        <p>新規投稿</p>
+      <% end %>
+    </div>
+    <!--部分テンプレート-->
+    <p>
+      新着順
+    </p>
+    <p>
+      いいね数順
+    </p>
+  </div>
+</div>
+
+<div class = "row">
+  <div class = "col-4">
+    <!--部分テンプレート-->
+    <div class = "icon">
+      <% if @end_user.image.attached? %>
+        <%= image_tag end_user.image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
+      <%= link_to edit_infomation_path(@end_user) do %>
+        <p>編集ボタン</p>
+      <% end %>
+    </div>
+  </div>
+  <div class = "col-8">
+    <!--部分テンプレート-->
+  </div>
+</div>
