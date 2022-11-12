@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-  end
 ## 会員用
 # URL /customers/sign_in ...
   devise_for :end_users, skip: [:passwords], controllers: {
@@ -37,11 +35,12 @@ Rails.application.routes.draw do
 
 
 # ##管理者側ルート設定
-#   namespace :admin do
-#     get 'top' => 'homes#top', as: 'top'
-#     resources :post_sweetse, only: [:show, :update]
-#     resources :end_users, only: [:index, :show, :edit, :update]
-#   end
+  namespace :admin do
+    get 'top' => 'homes#top', as: 'top'
+    resources :post_sweetse, only: [:show, :update]
+    resources :end_users, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
