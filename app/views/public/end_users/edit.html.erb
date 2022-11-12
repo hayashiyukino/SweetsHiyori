@@ -14,7 +14,7 @@
 
 <div class="row justify-content-center">
   <div class="col-md-8">
-  <%= form_with model: @end_user, url: edit_infomation_path(@end_user.id), method: :patch, local: true do |f| %>
+  <%= form_with model: @end_user, url: 'my_page', method: :patch, local: true do |f| %>
 
     <table class="table table-borderless">
 
@@ -38,7 +38,9 @@
 
     <div class= "col-md-8 offset-md-4 action">
       <%= f.submit '変更を保存', class:"btn btn-success" %>
-     </div>
+      <%= link_to "退会する", end_users_confirm_path(@end_user), class: "btn btn-danger" %>
+    </div>
+
       <!--%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
   <% end %>
   </div>
