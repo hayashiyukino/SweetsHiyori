@@ -1,2 +1,30 @@
-<h1>Public::SweetsRevues#show</h1>
-<p>Find me in app/views/public/sweets_revues/show.html.erb</p>
+<div class="row d-flex mt-3">
+  <h4 class="mb-3">投稿詳細</h4>
+  <div class="col-12 d-flex justify-content-left">
+    <div>
+      <%= image_tag @sweets_revue.get_image(300, 200) %>
+    </div>
+    <table class="col-6 ml-5">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <th class="col-3 pl-0">商品名</th>
+          <th><%= @sweets_revue.sweets_name %></th>
+        </tr>
+        <tr>
+          <th class="d-flex pl-0 align-items-start">商品説名</th>
+          <th><%= @sweets_revue.sweets_introduction %></th>
+        </tr>
+        <tr>
+          <th class="col-3 pl-0">ジャンル</th>
+          <th><%= @sweets_revue.genre.name %></th>
+        </tr>
+
+        <tr>
+          <th></th>
+          <th><%= link_to "編集する", edit_sweets_revue_path(@sweets_revue), class: "btn btn-lg btn-success mt-3" %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

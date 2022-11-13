@@ -7,44 +7,36 @@ class Public::SweetsRevuesController < ApplicationController
   end
 
   def show
+    @sweets_revue = SweetsRevue.find(params[:id])
   end
 
   def create
     @sweets_revue = SweetsRevue.new(sweets_revue_params)
+    # 上の処理でレビューの値がscoreに送られるのでparamsで保存し、review_starカラムに代入する
     @sweets_revue.review_star = params[:score]
-    
     # @sweets_revue.end_user_id = current_end_user.id
     @sweets_revue.end_user_id = 1
-    #tag_list = params[:sweets_revue][:tag_name].split(',')
     if @sweets_revue.save
-      # @sweets_revue.save_tags(params[:sweets_revue][:tag_ids])
-      # @sweets_revue.save_tags[:tag_ids]
-      redirect_to root_path
-      # redirect_to sweets_revue_path(@sweets_revue), notice: ""
+      redirect_to sweets_revue_path(@sweets_revue), notice: "投稿しました！"
     else
     #   @bsweets_revues = SweetsRevue.all
       #byebug
-      render :new
+      render :new, notice: "投稿に失敗しました"
     end
   end
 
 
   def edit
+    @sweets_revue = SweetsRevue.find(params[:id])
   end
 
   private
 
   def sweets_revue_params
+    # { :tag_ids=> [] } : 送られてきた値を配列に格納する
     params.require(:sweets_revue).permit(
-      :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id,  { :tag_ids=> [] },
+      :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, { :tag_ids=> [] },
       :review_star, :sweets_name, :tax_included_price, :sweets_introduction, :shop_name, :buy_place, :post_status)
   end
 
-  # def post_params
-  #     params.require(:post).permit(:name, :mode, :desc, { :tag_ids=> [] })
-  # end
-
-  # def article_params
-  #   params.require(:article).permit(tag_ids:[])
-  # end
 end

@@ -1,16 +1,38 @@
 class SweetsRevue < ApplicationRecord
+  ## アソシエーション
   belongs_to :end_user
   belongs_to :genre
   has_many :revue_tag_relations, dependent: :destroy
+
+  # 関連項目も含めて一度に保存、削除する
   accepts_nested_attributes_for :revue_tag_relations, allow_destroy: true
+
   # 中間テーブルを介してTagsテーブルへの関連付け
   has_many :tags, through: :revue_tag_relations
+
   has_many :posuto_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
-  # accepts_nested_attributes_for :post_tags, allow_destroy: true
-  
-  
+
+  ##画像保存
+  has_one_attached :image
+
+  # def get_image(width, height)
+  #   unless image.attached?
+  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
+  #     image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+  #   end
+  #     image.variant(resize_to_limit: [width, height]).processed
+  # end
+
+   def get_image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join("app/assets/images/default-image.jpeg")
+      image.attach(io: File.open(file_path), filename: "default-image.jpeg", content_type: "image/jpeg")
+    end
+    image.variant(resize_to_fill: [width, height]).processed
+   end
+
+
   # def save_tags(tags)
 
   #   # タグをスペース区切りで分割し配列にする
