@@ -41,9 +41,12 @@
       <tr>
         <td class="col-md-3 subtitle">タグ（複数選択可）</td>
         <td>
-          <%= form_for @sweets_revue do |f| %>
             <div class = "form-group">
-              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <!--第一引数：タグIDのリストを渡し、複数のタグをsweets_revueに紐づける-->
+              <!--第二引数：タグオブジェクトのリスト-->
+              <!--第三引数：チェックボックスのvalue-->
+              <!--第四引数：タグオブジェクトのnameプロパティをラベル名に指定-->
+              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) do |tag| %>
                 <div class = "form-check">
                   <%= tag.label class: "form-check-label" do %>
                     <%= tag.check_box class: "form-check-input" %>
@@ -52,22 +55,49 @@
                 </div>
               <% end %>
             </div>
-          <% end %>
+        </td>
+      </tr>
+      <!--<tr>-->
+      <!--  <td class="col-md-3 subtitle">タグ（その他）</td>-->
+      <!--  <td>-->
+      <!--  </td>-->
+      <!--</tr>-->
+      <tr>
+        <td class="col-md-3 subtitle">評価</td>
+        <td>
+          <div class = "form-group row position-static" id = "star">
+          　<script>
+              $(document).on('turbolinks:load', function() {
+                // 第一引数
+                // 対象の要素（id = "star"）を取得し変数に代入
+              let raty_elem = document.querySelector('#star');
+              // 対象の要素を初期化
+              raty_elem.innerHTML = ""
+              // 第二引数
+              // 変数に値を代入
+              let option = {
+                  score: "<%= params[:score].present? ? params[:score] : 0 %>",
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  // scoreName: 'sweets_revue[review_star]',
+                  // half: true,
+                };
+                // （第一引数と第二引数）の値を返す
+              raty(raty_elem,option);
+             });
+            </script>
+          </div>
         </td>
       </tr>
       <tr>
-        <td class="col-md-3 subtitle">タグ（その他）</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">評価</td>
-        <td></td>
+        <td>
+          <div class= "col-md-8 offset-md-4 action">
+            <%= f.submit '新規登録', class: "btn btn-success" %>
+          </div>
+        </td>
       </tr>
     </table>
-
-    <div class= "col-md-8 offset-md-4 action">
-      <%= f.submit '新規登録', class: "btn btn-success" %>
-    </div>
   <% end %>
   </div>
 </div>
