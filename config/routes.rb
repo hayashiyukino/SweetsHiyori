@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'tags/index'
-    get 'tags/edit'
-  end
 ## 会員用
 # URL /customers/sign_in ...
   devise_for :end_users, skip: [:passwords], controllers: {
@@ -22,8 +18,8 @@ Rails.application.routes.draw do
     # homes
     root "homes#top"
     get 'about' => 'homes#about'
-#     # post_sweetses
-#     resources :post_sweetses, except: [:destroy]
+    # sweets_revues
+    resources :sweets_revues, except: [:destroy]
 #     # end_users
 #     get 'end_users/my_page' => 'end_users#show', as: 'mypage'
 #     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
@@ -41,7 +37,7 @@ Rails.application.routes.draw do
 # ##管理者側ルート設定
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
-    resources :post_sweetse, only: [:show, :update]
+    resources :sweets_revues, only: [:show, :update]
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :tags, only: [:index, :edit, :create, :update]
