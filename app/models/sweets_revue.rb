@@ -10,7 +10,7 @@ class SweetsRevue < ApplicationRecord
   # 中間テーブルを介してTagsテーブルへの関連付け
   has_many :tags, through: :revue_tag_relations
 
-  has_many :posuto_comments, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   ##画像保存
