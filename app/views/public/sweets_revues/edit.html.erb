@@ -1,0 +1,92 @@
+<div class="row mt-3">
+  <div class="row col-12">
+    <h4 class="mb-3">新規投稿</h4>
+  </div>
+
+  <%= render "layouts/errors", obj: @sweets_revue %>
+
+  <div class="row col-12">
+    <div class="col-3"></div>
+    <%= form_with model: @sweets_revue, url: sweets_revue_path(@sweets_revue), method: :PATCH, class: "col-5 mb-5" do |f| %>
+      <div class="form-group row">
+        <%= f.label :sweets_image, "商品画像", class: "col-4" %>
+        <%= f.file_field :sweets_image, accept: "image/*", class: "col-8 pl-0" %>
+      </div>
+      <div class="form-group row">
+        <!--<#%= f.label :sweets_name, "商品名", class: "col-4" %>-->
+        <%= f.text_field :sweets_name, placeholder: "商品名", class: "col-8" %>
+      </div>
+      <div class="form-group row">
+        <!--<#%= f.label :tax_included_price, "税込価格", class: "col-4" %>-->
+        <%= f.text_field :tax_included_price, placeholder: "税込価格", class: "col-8" %>
+        <span class="d-flex align-items-center ml-1">円</span>
+      </div>
+      <div class="form-group row">
+        <!--<#%= f.label :sweets_introduction, "コメント", class: "col-4" %>-->
+        <%= f.text_area :sweets_introduction, rows: "5", placeholder: "コメント", class: "col-8" %>
+      </div>
+       <div class="form-group row">
+        <!--<#%= f.label :shop_name, "店舗名", class: "col-4" %>-->
+        <%= f.text_field :shop_name, placeholder: "店舗名", class: "col-8" %>
+      </div>
+       <div class="form-group row">
+        <!--<#%= f.label :buy_place, "購入場所や住所", class: "col-4" %>-->
+        <%= f.text_field :buy_place, placeholder: "購入場所や住所", class: "col-8" %>
+      </div>
+      <div class="form-group row">
+        <!--<#%= f.label :genre_id, "ジャンル", class: "col-4" %>-->
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--ジャンル--" %>
+      </div>
+      <div class = "form-group row">
+        <%= f.label :tag_id, "タグ（複数選択可)", class: "col-4" %><br>
+        <div class = "col-8">
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) do |tag| %>
+          <!--第一引数：タグIDのリストを渡し、複数のタグをsweets_revueに紐づける-->
+          <!--第二引数：タグオブジェクトのリスト-->
+          <!--第三引数：チェックボックスのvalue-->
+          <!--第四引数：タグオブジェクトのnameプロパティをラベル名に指定-->
+          <div class = "form-check">
+            <%= tag.label class: "form-check-label" do %>
+              <%= tag.check_box class: "form-check-input" %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <!--<div class="form-group row">-->
+      <!--  <#%= f.label :, "タグ（その他）", class: "col-4" %>-->
+      <!--  <#%= f.text_field :カラム名, placeholder: "タグ・キーワード", class: "col-8" %>-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--  <#%= f.label :sweets_revue, "評価", class: "col-4" %>-->
+      <!--</div>-->
+      <div class = "form-group row position-static" id = "star">
+      　<script>
+          $(document).on('turbolinks:load', function() {
+            // 第一引数
+            // 対象の要素（id = "star"）を取得し変数に代入
+            let raty_elem = document.querySelector('#star');
+            // 対象の要素を初期化
+            raty_elem.innerHTML = ""
+            // 第二引数
+            // 変数に値を代入
+            let option = {
+              score: "<%= params[:score].present? ? params[:score] : 0 %>",
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+                // scoreName: 'sweets_revue[review_star]',
+                // half: true,
+            };
+            // （第一引数と第二引数）の値を返す
+          　raty(raty_elem,option);
+        　 });
+        </script>
+      </div>
+      <div class="form-group text-center">
+        <%= f.submit "変更", class: "btn btn-success btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

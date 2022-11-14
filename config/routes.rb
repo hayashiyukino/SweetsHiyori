@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     # homes
     root "homes#top"
     get 'about' => 'homes#about'
-    # post_sweetses
-    resources :post_sweets, except: [:destroy]
+    # sweets_revues
+    resources :sweets_revues, except: [:destroy]
     # end_users
     get 'end_users/my_page' => 'end_users#mypage', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
@@ -35,11 +35,13 @@ Rails.application.routes.draw do
 
 
 # ##管理者側ルート設定
-#   namespace :admin do
-#     get 'top' => 'homes#top', as: 'top'
-#     resources :post_sweetse, only: [:show, :update]
-#     resources :end_users, only: [:index, :show, :edit, :update]
-#   end
+  namespace :admin do
+    get 'top' => 'homes#top', as: 'top'
+    resources :sweets_revues, only: [:show, :update]
+    resources :end_users, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :tags, only: [:index, :edit, :create, :update]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
