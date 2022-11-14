@@ -40,6 +40,27 @@
         <p>編集ボタン</p>
       <% end %>
     </div>
+    <div class = "infomationbox">
+      <div>
+    	  <p>ニックネーム</p>
+    	  <%= @end_user.nickname %>
+      </div>
+      <div>
+    	  <p>introduction</p>
+　　　　<%= @end_user.introduction %>
+      </div>
+      <div>
+        <%= @end_user.sweets_revues.count %>投稿
+      </div>
+        <!--<tr>-->
+        <!--  <th>follows</th>-->
+        <!--  <th><#%= link_to user.followings.count, user_followings_path(user) %></th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--  <th>followers</th>-->
+        <!--  <th><#%= link_to user.followers.count, user_followers_path(user) %></th>-->
+        <!--</tr>-->
+    </div>
   </div>
   <div class = "col-8">
     <!--部分テンプレート-->

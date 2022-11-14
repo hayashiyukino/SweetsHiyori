@@ -14,8 +14,12 @@
   <body>
 
     <header>
-    <!--<div class="border border-secondary">-->
       <nav class="navbar navbar-expand-sm navbar-light" style ="background-color: #d2b48c">
+        <!--<div class="row">-->
+        <!--    <div class="search_box">-->
+        <!--      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+        <!--      <button type = "submit"><i class="fa-solid fa-magnifying-glass fa-flip-horizontal" type="submit"></i></button>-->
+        <!--</div>-->
         <div class="container">
           <a class=navbar-brand href="/">
             <%= link_to 'Sweets日和', root_path %>
@@ -34,10 +38,10 @@
                   <% end %>
                 </li>
                 <li>
-                  <!--<#%= link_to post_sweets_path, class: "nav-link text-dark" do %>-->
-                  <!--<i class="fas fa-gifts"></i>-->
-                  <!--投稿一覧-->
-                  <!--<#% end %>-->
+                  <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
+                  <i class="fas fa-gifts"></i>
+                  投稿一覧
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to end_users_path, class: "nav-link text-dark" do %>
@@ -78,18 +82,6 @@
                 </li>
               <% else %>
                 <li>
-                  <%= link_to about_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-asterisk"></i>
-                  About
-                  <% end %>
-                </li>
-                <!--<li>-->
-                <!--  <#%= link_to post_sweetses_path, class: "nav-link text-dark" do %>-->
-                <!--  <i class="fas fa-gifts"></i>-->
-                <!--  投稿一覧-->
-                <!--  <#% end %>-->
-                <!--</li>-->
-                <li>
                   <%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>
                   <i class="fas fa-user-plus"></i>
                   新規登録
@@ -102,6 +94,18 @@
                   <% end %>
                 </li>
                 <li>
+                  <%= link_to about_path, class: "nav-link text-dark" do %>
+                  <i class="fas fa-asterisk"></i>
+                  About
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
+                  <i class="fas fa-gifts"></i>
+                  投稿一覧
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to admin_session_path, class: "nav-link text-dark" do %>
                   .
                   <% end %>
@@ -110,12 +114,6 @@
               </ul>
             </div>
           </div>
-          <!--検索窓-->
-          <!--<div class="row">-->
-              <!--<div class="search_box">-->
-          <!--      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
-                <!--<button type = "submit"><i class="fa-solid fa-magnifying-glass fa-flip-horizontal" type="submit"></i></button>-->
-          <!--</div>-->
         </div>
       </nav>
     </div>
@@ -159,13 +157,13 @@
     <!--</header>-->
 
     <main>
-      <!--<p id = "notici"><#%= notici></p>-->
-      <div class = "container">
-        <div class = "row">
-          <div class = "col-12">
+      <p id = "notice"><%= notice %></p>
+      <div class = "container-fluid">
+        <!--<div class = "row">-->
+        <!--  <div class = "col-12">-->
             <%= yield %>
-          </div>
-        </div>
+        <!--  </div>-->
+        <!--</div>-->
       </div>
     </main>
 

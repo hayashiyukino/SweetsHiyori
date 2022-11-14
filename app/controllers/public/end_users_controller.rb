@@ -18,6 +18,14 @@ class Public::EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
   end
 
+  def update
+    @end_user = current_end_user
+    if @end_user.update(end_user_params)
+      redirect_to mypage_path
+      flash[:notice] = "会員情報が更新されました。"
+    end
+  end
+
   #下記は退会確認画面用
   def withdraw
       # @customer_is_deleted = current_customer

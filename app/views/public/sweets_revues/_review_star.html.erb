@@ -1,0 +1,15 @@
+<div id="review_star_<%= sweets_revue.id %>"></div>
+<script>
+$(document).on('turbolinks:load', function() {
+    let raty_<%= sweets_revue.id %> = document.querySelector('#review_star_<%= sweets_revue.id %>');
+    rate_<%= sweets_revue.id %>.innerHTML = ""
+    let option_<%= sweets_revue.id %> = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        score: "<%= sweets_revue.review_star %>",
+        readOnly: true,
+      };
+    raty(raty_<%= sweets_revue.id %> ,option_<%= sweets_revue.id %>);
+});
+</script>

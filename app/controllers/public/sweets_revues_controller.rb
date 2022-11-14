@@ -5,6 +5,8 @@ class Public::SweetsRevuesController < ApplicationController
   end
 
   def index
+    @sweets_revues = SweetsRevue.all.page(params[:page])
+    # @genres   = Genre.all
   end
 
   def show
@@ -15,8 +17,8 @@ class Public::SweetsRevuesController < ApplicationController
     @sweets_revue = SweetsRevue.new(sweets_revue_params)
     # 上の処理でレビューの値がscoreに送られるのでparamsで保存し、review_starカラムに代入する
     @sweets_revue.review_star = params[:score]
-    # @sweets_revue.end_user_id = current_end_user.id
-    @sweets_revue.end_user_id = 1
+    @sweets_revue.end_user_id = current_end_user.id
+    # @sweets_revue.end_user_id = 1
     if @sweets_revue.save
       redirect_to sweets_revue_path(@sweets_revue), notice: "投稿しました！"
     else
