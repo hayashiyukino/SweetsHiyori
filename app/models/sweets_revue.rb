@@ -25,6 +25,7 @@ class SweetsRevue < ApplicationRecord
   # end
 
    def get_image(width, height)
+      # attached?は、画像が存在していればtrue、存在していなければfalse
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/default-image.jpeg")
       image.attach(io: File.open(file_path), filename: "default-image.jpeg", content_type: "image/jpeg")
