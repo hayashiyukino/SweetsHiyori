@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     root "homes#top"
     get 'about' => 'homes#about'
     # sweets_revues
-    resources :sweets_revues, except: [:destroy]
+    resources :sweets_revues, except: [:destroy] do
+      # sweets_revuesに対してコメントされるので親子関係になる
+      # ネストしたURLを作成することでparams[:sweets_revue_id]でPostImageのidが取得できるようになる
+      resources :post_comments, only: [:create]
+    end
     # end_users
     get 'end_users/my_page' => 'end_users#mypage', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。

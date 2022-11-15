@@ -11,6 +11,7 @@ class Public::SweetsRevuesController < ApplicationController
 
   def show
     @sweets_revue = SweetsRevue.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def create

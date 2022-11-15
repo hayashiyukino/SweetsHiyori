@@ -42,6 +42,22 @@
         <%= render "review_star", sweets_revue: @sweets_revue %>
       </div>
     </div>
+
+    <!--コメントフォーム-->
+    <div>
+      <p>コメント件数：<%= @sweets_revue.post_comments.count %></p>
+      <% @sweets_revue.post_comments.each do |post_comment| %>
+        <%= post_comment.id %>
+        <%= post_comment.comment %>
+        <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with model: [@sweets_revue, @post_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
   <!--</div>-->
 
 <!--</div>-->
