@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-  
+
   # フォローするとき
   # follow(params[:end_user_id])で、models/end_user.rbで定義したメソッドを呼び出す
   def create
@@ -9,7 +9,7 @@ class Public::RelationshipsController < ApplicationController
   # フォロー外すとき
   def destroy
     current_end_user.unfollow(params[:end_user_id])
-    redirect_to request.referer  
+    redirect_to request.referer
   end
   # フォロー一覧
   def followings
@@ -19,7 +19,7 @@ class Public::RelationshipsController < ApplicationController
   # フォロワー一覧
   def followers
     end_user = EndUser.find(params[:end_user_id])
-    @end_users = enduser.followers
+    @end_users = end_user.followers
   end
-  
+
 end

@@ -12,7 +12,11 @@ class EndUser < ApplicationRecord
   # has_many :
 
   ## 画像投稿出来るようにする
-  has_one_attached :image
+  has_one_attached :profile_image
+  
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
 
   ## フォローをした
   # relationships = 分かりやすいように名前をつけただけ

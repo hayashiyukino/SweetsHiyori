@@ -15,8 +15,8 @@
           <tr>
             <td><%= end_user.id %></td>
             <td>
-              <% if end_user.image.attached? %>
-                <%= image_tag end_user.image, size: "100x100" %>
+              <% if end_user.profile_image.attached? %>
+                <%= image_tag end_user.get_profile_image, size: "100x100" %>
               <% else %>
                 <%= image_tag 'no_image', size: "100x100" %>
               <% end %>
