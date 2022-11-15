@@ -1,28 +1,26 @@
 class SweetsRevue < ApplicationRecord
   ## アソシエーション
+  # ユーザー
   belongs_to :end_user
+  # ジャンル
   belongs_to :genre
+  # タグとの中間テーブル
   has_many :revue_tag_relations, dependent: :destroy
-
-  # 関連項目も含めて一度に保存、削除する
-  accepts_nested_attributes_for :revue_tag_relations, allow_destroy: true
-
+    # 関連項目も含めて一度に保存、削除する
+    accepts_nested_attributes_for :revue_tag_relations, allow_destroy: true
   # 中間テーブルを介してTagsテーブルへの関連付け
   has_many :tags, through: :revue_tag_relations
-
+  # 投稿へのコメント
   has_many :post_comments, dependent: :destroy
+  # 投稿へのいいね
   has_many :favorites, dependent: :destroy
+   def favorited_by?(end_user)
+     # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べ存在していればtrue、存在していなければfalseを返す
+     favorites.exists?(end_user_id: end_user.id)
+   end
 
   ##画像保存
   has_one_attached :image
-
-  # def get_image(width, height)
-  #   unless image.attached?
-  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  #     image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  #   end
-  #     image.variant(resize_to_limit: [width, height]).processed
-  # end
 
    def get_image(width, height)
       # attached?は、画像が存在していればtrue、存在していなければfalse
