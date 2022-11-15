@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <!--コメントフォーム 部分テンプレートにする-->
+    <!--コメントフォーム-->
     <div>
       <%= form_with model: [@sweets_revue, @post_comment] do |f| %>
         <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
@@ -62,22 +62,9 @@
       <% end %>
     </div>
 
-    <!--いいね機能  部分テンプレートにする-->
-    <div>
-      <% if @sweets_revue.favorited_by?(current_end_user) %>
-        <p>
-          <%= link_to sweets_revue_favorites_path(@sweets_revue), method: :delete do %>
-            ♥<%= @sweets_revue.favorites.count %> いいね
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to sweets_revue_favorites_path(@sweets_revue), method: :post do %>
-            ♡<%= @sweets_revue.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
-    </div>
+    <!--いいね機能  部分テンプレート-->
+    <!--<#%= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
+    <%= render 'favorite', sweets_revue: @sweets_revue %>
   <!--</div>-->
 
 <!--</div>-->
