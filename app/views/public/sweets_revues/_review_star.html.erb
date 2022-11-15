@@ -2,8 +2,8 @@
 <script>
 $(document).on('turbolinks:load', function() {
     let raty_<%= sweets_revue.id %> = document.querySelector('#review_star_<%= sweets_revue.id %>');
-    rate_<%= sweets_revue.id %>.innerHTML = ""
-    let option_<%= sweets_revue.id %> = {  
+    review_star_<%= sweets_revue.id %>.innerHTML = ""
+    let option_<%= sweets_revue.id %> = {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",

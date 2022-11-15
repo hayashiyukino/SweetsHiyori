@@ -39,6 +39,7 @@
         <%= @sweets_revue.sweets_introduction %>
       </div>
       <div>
+        <!--5段階評価 部分テンプレート-->
         <%= render "review_star", sweets_revue: @sweets_revue %>
       <p>コメント件数：<%= @sweets_revue.post_comments.count %></p>
       </div>

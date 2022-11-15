@@ -30,13 +30,13 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     ## end_users
-    resources :end_users, only: [:index, :show]
     get 'end_users/my_page' => 'end_users#mypage', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get 'end_users/infomation/:id/edit' => 'end_users#edit', as: 'edit_infomation'
     patch 'end_users/infomation/:id' => 'end_users#update'
     get 'end_users/confirm' #=> 'end_users#confirm'
     patch 'end_users/:id/withdraw' => 'end_users#withdraw', as: 'withdraw_end_user'
+    resources :end_users, only: [:index, :show]
 
 #     # searches
 #     # get "searches" => "searches#search"
