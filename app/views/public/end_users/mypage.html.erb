@@ -52,17 +52,33 @@
       <div>
         <%= @end_user.sweets_revues.count %>投稿
       </div>
-        <!--<tr>-->
-        <!--  <th>follows</th>-->
-        <!--  <th><#%= link_to user.followings.count, user_followings_path(user) %></th>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--  <th>followers</th>-->
-        <!--  <th><#%= link_to user.followers.count, user_followers_path(user) %></th>-->
-        <!--</tr>-->
+      <div>
+          <p>follows</p>
+          <p><%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %></p>
+          <p>followers</p>
+          <p><%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %></p>
+      </div>
     </div>
   </div>
   <div class = "col-8">
-    <!--部分テンプレート-->
+    <!--投稿部分テンプレート-->
+    <table>
+      <tbody>
+        <% @sweets_revues.each do |sweets_revue| %>
+          <div class="pr-3">
+            <%= link_to sweets_revue_path(sweets_revue)  do %>
+              <%= image_tag sweets_revue.get_image(80, 60) %>
+            <% end %>
+            <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
+            <!--5段階評価 部分テンプレート-->
+            <!--<#%= render "sweets_revues/review_star", sweets_revue: sweets_revue %>-->
+            <!--コメント数表示-->
+            <p><%= sweets_revue.post_comments.count %>コメント</p>
+            <!--いいね機能部分テンプレート-->
+            <!--<#%= render 'sweets_revues/favorite', sweets_revue: sweets_revue %>-->
+          </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

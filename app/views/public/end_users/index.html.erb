@@ -28,7 +28,16 @@
               <%= end_user.sweets_revues.count %>件
             </td>
             <td>フォロー数</td>
-            <td></td>
+            <td>
+              <!--ユーザーとログイン中のユーザーが一致しない場合フォロー機能表示する-->
+              <% unless current_end_user == end_user %>
+                <% if current_end_user.following?(end_user) %>
+                  <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info btn-sm btn-block" %>
+                <% else %>
+                  <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success btn-sm btn-block" %>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

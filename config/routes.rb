@@ -36,14 +36,19 @@ Rails.application.routes.draw do
     patch 'end_users/infomation/:id' => 'end_users#update'
     get 'end_users/confirm' #=> 'end_users#confirm'
     patch 'end_users/:id/withdraw' => 'end_users#withdraw', as: 'withdraw_end_user'
-    resources :end_users, only: [:index, :show]
+    resources :end_users, only: [:index, :show] do
+      ##relationships
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
 
 #     # searches
 #     # get "searches" => "searches#search"
     end
 
 
-# ##管理者側ルート設定
+ ##管理者側ルート設定
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
     resources :sweets_revues, only: [:show, :update]
