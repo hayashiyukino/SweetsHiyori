@@ -11,6 +11,7 @@ class Public::EndUsersController < ApplicationController
   end
 
   def index
+    @end_users = EndUser.all
   end
 
 
