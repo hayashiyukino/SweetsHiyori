@@ -1,0 +1,15 @@
+ <div>
+  <% if sweets_revue.favorited_by?(current_end_user) %>
+    <p>
+      <%= link_to sweets_revue_favorites_path(sweets_revue), method: :delete do %>
+        ♥<%= sweets_revue.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to sweets_revue_favorites_path(sweets_revue), method: :post do %>
+        ♡<%= sweets_revue.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+</div>

@@ -1,30 +1,56 @@
-<div class="row d-flex mt-3">
-  <h4 class="mb-3">投稿詳細</h4>
-  <div class="col-12 d-flex justify-content-left">
-    <div>
-      <%= image_tag @sweets_revue.get_image(300, 200) %>
+<dev class ="row">
+  <div class="col-6">
+    <div class = "row">
+      <div class = "col-12">
+        ユーザーアイコン＋リンク
+        <!--<#%= link_to end_user_path(end_user.id)  do %>-->
+        <!--    <p><#%= @sweets_revue.end_user.nickname %></p>-->
+        <!--      <#%= image_tag sweets_revue.end_user.get_image(80, 60) %>-->
+        <!--<#% end %>-->
+      </div>
+      <div class = "col-12">
+        <span><%= @sweets_revue.sweets_name %></span>
+        <%= @sweets_revue.tax_included_price %>
+        <%= link_to "編集", edit_sweets_revue_path(@sweets_revue) %>
+      </div>
+      <div class = "col-6">
+          <%= image_tag @sweets_revue.get_image(300, 200) %>
+          <!--5段階評価 部分テンプレート-->
+          <!--<#%= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
+          <%= render "review_star", sweets_revue: @sweets_revue %>
+          <!--いいね機能  部分テンプレート-->
+          <%= render 'favorite', sweets_revue: @sweets_revue %>
+          <p>コメント件数：<%= @sweets_revue.post_comments.count %></p>
+      </div>
+      <div class = "col-6">
+          <%= @sweets_revue.shop_name %><br>
+          <%= @sweets_revue.buy_place %><br>
+          <%= @sweets_revue.genre.name %><br>
+          <% @sweets_revue.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+          <%= @sweets_revue.sweets_introduction %>
+      </div>
     </div>
-    <table class="col-6 ml-5">
-      <thead></thead>
-      <tbody>
-        <tr>
-          <th class="col-3 pl-0">商品名</th>
-          <th><%= @sweets_revue.sweets_name %></th>
-        </tr>
-        <tr>
-          <th class="d-flex pl-0 align-items-start">商品説名</th>
-          <th><%= @sweets_revue.sweets_introduction %></th>
-        </tr>
-        <tr>
-          <th class="col-3 pl-0">ジャンル</th>
-          <th><%= @sweets_revue.genre.name %></th>
-        </tr>
+  </div>
 
-        <tr>
-          <th></th>
-          <th><%= link_to "編集する", edit_sweets_revue_path(@sweets_revue), class: "btn btn-lg btn-success mt-3" %></th>
-        </tr>
-      </tbody>
-    </table>
+  <div class = "col-6">
+      <!--コメントフォーム-->
+      <div>
+        <%= form_with model: [@sweets_revue, @post_comment] do |f| %>
+          <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+      <div>
+        <% @sweets_revue.post_comments.each do |post_comment| %>
+          <%= post_comment.id %>
+          <%= post_comment.comment %>
+          <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>
+          <% if post_comment.end_user == current_end_user %>
+            <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
   </div>
 </div>

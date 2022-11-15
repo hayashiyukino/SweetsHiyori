@@ -1,0 +1,47 @@
+<% if @end_user.errors.any? %>
+  <%= @end_user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @end_user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="row mb-5">
+  <div class="col-md-5 offset-md-1">
+    <h4><span class="title">会員情報編集</h4>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+  <%= form_with model: @end_user, url: 'my_page', method: :patch, local: true do |f| %>
+
+    <table class="table table-borderless">
+
+      <tr>
+        <td class="col-md-3 subtitle">名前</td>
+        <td class="col-md-5"><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">ニックネーム</td>
+        <td class="col-md-3"><%= f.text_area :item_introduction %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">アイコン画像</td>
+        <td class="col-md-3"><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">自己紹介</td>
+        <td class="col-md-3"><%= f.text_area :introduction %></td>
+      </tr>
+    </table>
+
+    <div class= "col-md-8 offset-md-4 action">
+      <%= f.submit '変更を保存', class:"btn btn-success" %>
+      <%= link_to "退会する", end_users_confirm_path(@end_user), class: "btn btn-danger" %>
+    </div>
+
+      <!--%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
+  <% end %>
+  </div>
+</div>
