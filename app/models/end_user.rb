@@ -8,12 +8,10 @@ class EndUser < ApplicationRecord
   has_many :sweets_revues
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  # has_many :
-  # has_many :
 
   ## 画像投稿出来るようにする
   has_one_attached :profile_image
-  
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
@@ -47,7 +45,8 @@ class EndUser < ApplicationRecord
   end
 
   ## バリデーション
-  validates :nickname, uniqueness: true
+  validates :name, presence: true
+  validates :nickname, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
 end
