@@ -5,26 +5,24 @@ class Public::SweetsRevuesController < ApplicationController
   end
 
   def index
-    @sweets_revues = SweetsRevue.all
-
-    if params[:tag_ids]
-      @sweets_revues = []
-      params[:tag_ids].each do |key, value|
-        if value == "1"
-          tag_sweets_revues = Tag.find_by(name: key).sweets_revues
-          @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
-        end
+    # タグ検索にチェックがついているかどうかを判断するためのフラグ
+    tag_is_selected = false
+    @sweets_revues = []
+    params[:tag_ids].each do |key, value|
+      # 送られてきた[tag_ids]が１だったら（タグにチェックがついていたら）
+      if value == "1"
+        # tag_is_selectedをtrueにする
+        tag_is_selected = true
+        tag_sweets_revues = Tag.find_by(name: key).sweets_revues
+        @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
       end
     end
+    # unlessはif文の逆。tag_is_selected = falseだったら、左側の記述を実行する。
+    # tag_is_selected = false はタグにチェックがついていなかったとき
+    @sweets_revues = SweetsRevue.all unless tag_is_selected
+    # if params[:genre_id].present? ジャンルが選択されているときに処理を実行する
+    @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id]) if params[:genre_id].present?
 
-    @genres = Genre.all
-    if params[:genre_id]
-      @genre = @genres.find(params[:genre_id])
-      @sweets_revues = @genre.sweets_revues.all
-    # else
-    #   @sweets_revues = SweetsRevue.all
-    end
-   
   end
 
   def show
