@@ -12,9 +12,26 @@
             <% end %>
             <br><%= submit_tag '検索' %>
           <% end %>
+          <!--ジャンル検索-->
+          <%= form_with model: @sweets_revue, url: sweets_revues_path, method: :get, class: "col-5 mb-5" do |f| %>
+           <%= f.label :genre_id, "ジャンル" %>
+           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--ジャンル--" %>
+          <!-- <#%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) do |tag| %>-->
+          <!--<div class = "form-check">-->
+          <!--  <#%= tag.label class: "form-check-label" do %>-->
+          <!--    <#%= tag.check_box class: "form-check-input" %>-->
+          <!--    <#%= tag.text %>-->
+           <%= f.submit "検索" %>
+          <% end %>
         </div>
         <div class = "col-8">
-          <div class="d-flex flex-lg-wrap items_width">
+          <!--<div class="d-flex flex-lg-wrap items_width">-->
+        <!--  <#% if params[:genre_id] %>-->
+      		<!--	<h2 class="section-ttl"><3%= @genre.name %>の投稿一覧 (全<3%= @sweets_revues_count %>件)</h2>-->
+      		<!--<#% else %>-->
+      		<!--	<h2 class="section-ttl">投稿一覧 (全<3%= @sweets_revues_count %>件)</h2>-->
+      		<!--<#% end %>-->
+      		<% if @sweets_revues.first %>
             <% @sweets_revues.each do |sweets_revue| %>
               <div class="pr-3">
                 <%= link_to sweets_revue_path(sweets_revue)  do %>
@@ -29,7 +46,10 @@
                 <%= render 'favorite', sweets_revue: sweets_revue %>
               </div>
             <% end %>
-          </div>
+          <% else %>
+      			<h3>該当する投稿が見つかりませんでした。</h3>
+      		<% end %>
+          <!--</div>-->
         </div>
       </div>
     </div>

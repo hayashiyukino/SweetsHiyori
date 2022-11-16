@@ -16,7 +16,15 @@ class Public::SweetsRevuesController < ApplicationController
         end
       end
     end
-    # @genres   = Genre.all
+
+    @genres = Genre.all
+    if params[:genre_id]
+      @genre = @genres.find(params[:genre_id])
+      @sweets_revues = @genre.sweets_revues.all
+    # else
+    #   @sweets_revues = SweetsRevue.all
+    end
+   
   end
 
   def show
