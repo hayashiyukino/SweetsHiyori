@@ -6,16 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!--<#%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
     <header>
       <nav class="navbar navbar-expand-sm navbar-light" style ="background-color: #d2b48c">
-
         <!--<div class="row">-->
         <!--    <div class="search_box">-->
         <!--      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
@@ -31,155 +28,56 @@
           <div class="row">
             <div class="navbar-collapse collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-              <% if end_user_signed_in? %>
-                <li>
-                  <!--<#%= link_to searches_path, class: "nav-link text-dark" do %>-->
-                  <!--  <i class="fas fa-user"></i>-->
-                  <!--  検索-->
-                  <!--<#% end %>-->
-                </li>
-                <li>
-                  <%= link_to mypage_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-user"></i>
-                  マイページ
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-gifts"></i>
-                  投稿一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to end_users_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-shopping-cart"></i>
-                  会員一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to destroy_end_user_session_path, method: :delete, class: "nav-link text-dark" do %>
-                  <i class="fas fa-sign-out-alt"></i>
-                  ログアウト
-                  <% end %>
-                </li>
-              <% elsif admin_signed_in? %>
-                <li>
-                  <%= link_to admin_genres_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-birthday-cake"></i>
-                  検索ワード
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to admin_root_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-gifts"></i>
-                  投稿一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to admin_end_users_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-users"></i>
-                  会員一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
-                  <i class="fas fa-sign-out-alt"></i>
-                  ログアウト
-                  <% end %>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-user-plus"></i>
-                  新規登録
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-sign-in-alt"></i>
-                  ログイン
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to about_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-asterisk"></i>
-                  About
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
-                  <i class="fas fa-gifts"></i>
-                  投稿一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to admin_session_path, class: "nav-link text-dark" do %>
-                  .
-                  <% end %>
-                </li>
-              <% end %>
+                <!--<3% if end_user_signed_in? %>-->
+                  <%= render 'layouts/end_user_header' %>
+                <!--<3% elsif admin_signed_in? %>-->
+                  <%= render 'layouts/admin_header' %>
+                <!--<3% else %>-->
+                <!--  <li>-->
+                <!--    <3%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-user-plus"></i>新規登録-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-sign-in-alt"></i>ログイン-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to about_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-asterisk"></i>About-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to sweets_revues_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-gifts"></i>投稿一覧-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to admin_session_path, class: "nav-link text-dark" do %>-->
+                <!--    .-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--<3% end %>-->
               </ul>
             </div>
           </div>
         </div>
       </nav>
-    </div>
     </header>
-
-
-
-
-    <!--<header class="<#%= (admin_signed_in? ? "admin_header" : "" ) %>">-->
-    <!--  <div class="header-content">-->
-    <!--  <3%= link_to 'Sweets日和', (admin_signed_in? ? admin_top_path : root_path ), class: "logo" %>-->
-    <!--    <ul class="flex">-->
-    <!--      <3% if admin_signed_in? %>-->
-    <!--        <li><3%= link_to '検索ワード',  admin_searches_path %></li>-->
-    <!--        <li><3%= link_to '投稿一覧',  admin_root_path %></li>-->
-    <!--        <li><3%= link_to '会員一覧',  admin_end_users_path %></li>-->
-    <!--        <li><3%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>-->
-    <!--      <3% elsif end_user_signed_in? %>-->
-    <!--        <li><3%= link_to 'マイページ', mypage_path %></li>-->
-    <!--        <li><3%= link_to '検索', searches_path %></li>-->
-    <!--        <li><3%= link_to '投稿一覧', post_sweetses_path %></li>-->
-    <!--        <li><3%= link_to '会員一覧',  end_users_path %></li>-->
-    <!--        <li><3%= link_to 'ログアウト', destroy_end_users_session_path, method: :delete %></li>-->
-    <!--      <3% else %>-->
-    <!--        <li><3%= link_to '新規登録', new_end_user_registration_path %></li>-->
-    <!--        <li><3%= link_to 'ログイン', new_end_user_session_path %></li>-->
-            <!--<li><#%= link_to '投稿一覧', post_sweetses_path %></li>-->
-    <!--        <li><3%= link_to 'About', about_path %></li>-->
-    <!--      <3% end %>-->
-    <!--    </ul>-->
-    <!--    <3% if admin_signed_in? %>-->
-    <!--      <3%= form_tag(admin_search_path, method: :get) do %>-->
-    <!--        <3%= text_field_tag "search[content]", "", :placeholder =>"会員: 姓,名,セイ,メイ / 商品: 商品名" %>-->
-    <!--        <3%= select_tag "search[model]", options_for_select({ "会員" => "customer", "商品" => "item" }) %>-->
-    <!--        <3%= select_tag "search[method]", options_for_select({ "部分一致" => "partial", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "perfect" }) %>-->
-    <!--        <3%= submit_tag '検索', class: "btn btn-primary" %>-->
-    <!--      <3% end %>-->
-    <!--    <3% end %>-->
-
-    <!--  </div>-->
-    <!--</header>-->
 
     <main>
       <p id = "notice"><%= notice %></p>
       <div class = "container-fluid">
-        <!--<div class = "row">-->
-        <!--  <div class = "col-12">-->
             <%= yield %>
-        <!--  </div>-->
-        <!--</div>-->
       </div>
     </main>
 
-  <footer>
-    <div class="fixed-bottom" style ="background-color: #d2b48c">
-      <!--<div class="border border-secondary"></div>-->
-      <div class="container"></div>
-      <p>Copyright © Infratop Inc. All Rights Reserved.</p>
-    </div>
-  </footer>
+    <footer>
+      <div class="fixed-bottom" style ="background-color: #d2b48c">
+        <div class="container"></div>
+        <p>Copyright © Infratop Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
