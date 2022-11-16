@@ -3,21 +3,34 @@
         <h2><strong>投稿一覧</strong></h2>
         <h4 class="mt-2">(全<%= @sweets_revues.count %>件)</h4>
       </div>
-      <div class="d-flex flex-lg-wrap items_width">
-        <% @sweets_revues.each do |sweets_revue| %>
-          <div class="pr-3">
-            <%= link_to sweets_revue_path(sweets_revue)  do %>
-            <p><%= sweets_revue.sweets_name %></p>
-              <%= image_tag sweets_revue.get_image(80, 60) %>
+      <div class = "row">
+        <div class = "col-4">
+          <!--タグ検索-->
+          <%= form_tag({controller:"sweets_revues",action:"index"}, method: :get) do %>
+            <% Tag.all.each do |t| %>
+              <%= check_box :tag_ids, t.name %><%= t.name %>
             <% end %>
-            <!--5段階評価 部分テンプレート-->
-            <%= render "review_star", sweets_revue: sweets_revue %>
-            <!--コメント数表示-->
-            <p><%= link_to "#{sweets_revue.post_comments.count} コメント", sweets_revue_path(sweets_revue.id) %></p>
-            <!--いいね機能部分テンプレート-->
-            <%= render 'favorite', sweets_revue: sweets_revue %>
+            <br><%= submit_tag '検索' %>
+          <% end %>
+        </div>
+        <div class = "col-8">
+          <div class="d-flex flex-lg-wrap items_width">
+            <% @sweets_revues.each do |sweets_revue| %>
+              <div class="pr-3">
+                <%= link_to sweets_revue_path(sweets_revue)  do %>
+                <p><%= sweets_revue.sweets_name %></p>
+                  <%= image_tag sweets_revue.get_image(80, 60) %>
+                <% end %>
+                <!--5段階評価 部分テンプレート-->
+                <%= render "review_star", sweets_revue: sweets_revue %>
+                <!--コメント数表示-->
+                <p><%= link_to "#{sweets_revue.post_comments.count} コメント", sweets_revue_path(sweets_revue.id) %></p>
+                <!--いいね機能部分テンプレート-->
+                <%= render 'favorite', sweets_revue: sweets_revue %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

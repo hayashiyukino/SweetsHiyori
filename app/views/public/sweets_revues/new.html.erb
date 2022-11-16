@@ -62,29 +62,7 @@
       <!--  <#%= f.label :sweets_revue, "評価", class: "col-4" %>-->
       <!--</div>-->
 
- <div class = "form-group row position-static" id = "star">
-      　<script>
-          $(document).on('turbolinks:load', function() {
-            // 第一引数
-            // 対象の要素（id = "star"）を取得し変数に代入
-            let raty_elem = document.querySelector('#star');
-            // 対象の要素を初期化
-            raty_elem.innerHTML = ""
-            // 第二引数
-            // 変数に値を代入
-            let option = {
-              score: "<%= params[:score].present? ? params[:score] : 0 %>",
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-                // scoreName: 'sweets_revue[review_star]',
-                // half: true,
-            };
-            // （第一引数と第二引数）の値を返す
-          　raty(raty_elem,option);
-        　 });
-        </script>
-      </div>
+ 
       <div class="form-group text-center">
         <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
       </div>

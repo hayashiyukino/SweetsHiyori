@@ -5,7 +5,17 @@ class Public::SweetsRevuesController < ApplicationController
   end
 
   def index
-    @sweets_revues = SweetsRevue.all.page(params[:page])
+    @sweets_revues = SweetsRevue.all
+
+    if params[:tag_ids]
+      @sweets_revues = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_sweets_revues = Tag.find_by(name: key).sweets_revues
+          @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
+        end
+      end
+    end
     # @genres   = Genre.all
   end
 
@@ -24,6 +34,8 @@ class Public::SweetsRevuesController < ApplicationController
     else
     #   @bsweets_revues = SweetsRevue.all
       #byebug
+      # flash.now[:alert] = "投稿に失敗しました"
+      # render 'new'
       render :new, notice: "投稿に失敗しました"
     end
   end
