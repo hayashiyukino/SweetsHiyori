@@ -8,114 +8,109 @@
   <div class="col-md-8 position-static">
   <%= form_with model: @sweets_revue, url: sweets_revues_path, method: :post do |f| %>
     <div class="row">
-      <div class="col-md-3 subtitle">商品画像</div>
+      <!--<div class="col-md-3 subtitle">商品画像</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.label :sweets_image, "商品画像", class: "col-4" %>
+        <%= f.file_field :image, accept: "image/*", class: "col-8 pl-0" %>
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">商品名</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.text_field :sweets_name, placeholder: "商品名", class: "col-5"%>
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">税込価格</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.text_field :tax_included_price,placeholder: "税込価格", class: "col-5" %>円
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">商品説明</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.text_area :sweets_introduction, rows: "5", placeholder: "コメント", class: "col-5" %>
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">店舗名</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.text_field :shop_name, placeholder: "店舗名", class: "col-5" %>
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">購入場所や住所</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.text_field :buy_place, placeholder: "購入場所や住所", class: "col-5" %>
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">ジャンル</div>-->
+      <!--<div class="col-md-5">-->
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
+      <!--</div>-->
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-3 subtitle">タグ（複数選択可）</div>-->
+      <%= f.label :tag_id, "タグ（複数選択可)", class: "col-4" %><br>
       <div class="col-md-5">
-        <%= f.file_field :image, accept: "image/*" %>
+        <!--<div class = "form-group">-->
+          <!--第一引数：タグIDのリストを渡し、複数のタグをsweets_revueに紐づける-->
+          <!--第二引数：タグオブジェクトのリスト-->
+          <!--第三引数：チェックボックスのvalue-->
+          <!--第四引数：タグオブジェクトのnameプロパティをラベル名に指定-->
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) do |tag| %>
+            <div class = "form-check">
+              <%= tag.label class: "form-check-label" do %>
+                <%= tag.check_box class: "form-check-input" %>
+                <%= tag.text %>
+              <% end %>
+            </div>
+          <% end %>
+        <!--</div>-->
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-3 subtitle">評価</div>
+      <!--<div class="col-md-3 subtitle">評価</div>-->
       <div class="col-md-5 position-static">
         <div id="star"></div>
       </div>
     </div>
 
+    <div class= "col-md-8 offset-md-4 action">
+      <%= f.submit '新規登録', class: "btn btn-success" %>
+    </div>
 
-
-
-
-
-    <table class="table table-borderless">
-
-      <tr>
-        <td class="col-md-3 subtitle"></td>
-        <td class="col-md-3"></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">商品名</td>
-        <td class="col-md-5"><%= f.text_field :sweets_name %></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">税込価格</td>
-        <td class="col-md-3"><%= f.text_field :tax_included_price %>円</td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">商品説明</td>
-        <td class="col-md-3"><%= f.text_area :sweets_introduction %></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">店舗名</td>
-        <td class="col-md-5"><%= f.text_field :shop_name %></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">購入場所や住所</td>
-        <td class="col-md-5"><%= f.text_field :buy_place %></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">ジャンル</td>
-        <td class="col-md-3"><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
-      </tr>
-      <tr>
-        <td class="col-md-3 subtitle">タグ（複数選択可）</td>
-        <td>
-            <div class = "form-group">
-              <!--第一引数：タグIDのリストを渡し、複数のタグをsweets_revueに紐づける-->
-              <!--第二引数：タグオブジェクトのリスト-->
-              <!--第三引数：チェックボックスのvalue-->
-              <!--第四引数：タグオブジェクトのnameプロパティをラベル名に指定-->
-              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) do |tag| %>
-                <div class = "form-check">
-                  <%= tag.label class: "form-check-label" do %>
-                    <%= tag.check_box class: "form-check-input" %>
-                    <%= tag.text %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-        </td>
-      </tr>
-      <!--<tr>-->
-      <!--  <td class="col-md-3 subtitle">タグ（その他）</td>-->
-      <!--  <td>-->
-      <!--  </td>-->
-      <!--</tr>-->
-      <tr>
-        <td class="col-md-3 subtitle">評価</td>
-        <td>
-          <!--here-->
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class= "col-md-8 offset-md-4 action">
-            <%= f.submit '新規登録', class: "btn btn-success" %>
-          </div>
-        </td>
-      </tr>
-    </table>
   <% end %>
   </div>
 </div>
 
 <script>
-              $(document).on('turbolinks:load', function() {
-                // 第一引数
-                // 対象の要素（id = "star"）を取得し変数に代入
-              let raty_elem = document.querySelector('#star');
-              // 対象の要素を初期化
-              raty_elem.innerHTML = ""
-              // 第二引数
-              // 変数に値を代入
-              let option = {
-                  score: "<%= params[:score].present? ? params[:score] : 0 %>",
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  starHalf: "<%= asset_path('star-half.png') %>",
-                  // scoreName: 'sweets_revue[review_star]',
-                  half: true,
-                };
-                // （第一引数と第二引数）の値を返す
-              raty(raty_elem,option);
-             });
-            </script>
+  $(document).on('turbolinks:load', function() {
+    // 第一引数
+    // 対象の要素（id = "star"）を取得し変数に代入
+    let raty_elem = document.querySelector('#star');
+    // 対象の要素を初期化
+    raty_elem.innerHTML = ""
+    // 第二引数
+    // 変数に値を代入
+    let option = {
+        score: "<%= params[:score].present? ? params[:score] : 0 %>",
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        // scoreName: 'sweets_revue[review_star]',
+        half: true,
+      };
+      // （第一引数と第二引数）の値を返す
+    raty(raty_elem,option);
+   });
+</script>
