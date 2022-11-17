@@ -34,7 +34,7 @@
       <% if @end_user.profile_image.attached? %>
         <%= image_tag end_user.get_profile_image, size: "100x100" %>
       <% else %>
-        <%= image_tag 'no_image', size: "100x100" %>
+        <%= image_tag 'no_profile_image', size: "100x100" %>
       <% end %>
       <%= link_to edit_infomation_path(@end_user) do %>
         <p>編集ボタン</p>
@@ -67,7 +67,7 @@
         <% @sweets_revues.each do |sweets_revue| %>
           <div class="pr-3">
             <%= link_to sweets_revue_path(sweets_revue)  do %>
-              <%= image_tag sweets_revue.get_image(80, 60) %>
+              <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
             <% end %>
             <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
             <!--5段階評価 部分テンプレート-->

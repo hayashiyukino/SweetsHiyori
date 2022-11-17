@@ -68,7 +68,7 @@ class Public::SweetsRevuesController < ApplicationController
   def sweets_revue_params
     # { :tag_ids=> [] } : 送られてきた値を配列に格納する
     params.require(:sweets_revue).permit(
-      :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, { :tag_ids=> [] }, :image,
+      :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, { :tag_ids=> [] }, :sweets_image,
       :review_star, :sweets_name, :tax_included_price, :sweets_introduction, :shop_name, :buy_place, :post_status)
   end
 
