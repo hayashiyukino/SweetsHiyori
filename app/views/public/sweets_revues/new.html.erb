@@ -5,60 +5,39 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-md-8 position-static">
+  <div class="col-md-4 position-static">
+    <div class="row">
   <%= form_with model: @sweets_revue, url: sweets_revues_path, method: :post do |f| %>
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">商品画像</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.label :sweets_image, "商品画像", class: "col-4" %>
-        <%= f.file_field :image, accept: "image/*", class: "col-8 pl-0" %>
-      <!--</div>-->
+    <div class="row mb-2">
+        <%= f.label :sweets_image, "商品画像", class: "col-3" %>
+        <%= f.file_field :image, accept: "image/*", class: "col-9" %>
     </div>
 
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">商品名</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.text_field :sweets_name, placeholder: "商品名", class: "col-5"%>
-      <!--</div>-->
-    </div>
+    <!--<div class="row">-->
+        <%= f.text_field :sweets_name, placeholder: "商品名", class: "col-12 mb-2"%>
+    <!--</div>-->
+
+    <!--<div class="row">-->
+        <%= f.text_field :tax_included_price,placeholder: "税込価格", class: "col-12 mb-2" %>
+    <!--</div>-->
+
+    <!--<div class="row">-->
+        <%= f.text_area :sweets_introduction, rows: "5", placeholder: "コメント", class: "col-12 mb-2" %>
+    <!--</div>-->
+
+    <!--<div class="row">-->
+        <%= f.text_field :shop_name, placeholder: "店舗名", class: "col-12 mb-2" %>
+    <!--</div>-->
+
+    <!--<div class="row">-->
+        <%= f.text_field :buy_place, placeholder: "購入場所や住所", class: "col-12 mb-2" %>
+    <!--</div>-->
+
+    <!--<div class="row">-->
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "col-12 mb-2" %>
+    <!--</div>-->
 
     <div class="row">
-      <!--<div class="col-md-3 subtitle">税込価格</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.text_field :tax_included_price,placeholder: "税込価格", class: "col-5" %>円
-      <!--</div>-->
-    </div>
-
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">商品説明</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.text_area :sweets_introduction, rows: "5", placeholder: "コメント", class: "col-5" %>
-      <!--</div>-->
-    </div>
-
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">店舗名</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.text_field :shop_name, placeholder: "店舗名", class: "col-5" %>
-      <!--</div>-->
-    </div>
-
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">購入場所や住所</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.text_field :buy_place, placeholder: "購入場所や住所", class: "col-5" %>
-      <!--</div>-->
-    </div>
-
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">ジャンル</div>-->
-      <!--<div class="col-md-5">-->
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
-      <!--</div>-->
-    </div>
-
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">タグ（複数選択可）</div>-->
       <%= f.label :tag_id, "タグ（複数選択可)", class: "col-4" %><br>
       <div class="col-md-5">
         <!--<div class = "form-group">-->
@@ -74,22 +53,21 @@
               <% end %>
             </div>
           <% end %>
-        <!--</div>-->
       </div>
     </div>
 
-    <div class="row">
-      <!--<div class="col-md-3 subtitle">評価</div>-->
-      <div class="col-md-5 position-static">
-        <div id="star"></div>
-      </div>
-    </div>
-
+    <!--<div class="row">-->
+      <!--<div class="col-md-12 position-static">-->
+        <div id="star", class: "col-12 position-static" ></div>
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
     <div class= "col-md-8 offset-md-4 action">
-      <%= f.submit '新規登録', class: "btn btn-success" %>
+      <%= f.submit '新規登録', class: "btn btn-success", class: "col-12 mb-2" %>
     </div>
-
+    <!--</div>-->
   <% end %>
+  </div>
   </div>
 </div>
 
