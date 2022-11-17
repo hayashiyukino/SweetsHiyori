@@ -1,9 +1,11 @@
 /*新規登録画面*/
-.title{
-  position: relative;
-  right: 30px;
-}
 
 .field{
   margin-top: 5px;
+
+}
+
+.actions{
+  position: relative;
+  left: 90px;
 }

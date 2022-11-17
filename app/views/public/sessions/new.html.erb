@@ -1,37 +1,33 @@
+<!--エラーメッセージ-->
+<%= render "devise/shared/error_messages", resource: resource %>
 
-    <%= render "devise/shared/error_messages", resource: resource %>
-<div class="row mb-5">
-  <div class="col-md-10">
-    <h4><span class="title">ログイン</span></h4>
-  </div>
-</div>
+<!--<div class="title row justify-content-center">-->
+<!--    <h5><strong>ログイン</strong></h5>-->
+<!--</div>-->
 
-<div class="row justify-content-around">
-  <div class="col-sm-8 px-5">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="row justify-content-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="field">
-      <div class="label"><%= f.label :ニックネーム %></div>
-      <div class="input_text"><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", size: 40 %></div>
+      <%= f.label :ニックネーム %><br>
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", size: 30 %>
     </div>
 
     <div class="field">
-      <div class="label"><%= f.label :パスワード %></div>
-      <div class="input_text"><%= f.password_field :password, autocomplete: "current-password", size: 40 %></div>
+      <%= f.label :パスワード %><br>
+      <%= f.password_field :password, autocomplete: "current-password", size: 30 %>
     </div>
 
-    <div class="actions mb-5">
-      <%= f.submit "ログイン", class:"btn btn-primary" %>
+    <div class="actions mt-4">
+      <%= f.submit "ログイン", class:"btn btn-info" %>
     </div>
   <% end %>
   </div>
 </div>
 
-<div class="row mb-5">
-  <div class="caption mb-5">
-    <P>会員登録がお済みでない方は
-      <%= link_to 'こちら', new_end_user_registration_path %>
-       から新規登録を行ってください
-    </p>
-  </div>
+<div class="row justify-content-center mt-5">
+  <P>会員登録がお済みでない方は
+    <%= link_to 'こちら', new_end_user_registration_path %>
+     から新規登録を行ってください
+  </p>
 </div>
