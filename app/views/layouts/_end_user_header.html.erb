@@ -1,0 +1,48 @@
+<% if end_user_signed_in? %>
+    <li>
+      <%= link_to mypage_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-user"></i>マイページ
+      <% end %>
+    </li>
+    <li>
+      <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-gifts"></i>投稿一覧
+      <% end %>
+    </li>
+    <li>
+      <%= link_to end_users_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-shopping-cart"></i>会員一覧
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_end_user_session_path, method: :delete, class: "nav-link text-dark" do %>
+        <i class="fas fa-sign-out-alt"></i>ログアウト
+      <% end %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-user-plus"></i>新規登録
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-sign-in-alt"></i>ログイン
+      <% end %>
+    </li>
+    <li>
+      <%= link_to about_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-asterisk"></i>About
+      <% end %>
+    </li>
+    <li>
+      <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-gifts"></i>投稿一覧
+      <% end %>
+    </li>
+    <li>
+      <%= link_to admin_session_path, class: "nav-link text-dark" do %>
+      .
+      <% end %>
+    </li>
+<% end %>

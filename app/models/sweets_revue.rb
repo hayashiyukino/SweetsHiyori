@@ -20,16 +20,13 @@ class SweetsRevue < ApplicationRecord
    end
 
   ##画像保存
-  has_one_attached :image
+  has_one_attached :sweets_image
 
-   def get_image(width, height)
-      # attached?は、画像が存在していればtrue、存在していなければfalse
-    unless image.attached?
-      file_path = Rails.root.join("app/assets/images/default-image.jpeg")
-      image.attach(io: File.open(file_path), filename: "default-image.jpeg", content_type: "image/jpeg")
-    end
-    image.variant(resize_to_fill: [width, height]).processed
-   end
+  def get_sweets_image(width, height)
+    (sweets_image.attached?) ? sweets_image : 'no_sweets_image.jpg'
+  end
+
+
 
 
   # def save_tags(tags)

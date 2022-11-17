@@ -4,6 +4,7 @@ class Public::EndUsersController < ApplicationController
     # @user = current_customer
     # redirect_to mypage_path
     @end_user = EndUser.find(params[:id])
+    @sweets_revues = @end_user.sweets_revues
   end
 
   def mypage
@@ -24,7 +25,7 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = current_end_user
     if @end_user.update(end_user_params)
-      redirect_to mypage_path
+      redirect_to "/end_users/my_page"
       flash[:notice] = "会員情報が更新されました。"
     end
   end
