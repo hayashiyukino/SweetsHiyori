@@ -27,6 +27,9 @@ class Public::EndUsersController < ApplicationController
     if @end_user.update(end_user_params)
       redirect_to "/end_users/my_page"
       flash[:notice] = "会員情報が更新されました。"
+    else
+      flash[:notice] = "編集に失敗しました"
+      render :edit
     end
   end
 

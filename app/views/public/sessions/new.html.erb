@@ -1,12 +1,8 @@
 <!--エラーメッセージ-->
-<%= render "devise/shared/error_messages", resource: resource %>
-
-<!--<div class="title row justify-content-center">-->
-<!--    <h5><strong>ログイン</strong></h5>-->
-<!--</div>-->
+<%= render "public/shared/error_messages", resource: @end_user %>
 
 <div class="row justify-content-center">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @end_user, url: end_user_session_path do |f| %>
 
     <div class="field">
       <%= f.label :ニックネーム %><br>
@@ -22,7 +18,6 @@
       <%= f.submit "ログイン", class:"btn btn-info" %>
     </div>
   <% end %>
-  </div>
 </div>
 
 <div class="row justify-content-center mt-5">

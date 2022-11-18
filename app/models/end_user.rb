@@ -47,6 +47,6 @@ class EndUser < ApplicationRecord
   ## バリデーション
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true
-  validates :introduction, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 100 }
 
 end
