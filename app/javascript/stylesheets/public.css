@@ -10,3 +10,15 @@
   left: 90px;
 }
 
+.form-box{
+  display: flex;
+  /*横並びにする*/
+  flex-direction: row;
+  /*画面幅に収まらない場合は折り返す*/
+  flex-wrap: wrap;
+}
+
+.form-check-label{
+  margin-left: 10px;
+}
+

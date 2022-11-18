@@ -30,6 +30,9 @@ class SweetsRevue < ApplicationRecord
     sweets_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  ## バリデーション
+    validates :sweets_name, presence: true
+    validates :tax_included_price, presence: true
 
   # def save_tags(tags)
 
