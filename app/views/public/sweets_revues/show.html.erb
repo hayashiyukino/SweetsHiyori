@@ -1,26 +1,47 @@
-<dev class ="row">
+<dev class="row justify-content-center">
   <div class="col-6">
-    <div class = "row">
-      <div class = "col-12">
-        ユーザーアイコン＋リンク
-        <!--<#%= link_to end_user_path(end_user.id)  do %>-->
-        <!--    <p><#%= @sweets_revue.end_user.nickname %></p>-->
-        <!--      <#%= image_tag sweets_revue.end_user.get_image(80, 60) %>-->
+    <div class="row">
+
+      <div class="col-12">
+        <% if @end_user.profile_image.attached? %>
+          <%= image_tag @end_user.get_profile_image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'no_profile_image', size: "100x100" %>
+        <% end %>
+        <!--<#%= image_tag @sweets_revue.end_user.get_profile_image(80,90) %>-->
+        <%= link_to @sweets_revue.end_user.nickname, end_user_path(@end_user) %>
         <!--<#% end %>-->
       </div>
-      <div class = "col-12">
-        <span><%= @sweets_revue.sweets_name %></span>
-        <%= @sweets_revue.tax_included_price %>
-        <%= link_to "編集", edit_sweets_revue_path(@sweets_revue) %>
+
+      <div class="col-12 mx-auto">
+        <h4><strong><%= @sweets_revue.sweets_name %></strong></h4>
       </div>
+
+
       <div class = "col-6">
-          <%= image_tag @sweets_revue.get_sweets_image(80, 80) %>
-          <!--5段階評価 部分テンプレート-->
-          <!--<#%= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
-          <%= render "review_star", sweets_revue: @sweets_revue %>
-          <!--いいね機能  部分テンプレート-->
-          <%= render 'favorite', sweets_revue: @sweets_revue %>
-          <p>コメント件数：<%= @sweets_revue.post_comments.count %></p>
+        <div class="col-12 text-right">
+            <%= @sweets_revue.tax_included_price %>（税込み）
+            <%= link_to "編集", edit_sweets_revue_path(@sweets_revue) %>
+        </div>
+          <%= image_tag @sweets_revue.get_sweets_image(280,200) %>
+          <div class="review ml-4 mt-2">
+            <p>評価</p>
+            <!--<#%= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
+            <!--5段階評価 部分テンプレート-->
+            <div class="review_star ml-5">
+              <%= render "review_star", sweets_revue: @sweets_revue %>
+            </div>
+          </div>
+          <div class="icon-box mt-3">
+            <div class="icon ml-5">
+              <!--いいね機能  部分テンプレート-->
+              <%= render 'favorite', sweets_revue: @sweets_revue %>
+            </div>
+            <div class="icon ml-5">
+              <!--コメント数-->
+              <i class="far fa-comment fa-2x"></i><%= @sweets_revue.post_comments.count %>
+            </div>
+          </div>
       </div>
       <div class = "col-6">
           <%= @sweets_revue.shop_name %><br>

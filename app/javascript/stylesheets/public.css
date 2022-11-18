@@ -1,4 +1,4 @@
-/*新規登録画面*/
+/*新規登録ページ*/
 
 .field{
   margin-top: 5px;
@@ -10,6 +10,7 @@
   left: 90px;
 }
 
+/*タブの表示*/
 .form-box{
   display: flex;
   /*横並びにする*/
@@ -22,3 +23,13 @@
   margin-left: 10px;
 }
 
+/*投稿詳細ページ*/
+
+.icon-box, .review{
+  display: flex;
+}
+
+/*いいねした時の♡の色*/
+.icon-color{
+  color: #FF66FF;
+}
