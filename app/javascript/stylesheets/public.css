@@ -1,35 +1,32 @@
 /*新規登録ページ*/
-
-.field{
-  margin-top: 5px;
-
-}
-
-.actions{
-  position: relative;
-  left: 90px;
-}
-
-/*タブの表示*/
-.form-box{
-  display: flex;
-  /*横並びにする*/
-  flex-direction: row;
-  /*画面幅に収まらない場合は折り返す*/
-  flex-wrap: wrap;
-}
-
-.form-check-label{
-  margin-left: 10px;
-}
+  .field{
+    margin-top: 5px;
+  }
+  
+  .actions{
+    position: relative;
+    left: 90px;
+  }
+  
+  /*タブの表示*/
+  .form-box{
+    display: flex;
+    /*横並びにする*/
+    flex-direction: row;
+    /*画面幅に収まらない場合は折り返す*/
+    flex-wrap: wrap;
+  }
+  
+  .form-check-label{
+    margin-left: 10px;
+  }
 
 /*投稿詳細ページ*/
+  .icon-box, .review{
+    display: flex;
+  }
+  /*いいねした時の♡の色*/
+  .icon-color{
+    color: #FF66FF;
+  }
 
-.icon-box, .review{
-  display: flex;
-}
-
-/*いいねした時の♡の色*/
-.icon-color{
-  color: #FF66FF;
-}
