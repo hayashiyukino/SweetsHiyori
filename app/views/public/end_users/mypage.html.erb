@@ -41,6 +41,7 @@
               </td>
               <td>
                 <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
+                <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
               </td>
               <td>
                 <!--5段階評価 部分テンプレート-->

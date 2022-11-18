@@ -23,7 +23,16 @@
       <%= end_user.sweets_revues.count %>投稿
     </div>
     <div>
-        <p><%= link_to end_user.followings.count, end_user_followings_path(end_user) %>フォロワー</p>
-        <p><%= link_to end_user.followers.count, end_user_followers_path(end_user) %>フォロー</p>
+      <%= link_to end_user_followings_path(end_user) do %>
+        <%= end_user.followings.count %>フォロワー
+      <% end %>
+    </div>
+    <div>
+      <%= link_to end_user_followers_path(end_user) do %>
+        <%= end_user.followers.count %>フォロー
+      <% end %>
+    </div>
+    <div>
+      <%= end_user.favorites.count %>件
     </div>
   </div>
