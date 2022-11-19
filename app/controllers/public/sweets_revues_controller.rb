@@ -30,6 +30,7 @@ class Public::SweetsRevuesController < ApplicationController
   def show
     @sweets_revue = SweetsRevue.find(params[:id])
     @post_comment = PostComment.new
+    @end_user = EndUser.find(params[:id])
   end
 
   def create

@@ -23,11 +23,16 @@ class SweetsRevue < ApplicationRecord
   has_one_attached :sweets_image
 
   def get_sweets_image(width, height)
-    (sweets_image.attached?) ? sweets_image : 'no_sweets_image.jpg'
+    unless sweets_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_sweets_image.jpg')
+      sweets_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    sweets_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
-
+  ## バリデーション
+    validates :sweets_name, presence: true
+    validates :tax_included_price, presence: true
 
   # def save_tags(tags)
 

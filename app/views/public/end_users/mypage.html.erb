@@ -1,84 +1,66 @@
-<div class = "row">
-  <div class = "col-3">
+<div class="row">
+  <div class="col-6">
     <% if end_user_signed_in? %>
-      <p><%= current_end_user.name %>さんのマイページ</p>
+      <h6><%= current_end_user.name %>さんのマイページ</h6>
     <% end %>
   </div>
-  <div class = "col-5">
-    <h3>
-    <% if end_user_signed_in? %>
-      <p><%= current_end_user.nickname %>の投稿一覧</p>
-    <% end %>
-    </h3>
-  </div>
-  <div class = "col-4">
+  <div class="col-6">
     <div class="new_postsweets_link">
       <%= link_to new_sweets_revue_path do %>
         <p>新規投稿</p>
       <% end %>
     </div>
-    <!--部分テンプレート-->
-    <p>
-      新着順
-    </p>
-    <p>
-      いいね数順
-    </p>
+    <!--部分テンプレートにしたい-->
+    <!--新着順-->
+    <!--いいね数順-->
   </div>
 </div>
 
-<div class = "row">
-  <div class = "col-4">
-    <!--部分テンプレート-->
-    <div class = "icon">
-      <% if @end_user.profile_image.attached? %>
-        <%= image_tag end_user.get_profile_image, size: "100x100" %>
-      <% else %>
-        <%= image_tag 'no_profile_image', size: "100x100" %>
-      <% end %>
-      <%= link_to edit_infomation_path(@end_user) do %>
-        <p>編集ボタン</p>
-      <% end %>
-    </div>
-    <div class = "infomationbox">
-      <div>
-    	  <p>ニックネーム</p>
-    	  <%= @end_user.nickname %>
-      </div>
-      <div>
-    	  <p>introduction</p>
-        <%= @end_user.introduction %>
-      </div>
-      <div>
-        <%= @end_user.sweets_revues.count %>投稿
-      </div>
-      <div>
-          <p>follows</p>
-          <p><%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %></p>
-          <p>followers</p>
-          <p><%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %></p>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-4">
+    <!--ユーザー情報部分テンプレート-->
+    <%= render "end_user_info", end_user: @end_user %>
   </div>
-  <div class = "col-8">
+
+  <div class="col-8">
     <!--投稿部分テンプレート-->
-    <table>
-      <tbody>
-        <% @sweets_revues.each do |sweets_revue| %>
-          <div class="pr-3">
-            <%= link_to sweets_revue_path(sweets_revue)  do %>
-              <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
-            <% end %>
-            <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
-            <!--5段階評価 部分テンプレート-->
-            <!--<#%= render "sweets_revues/review_star", sweets_revue: sweets_revue %>-->
-            <!--コメント数表示-->
-            <p><%= sweets_revue.post_comments.count %>コメント</p>
-            <!--いいね機能部分テンプレート-->
-            <!--<#%= render 'sweets_revues/favorite', sweets_revue: sweets_revue %>-->
-          </div>
-        <% end %>
-      </tbody>
-    </table>
+    <div class = "row">
+      <% if end_user_signed_in? %>
+        <h5><%= current_end_user.nickname %>の投稿一覧</h5>
+      <% end %>
+    </div>
+    <div class="row">
+      <table>
+        <tbody>
+          <% @sweets_revues.each do |sweets_revue| %>
+            <tr>
+              <td>
+                <%= link_to sweets_revue_path(sweets_revue)  do %>
+                  <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
+                <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
+              </td>
+              <td>
+                <!--5段階評価 部分テンプレート-->
+                <!--<div id="review_star_<#%= sweets_revue.id %>"></div>-->
+                <!--<#%= render "sweets_revues/review_star", sweets_revue: sweets_revue %>-->
+              </td>
+              <td>
+                <!--コメント数表示-->
+                <%= sweets_revue.post_comments.count %>コメント
+              </td>
+              <td>
+              <!--いいね機能部分テンプレート-->
+              <!--<#%= render 'sweets_revues/favorite', sweets_revue: sweets_revue %>-->
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @sweets_revues %>
   </div>
 </div>

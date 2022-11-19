@@ -9,8 +9,9 @@ class Public::EndUsersController < ApplicationController
 
   def mypage
     @end_user = current_end_user
-    @sweets_revues = SweetsRevue.all.page(params[:page])
-    # @sweets_revues = @end_user.sweets_revues.all
+    # @sweets_revues = SweetsRevue.all.page(params[:page])
+    @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(6).order(created_at: :desc)
+
   end
 
   def index
@@ -27,6 +28,9 @@ class Public::EndUsersController < ApplicationController
     if @end_user.update(end_user_params)
       redirect_to "/end_users/my_page"
       flash[:notice] = "会員情報が更新されました。"
+    else
+      flash[:notice] = "編集に失敗しました"
+      render :edit
     end
   end
 
