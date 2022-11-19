@@ -1,0 +1,38 @@
+<div class = "icon">
+  <% if end_user.profile_image.attached? %>
+    <%= image_tag end_user.get_profile_image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'no_profile_image', size: "100x100" %>
+  <% end %>
+  <!--<3%= image_tag end_user.get_profile_image(100,80) %>-->
+  <%= link_to edit_infomation_path(end_user) do %>
+    <p>編集ボタン</p>
+  <% end %>
+</div>
+
+  <div class = "infomationbox">
+    <div>
+  	  <p>ニックネーム</p>
+  	  <%= end_user.nickname %>
+    </div>
+    <div>
+  	  <p>introduction</p>
+      <%= end_user.introduction %>
+    </div>
+    <div>
+      <%= end_user.sweets_revues.count %>投稿
+    </div>
+    <div>
+      <%= link_to end_user_followings_path(end_user) do %>
+        <%= end_user.followings.count %>フォロワー
+      <% end %>
+    </div>
+    <div>
+      <%= link_to end_user_followers_path(end_user) do %>
+        <%= end_user.followers.count %>フォロー
+      <% end %>
+    </div>
+    <div>
+      <%= end_user.favorites.count %>件
+    </div>
+  </div>

@@ -6,11 +6,77 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light" style ="background-color: #d2b48c">
+        <!--<div class="row">-->
+        <!--    <div class="search_box">-->
+        <!--      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+        <!--      <button type = "submit"><i class="fa-solid fa-magnifying-glass fa-flip-horizontal" type="submit"></i></button>-->
+        <!--</div>-->
+        <div class="container">
+          <a class=navbar-brand href="/">
+            <%= link_to 'Sweets日和', root_path %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+            <!--<span class="navbar-toggler-icon"></span>-->
+          </button>
+          <div class="row">
+            <div class="navbar-collapse collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <!--<3% if end_user_signed_in? %>-->
+                  <%= render 'layouts/end_user_header' %>
+                <!--<3% elsif admin_signed_in? %>-->
+                  <%= render 'layouts/admin_header' %>
+                <!--<3% else %>-->
+                <!--  <li>-->
+                <!--    <3%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-user-plus"></i>新規登録-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-sign-in-alt"></i>ログイン-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to about_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-asterisk"></i>About-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to sweets_revues_path, class: "nav-link text-dark" do %>-->
+                <!--      <i class="fas fa-gifts"></i>投稿一覧-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--  <li>-->
+                <!--    <3%= link_to admin_session_path, class: "nav-link text-dark" do %>-->
+                <!--    .-->
+                <!--    <3% end %>-->
+                <!--  </li>-->
+                <!--<3% end %>-->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <p id = "notice"><%= notice %></p>
+      <div class = "container mb-5">
+            <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <div class="fixed-bottom" style ="background-color: #d2b48c">
+        <p>Copyright © Infratop Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>

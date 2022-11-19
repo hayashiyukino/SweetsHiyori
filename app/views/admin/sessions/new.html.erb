@@ -1,0 +1,19 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+<h2>ログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :ＩＤ %><br />
+    <%= f.text_field :login_id %>
+
+  <div class="field">
+    <%= f.label :パスワード %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= render "admin/shared/links" %>

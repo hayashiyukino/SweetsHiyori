@@ -1,0 +1,58 @@
+<div class="col-lg-10">
+      <div class="d-flex">
+        <h2><strong>投稿一覧</strong></h2>
+        <h4 class="mt-2">(全<%= @sweets_revues.count %>件)</h4>
+      </div>
+      <div class = "row">
+        <div class = "col-4">
+          <!--検索機能-->
+          <%= form_tag({controller:"sweets_revues",action:"index"}, method: :get) do %>
+            <!--タグ検索-->
+            <% Tag.all.each do |t| %>
+              <!--[:tag_ids]だけだと、他の[tag_ids]と区別がつかないので、[:tag_ids, t.name]としている-->
+              <%= check_box :tag_ids, t.name %><%= t.name %>
+            <% end %>
+            <!--ジャンル検索-->
+             <%= label_tag :genre_id, "ジャンル" %>
+             <!--mapメソッドを使用し、Genreの名前とidを配列に入れる-->
+             <!--genre_optionsにはジャンルの[名前、id]情報が全て入る-->
+             <% genre_options = Genre.all.map { |g| [g.name, g.id] } %>
+             <!--select_tag :genre_id = 数値ではなく名前で情報が送られる-->
+             <!--options_for_selectの第1引数にgenre_optionsを指定することで、名前とidの情報を送れる-->
+             <%= select_tag :genre_id, options_for_select(genre_options, selected: ""), include_blank: "--ジャンル--" %>
+              <br><%= submit_tag '検索' %>
+          <% end %>
+        </div>
+        <div class = "col-8">
+          <!--<div class="d-flex flex-lg-wrap items_width">-->
+        <!--  <#% if params[:genre_id] %>-->
+      		<!--	<h2 class="section-ttl"><3%= @genre.name %>の投稿一覧 (全<3%= @sweets_revues_count %>件)</h2>-->
+      		<!--<#% else %>-->
+      		<!--	<h2 class="section-ttl">投稿一覧 (全<3%= @sweets_revues_count %>件)</h2>-->
+      		<!--<#% end %>-->
+      		<% if @sweets_revues.present? %>
+            <% @sweets_revues.each do |sweets_revue| %>
+              <div class="pr-3">
+                <%= link_to sweets_revue_path(sweets_revue)  do %>
+                <p><%= sweets_revue.sweets_name %></p>
+                  <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
+                <% end %>
+                <!--5段階評価 部分テンプレート-->
+                <%= render "review_star", sweets_revue: sweets_revue %>
+                <!--コメント数表示-->
+                <p><%= link_to "#{sweets_revue.post_comments.count} コメント", sweets_revue_path(sweets_revue.id) %></p>
+                <!--いいね機能部分テンプレート-->
+                <%= render 'favorite', sweets_revue: sweets_revue %>
+              </div>
+            <% end %>
+          <% else %>
+      			<h3>該当する投稿が見つかりませんでした。</h3>
+      		<% end %>
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="row justify-content-center">-->
+  <!--    <#%= paginate @sweets_revues %>-->
+  <!--</div>-->

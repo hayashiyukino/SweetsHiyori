@@ -1,0 +1,28 @@
+<!--エラーメッセージ-->
+<%= render "public/shared/error_messages", resource: @end_user %>
+
+<div class="row justify-content-center">
+  <%= form_with model: @end_user, url: end_user_session_path do |f| %>
+
+    <div class="field">
+      <%= f.label :ニックネーム %><br>
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", size: 30 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :パスワード %><br>
+      <%= f.password_field :password, autocomplete: "current-password", size: 30 %>
+    </div>
+
+    <div class="actions mt-4">
+      <%= f.submit "ログイン", class:"btn btn-info" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row justify-content-center mt-5">
+  <P>会員登録がお済みでない方は
+    <%= link_to 'こちら', new_end_user_registration_path %>
+     から新規登録を行ってください
+  </p>
+</div>
