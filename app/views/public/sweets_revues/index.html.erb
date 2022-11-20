@@ -24,7 +24,7 @@
           <% end %>
         </div>
         <div class = "col-8">
-          <!--<div class="d-flex flex-lg-wrap items_width">-->
+        <!--  <div class="d-flex flex-lg-wrap items_width">-->
         <!--  <#% if params[:genre_id] %>-->
       		<!--	<h2 class="section-ttl"><3%= @genre.name %>の投稿一覧 (全<3%= @sweets_revues_count %>件)</h2>-->
       		<!--<#% else %>-->
@@ -42,7 +42,7 @@
                 <!--コメント数表示-->
                 <p><%= link_to "#{sweets_revue.post_comments.count} コメント", sweets_revue_path(sweets_revue.id) %></p>
                 <!--いいね機能部分テンプレート-->
-                <%= render 'favorite', sweets_revue: sweets_revue %>
+                <!--<3%= render 'favorite', sweets_revue: sweets_revue %>-->
               </div>
             <% end %>
           <% else %>

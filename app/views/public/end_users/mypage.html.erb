@@ -45,8 +45,8 @@
               </td>
               <td>
                 <!--5段階評価 部分テンプレート-->
-                <!--<div id="review_star_<#%= sweets_revue.id %>"></div>-->
-                <!--<#%= render "sweets_revues/review_star", sweets_revue: sweets_revue %>-->
+                <div id="review_star_<#%= sweets_revue.id %>"></div>
+                <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
               </td>
               <td>
                 <!--コメント数表示-->
@@ -54,7 +54,7 @@
               </td>
               <td>
               <!--いいね機能部分テンプレート-->
-              <!--<#%= render 'sweets_revues/favorite', sweets_revue: sweets_revue %>-->
+              <%= render 'public/sweets_revues/favorite', sweets_revue: sweets_revue %>
               </td>
             </tr>
           <% end %>
