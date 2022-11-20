@@ -1,19 +1,28 @@
+<!--エラーメッセージ-->
 <%= render "devise/shared/error_messages", resource: resource %>
-<h2>ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :ＩＤ %><br />
-    <%= f.text_field :login_id %>
+<div class="row justify-content-center">
+    <h5><strong>ログイン</strong></h5>
+</div>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<div class="row justify-content-center">
+  <!--<#%= form_with model: @end_user, url: end_user_session_path do |f| %>-->
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :ＩＤ %><br />
+      <%= f.text_field :login_id, autofocus: true, autocomplete: "login_id", size: 30 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :パスワード %><br>
+      <%= f.password_field :password, autocomplete: "password", size: 30 %>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= f.submit "ログイン", class:"btn btn-info" %>
+    </div>
+  <% end %>
+</div>
 
 <%= render "admin/shared/links" %>
