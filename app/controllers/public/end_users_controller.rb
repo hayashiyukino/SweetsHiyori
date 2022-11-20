@@ -10,7 +10,7 @@ class Public::EndUsersController < ApplicationController
   def mypage
     @end_user = current_end_user
     # @sweets_revues = SweetsRevue.all.page(params[:page])
-    @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(6).order(created_at: :desc)
+    @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(5).order(created_at: :desc)
 
   end
 
