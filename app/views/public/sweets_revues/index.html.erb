@@ -40,9 +40,9 @@
                 <!--5段階評価 部分テンプレート-->
                 <%= render "review_star", sweets_revue: sweets_revue %>
                 <!--コメント数表示-->
-                <p><%= link_to "#{sweets_revue.post_comments.count} コメント", sweets_revue_path(sweets_revue.id) %></p>
+                <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
                 <!--いいね機能部分テンプレート-->
-                <!--<3%= render 'favorite', sweets_revue: sweets_revue %>-->
+                <%= render 'favorite', sweets_revue: sweets_revue %>
               </div>
             <% end %>
           <% else %>
