@@ -5,7 +5,17 @@ class Public::SweetsRevuesController < ApplicationController
   end
 
   def index
-    @sweets_revues = SweetsRevue.all
+    @sweets_revues = SweetsRevue.all.page(params[:page]).per(9).order(created_at: :desc)
+    # @genres = Genre.only_active
+    # if params[:genre_id]
+    #   @genre = @genres.find(params[:genre_id])
+    #   all_items = @genre.items
+    # else
+    #   all_items = Item.where_genre_active.includes(:genre)
+    # end
+    # @items = all_items.page(params[:page]).per(12)
+    # @all_items_count = all_items.count
+
     # タグ検索にチェックがついているかどうかを判断するためのフラグ
     tag_is_selected = false
     if params[:tag_ids]
@@ -30,7 +40,7 @@ class Public::SweetsRevuesController < ApplicationController
   def show
     @sweets_revue = SweetsRevue.find(params[:id])
     @post_comment = PostComment.new
-    @end_user = EndUser.find(params[:id])
+    # @end_user = EndUser.find(params[:id])
   end
 
   def create
