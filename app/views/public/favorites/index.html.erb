@@ -1,16 +1,3 @@
-<div class="row">
-  <div class="col-12">
-    <div class="new_postsweets_link">
-      <%= link_to new_sweets_revue_path do %>
-        <p>新規投稿</p>
-      <% end %>
-    </div>
-    <!--部分テンプレートにしたい-->
-    <!--新着順-->
-    <!--いいね数順-->
-  </div>
-</div>
-
 <div class = "row">
   <!--サイドバー 検索-->
   <div class = "col-4">
@@ -18,11 +5,12 @@
       <h5><strong>投稿検索</strong></h5>
     </div>
     <!--検索機能 部分テンプレート-->
-    <%= render 'search' %>
+    <%= render 'public/sweets_revues/search' %>
   </div>
+
   <!--メイン 投稿閲覧-->
   <div class = "col-8">
-　　<!--タイトル表示の切り替え-->
+    <!--タイトル表示の切り替え-->
     <% if @genre %>
 			<h2 class="section-ttl"><%= @genre.name %>の商品一覧 (全<%= @sweets_revues.count %>件)</h2>
 		<% else %>
