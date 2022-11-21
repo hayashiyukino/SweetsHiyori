@@ -6,13 +6,18 @@
 </div>
 
 <div class="row justify-content-center">
-  <!--<#%= form_with model: @end_user, url: end_user_session_path do |f| %>-->
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @admin, url: admin_session_path do |f| %>
+  <!--<#%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
 
     <div class="field">
-      <%= f.label :ＩＤ %><br />
-      <%= f.text_field :login_id, autofocus: true, autocomplete: "login_id", size: 30 %>
+      <%= f.label :メールアドレス %><br>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 30 %>
     </div>
+
+    <!--<div class="field">-->
+    <!--  <#%= f.label :ＩＤ %><br />-->
+    <!--  <#%= f.text_field :login_id, autofocus: true, autocomplete: "login_id", size: 30 %>-->
+    <!--</div>-->
 
     <div class="field">
       <%= f.label :パスワード %><br>
