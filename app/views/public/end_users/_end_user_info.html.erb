@@ -1,10 +1,5 @@
 <div class = "icon">
-  <% if end_user.profile_image.attached? %>
-    <%= image_tag end_user.get_profile_image, size: "100x100" %>
-  <% else %>
-    <%= image_tag 'no_profile_image', size: "100x100" %>
-  <% end %>
-  <!--<3%= image_tag end_user.get_profile_image(100,80) %>-->
+  <%= image_tag end_user.get_profile_image(100,80) %>
   <%= link_to edit_infomation_path(end_user) do %>
     <p>編集ボタン</p>
   <% end %>

@@ -1,0 +1,25 @@
+<!--検索機能-->
+<%= form_tag({controller:"sweets_revues",action:"index"}, method: :get) do %>
+  <div class="col-11 genre mb-2">
+    <!--ジャンル検索-->
+     <%= label_tag :genre_id, "ジャンル" %>
+     <!--mapメソッドを使用し、Genreの名前とidを配列に入れる-->
+     <!--genre_optionsにはジャンルの[名前、id]情報が全て入る-->
+     <% genre_options = Genre.all.map { |g| [g.name, g.id] } %>
+     <!--select_tag :genre_id = 数値ではなく名前で情報が送られる-->
+     <!--options_for_selectの第1引数にgenre_optionsを指定することで、名前とidの情報を送れる-->
+     <%= select_tag :genre_id, options_for_select(genre_options, selected: ""), include_blank: "--ジャンル--" %>
+  </div>
+  <div class="form-box col-11 mb-2">
+    <!--タグ検索-->
+    <% Tag.all.each do |t| %>
+      <!--[:tag_ids]だけだと、他の[tag_ids]と区別がつかないので、[:tag_ids, t.name]としている-->
+      <div class="form-check-label">
+        <%= check_box :tag_ids, t.name %><%= t.name %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-11 text-center mt-5">
+    <%= submit_tag '検索' %>
+  </div>
+<% end %>
