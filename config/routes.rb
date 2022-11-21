@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       ## favorites
       # resource : 単数形にすると、/:idがURLに含まれなくなります
       # 1人のユーザーは1つの投稿に対して1回しかいいねできない」という仕様の為idを含めなくても関連する他のモデルのidから特定できる
-      resource :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :index, :destroy]
     end
     ## end_users
     get 'end_users/my_page' => 'end_users#mypage', as: 'mypage'
@@ -43,9 +43,8 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    ## searches
-    # get "searches" => "searches#search"
-    end
+
+  end
 
 
  ##管理者側ルート設定

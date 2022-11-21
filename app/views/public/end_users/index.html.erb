@@ -21,9 +21,11 @@
               <%= link_to end_user.nickname, end_user_path(end_user) %>
             </td>
             <td>
-              <%= end_user.sweets_revues.count %>件
+              投稿<%= end_user.sweets_revues.count %>件
             </td>
-            <td>フォロー数</td>
+            <td>
+              <%= end_user.followings.count %>フォロワー
+            </td>
             <td>
               <!--ユーザーとログイン中のユーザーが一致しない場合フォロー機能表示する-->
               <% unless current_end_user == end_user %>
