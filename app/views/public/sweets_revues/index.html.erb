@@ -24,7 +24,7 @@
 
   <!--メイン 投稿閲覧-->
   <div class = "col-8">
-    <% if params[:genre.name] %>
+    <% if @genre %>
 			<h2 class="section-ttl"><%= @genre.name %>の商品一覧 (全<%= @sweets_revues.count %>件)</h2>
 		<% else %>
 			<h2 class="section-ttl">商品一覧 (全<%= @sweets_revues.count %>件)</h2>

@@ -15,6 +15,9 @@ class SweetsRevue < ApplicationRecord
   # 投稿へのいいね
   has_many :favorites, dependent: :destroy
    def favorited_by?(end_user)
+     if end_user.blank?
+       return false
+     end
      # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べ存在していればtrue、存在していなければfalseを返す
      favorites.exists?(end_user_id: end_user.id)
    end

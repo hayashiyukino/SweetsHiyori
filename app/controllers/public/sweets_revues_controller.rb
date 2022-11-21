@@ -6,41 +6,35 @@ class Public::SweetsRevuesController < ApplicationController
 
   def index
     @sweets_revues = SweetsRevue.all.page(params[:page]).per(9).order(created_at: :desc)
-    # @genres = Genre.only_active
-    # if params[:genre_id]
-    #   @genre = @genres.find(params[:genre_id])
-    #   all_items = @genre.items
-    # else
-    #   all_items = Item.where_genre_active.includes(:genre)
-    # end
-    # @items = all_items.page(params[:page]).per(12)
-    # @all_items_count = all_items.count
 
     # タグ検索にチェックがついているかどうかを判断するためのフラグ
     tag_is_selected = false
     if params[:tag_ids]
-    @sweets_revues = []
-    params[:tag_ids].each do |key, value|
-      # 送られてきた[tag_ids]が１だったら（タグにチェックがついていたら）
-      if value == "1"
-        # tag_is_selectedをtrueにする
-        tag_is_selected = true
-        tag_sweets_revues = Tag.find_by(name: key).sweets_revues
-        @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
+      @sweets_revues = []
+      params[:tag_ids].each do |key, value|
+        # 送られてきた[tag_ids]が１だったら（タグにチェックがついていたら）
+        if value == "1"
+          # tag_is_selectedをtrueにする
+          tag_is_selected = true
+          tag_sweets_revues = Tag.find_by(name: key).sweets_revues
+          @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
+        end
       end
-    end
-    # unlessはif文の逆。tag_is_selected = falseだったら、左側の記述を実行する。
-    # tag_is_selected = false はタグにチェックがついていなかったとき
-    @sweets_revues = SweetsRevue.all unless tag_is_selected
-    # if params[:genre_id].present? ジャンルが選択されているときに処理を実行する
-    @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id]) if params[:genre_id].present?
+      # unlessはif文の逆。tag_is_selected = falseだったら、左側の記述を実行する。
+      # tag_is_selected = false はタグにチェックがついていなかったとき
+      @sweets_revues = SweetsRevue.all unless tag_is_selected
+      # ジャンルが選択されているときに処理を実行する
+      if params[:genre_id].present?
+        @genre = Genre.find(params[:genre_id])
+        @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
+      end
     end
   end
 
   def show
     @sweets_revue = SweetsRevue.find(params[:id])
     @post_comment = PostComment.new
-    # @end_user = EndUser.find(params[:id])
+    @end_user = @sweets_revue.end_user
   end
 
   def create
