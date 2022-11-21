@@ -14,10 +14,14 @@ class SweetsRevue < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   # 投稿へのいいね
   has_many :favorites, dependent: :destroy
+   # 引数のend_userにはend_userのidの値が入る
+   # 投稿一覧ページでこのコードがあるためログイン前（ユーザーidを持っていない）時に一覧ページに遷移しようとするとエラーになる
    def favorited_by?(end_user)
+     # その為if文で引数のend_user(= end_user.id)がblank?(= なければ）returnするとするとこれ以降の処理が行われない
      if end_user.blank?
        return false
      end
+     # end_userに値が入っていたらこちらの処理が行われる
      # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べ存在していればtrue、存在していなければfalseを返す
      favorites.exists?(end_user_id: end_user.id)
    end

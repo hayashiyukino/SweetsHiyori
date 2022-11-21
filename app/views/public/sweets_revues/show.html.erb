@@ -3,17 +3,9 @@
     <div class="row">
 
       <div class="col-12">
-        <!--<#% if @end_user.profile_image.attached? %>-->
-        <!--  <#%= image_tag @end_user.get_profile_image, size: "100x100" %>-->
-        <!--  #<#%= image_tag 'no_profile_image', size: "100x100" %>-->
-        <!--<#% end %>-->
-        <%=  @sweets_revue.end_user.profile_image.inspect %>
         <%= link_to end_user_path(@end_user) do %>
-
-        <%= image_tag @sweets_revue.end_user.get_profile_image(80,90) %>
+          <%= image_tag @sweets_revue.end_user.get_profile_image(80,90) %>
         <% end %>
-        <!--<#% else %>-->
-        <%# end %>
       </div>
 
       <div class="col-12 mx-auto">

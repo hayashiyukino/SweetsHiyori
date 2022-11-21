@@ -9,6 +9,7 @@ class Public::SweetsRevuesController < ApplicationController
 
     # タグ検索にチェックがついているかどうかを判断するためのフラグ
     tag_is_selected = false
+    
     if params[:tag_ids]
       @sweets_revues = []
       params[:tag_ids].each do |key, value|
@@ -23,7 +24,8 @@ class Public::SweetsRevuesController < ApplicationController
       # unlessはif文の逆。tag_is_selected = falseだったら、左側の記述を実行する。
       # tag_is_selected = false はタグにチェックがついていなかったとき
       @sweets_revues = SweetsRevue.all unless tag_is_selected
-      # ジャンルが選択されているときに処理を実行する
+      ## ジャンルが選択されているときに処理を実行する
+      # present? = 値があればtrue　
       if params[:genre_id].present?
         @genre = Genre.find(params[:genre_id])
         @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
