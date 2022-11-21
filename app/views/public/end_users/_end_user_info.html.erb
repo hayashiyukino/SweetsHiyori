@@ -1,10 +1,5 @@
 <div class = "icon">
-  <% if end_user.profile_image.attached? %>
-    <%= image_tag end_user.get_profile_image, size: "100x100" %>
-  <% else %>
-    <%= image_tag 'no_profile_image', size: "100x100" %>
-  <% end %>
-  <!--<3%= image_tag end_user.get_profile_image(100,80) %>-->
+  <%= image_tag end_user.get_profile_image(100,80) %>
   <%= link_to edit_infomation_path(end_user) do %>
     <p>編集ボタン</p>
   <% end %>
@@ -33,6 +28,15 @@
       <% end %>
     </div>
     <div>
-      <%= end_user.favorites.count %>件
+      <% if end_user == current_end_user %>
+        <!-- <#%= link_to "お気に入り"%>-->
+        <%= end_user.favorites.count %>件
+      <% else %>
+        <% if current_end_user.following?(end_user) %>
+          <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
+        <% end %>
+      <% end %>
     </div>
   </div>

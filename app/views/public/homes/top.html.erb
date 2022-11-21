@@ -1,2 +1,23 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="row">
+  <h5>Sweets日和へようこそ</h5>
+</div>
+
+<div class="row">
+
+  <div class="col-12 text-warning">
+    <h3><strong>新着情報</strong></h3>
+  </div>
+  <% @sweets_revues.each do |sweets_revue| %>
+    <div class="col-md-3 my-3">
+      <%= link_to sweets_revue_path(sweets_revue) do %>
+        <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
+        <%= sweets_revue.sweets_name %>
+      <% end %>
+        <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
+    </div>
+  <% end %>
+  <div class="col-md-12 mb-3">
+    <h6 class="text-right"><%= link_to "全ての投稿を見る", sweets_revues_path %></h6>
+  </div>
+
+</div>
