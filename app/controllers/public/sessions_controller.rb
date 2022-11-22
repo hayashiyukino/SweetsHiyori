@@ -38,8 +38,12 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname])
   # end
-  
+
   # def after_sign_up_path_for(resource)
   #   mypage_path(resource)
   # end
+
+  def after_sign_in_path_for(resource)
+    mypage_path(resource)
+  end
 end

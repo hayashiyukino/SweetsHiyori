@@ -1,6 +1,6 @@
 class Admin::EndUsersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @end_users = EndUser.all.page(params[:page]).per(6)
   end
@@ -22,7 +22,7 @@ class Admin::EndUsersController < ApplicationController
       render :edit
    end
   end
-  
+
   private
 
   def end_user_params
@@ -30,6 +30,6 @@ class Admin::EndUsersController < ApplicationController
       :name, :nickname, :introduction, :user_status, :profile_image
     )
   end
-  
-  
+
+
 end
