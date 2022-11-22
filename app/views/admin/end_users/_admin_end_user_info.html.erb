@@ -1,0 +1,34 @@
+<div class="col-4">
+    <div class = "icon">
+      <%= image_tag end_user.get_profile_image(100,80) %>
+      <%= link_to edit_admin_end_user_path(end_user) do %>
+    <p>編集ボタン</p>
+  <% end %>
+</div>
+<div class = "infomationbox">
+  <div>
+    <p>会員ID</p>
+    <%= end_user.id %>
+  </div>
+  <div>
+    <p>名前</p>
+    <%= end_user.name %>
+  </div>
+  <div>
+	  <p>ニックネーム</p>
+	  <%= end_user.nickname %>
+  </div>
+  <div>
+	  <p>introduction</p>
+    <%= end_user.introduction %>
+  </div>
+  <div>
+    <%= end_user.sweets_revues.count %>投稿
+  </div>
+  <div>
+    <%= end_user.followings.count %>フォロワー
+  </div>
+  <div>
+    <%= end_user.followers.count %>フォロー
+  </div>
+</div>
