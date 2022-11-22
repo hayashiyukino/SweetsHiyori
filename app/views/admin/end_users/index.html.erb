@@ -1,0 +1,48 @@
+<div class = "row ml-3">
+    <h5><strong>会員一覧</strong></h5>
+</div>
+
+<div class="row">
+  <table>
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th></th>
+        <th>名前</th>
+        <th>ニックネーム</th>
+        <th>投稿数</th>
+        <th>フォロワー数</th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @end_users.each do |end_user| %>
+          <tr>
+            <td><%= end_user.id %></td>
+            <td>
+              <%= image_tag end_user.get_profile_image(100,80) %>
+            </td>
+            <td>
+              <%= link_to end_user.name, admin_end_user_path(end_user) %>
+            </td>
+            <td>
+              <%= link_to end_user.nickname, admin_end_user_path(end_user) %>
+            </td>
+            <td>
+              <%= end_user.sweets_revues.count %>件
+            </td>
+            <td>
+              <%= end_user.followings.count %>
+            </td>
+            <td>
+              ステータス
+            </td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center mt-3">
+  <%= paginate @end_users %>
+</div>

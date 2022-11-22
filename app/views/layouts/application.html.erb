@@ -28,37 +28,37 @@
           <div class="row">
             <div class="navbar-collapse collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-                <!--<3% if end_user_signed_in? %>-->
+                <% if end_user_signed_in? %>
                   <%= render 'layouts/end_user_header' %>
-                <!--<3% elsif admin_signed_in? %>-->
+                <% elsif admin_signed_in? %>
                   <%= render 'layouts/admin_header' %>
-                <!--<3% else %>-->
-                <!--  <li>-->
-                <!--    <3%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>-->
-                <!--      <i class="fas fa-user-plus"></i>新規登録-->
-                <!--    <3% end %>-->
-                <!--  </li>-->
-                <!--  <li>-->
-                <!--    <3%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>-->
-                <!--      <i class="fas fa-sign-in-alt"></i>ログイン-->
-                <!--    <3% end %>-->
-                <!--  </li>-->
-                <!--  <li>-->
-                <!--    <3%= link_to about_path, class: "nav-link text-dark" do %>-->
-                <!--      <i class="fas fa-asterisk"></i>About-->
-                <!--    <3% end %>-->
-                <!--  </li>-->
-                <!--  <li>-->
-                <!--    <3%= link_to sweets_revues_path, class: "nav-link text-dark" do %>-->
-                <!--      <i class="fas fa-gifts"></i>投稿一覧-->
-                <!--    <3% end %>-->
-                <!--  </li>-->
-                <!--  <li>-->
-                <!--    <3%= link_to admin_session_path, class: "nav-link text-dark" do %>-->
-                <!--    .-->
-                <!--    <3% end %>-->
-                <!--  </li>-->
-                <!--<3% end %>-->
+                <% else %>
+                  <li>
+                    <%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>
+                      <i class="fas fa-user-plus"></i>新規登録
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>
+                      <i class="fas fa-sign-in-alt"></i>ログイン
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to about_path, class: "nav-link text-dark" do %>
+                      <i class="fas fa-asterisk"></i>About
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
+                      <i class="fas fa-gifts"></i>投稿一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to admin_session_path, class: "nav-link text-dark" do %>
+                    .
+                    <% end %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>
