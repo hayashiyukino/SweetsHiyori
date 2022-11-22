@@ -10,8 +10,8 @@
         <th></th>
         <th>商品名</th>
         <th>レビュー</th>
-        <th>いいね数</th>
         <th>コメント数</th>
+        <th>いいね数</th>
       </tr>
     </thead>
     <tbody>
@@ -40,7 +40,7 @@
           </td>
           <td>
           <!--いいね機能部分テンプレート-->
-          <%= render 'public/sweets_revues/favorite', sweets_revue: sweets_revue %>
+          <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
           </td>
         </tr>
       <% end %>

@@ -14,6 +14,7 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 import '../stylesheets/public.css'
+import '../stylesheets/admin.css'
 
 import Raty from "raty.js"
 // windowに表示されているratyにfunction(引数１,引数２)の情報を渡す

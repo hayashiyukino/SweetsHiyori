@@ -22,12 +22,12 @@
             <%= sweets_revue.id %>
           </td>
           <td>
-            <%= link_to sweets_revue_path(sweets_revue)  do %>
+            <%= link_to admin_sweets_revue_path(sweets_revue)  do %>
               <%= image_tag sweets_revue.get_sweets_image(100, 80) %>
             <% end %>
           </td>
           <td>
-            <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
+            <%= link_to sweets_revue.sweets_name, admin_sweets_revue_path(sweets_revue.id) %>
             <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
           </td>
           <td>
@@ -37,7 +37,8 @@
           </td>
           <td>
           <!--いいね機能部分テンプレート-->
-          <%= render 'public/sweets_revues/favorite', sweets_revue: sweets_revue %>
+          <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
+          <!--<#%= render 'public/sweets_revues/favorite', sweets_revue: sweets_revue %>-->
           </td>
           <td>
             <!--コメント数表示-->
