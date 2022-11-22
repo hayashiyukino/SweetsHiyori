@@ -1,10 +1,10 @@
-<div class="row">
-  <div class="col-6">
+<div class="row-3">
+  <div class="col-12">
     <% if end_user_signed_in? %>
       <h6><%= current_end_user.name %>さんのマイページ</h6>
     <% end %>
   </div>
-  <div class="col-6">
+  <div class="col-12">
     <div class="new_postsweets_link">
       <%= link_to new_sweets_revue_path do %>
         <p>新規投稿</p>
@@ -24,43 +24,6 @@
 
   <div class="col-8">
     <!--投稿部分テンプレート-->
-    <div class = "row">
-      <% if end_user_signed_in? %>
-        <h5><%= current_end_user.nickname %>の投稿一覧</h5>
-      <% end %>
-    </div>
-    <div class="row">
-      <table>
-        <tbody>
-          <% @sweets_revues.each do |sweets_revue| %>
-            <tr>
-              <td>
-                <%= link_to sweets_revue_path(sweets_revue)  do %>
-                  <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
-                <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
-              </td>
-              <td>
-                <!--5段階評価 部分テンプレート-->
-                <!--<div id="review_star_<#%= sweets_revue.id %>"></div>-->
-                <!--<#%= render "sweets_revues/review_star", sweets_revue: sweets_revue %>-->
-              </td>
-              <td>
-                <!--コメント数表示-->
-                <%= sweets_revue.post_comments.count %>コメント
-              </td>
-              <td>
-              <!--いいね機能部分テンプレート-->
-              <!--<#%= render 'sweets_revues/favorite', sweets_revue: sweets_revue %>-->
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <%= paginate @sweets_revues %>
+    <%= render 'end_user_sweets_revues_index', sweets_revues: @sweets_revues, end_user: @end_user %>
   </div>
 </div>

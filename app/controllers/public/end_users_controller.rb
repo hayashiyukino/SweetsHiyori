@@ -4,7 +4,7 @@ class Public::EndUsersController < ApplicationController
     # @user = current_customer
     # redirect_to mypage_path
     @end_user = EndUser.find(params[:id])
-    @sweets_revues = @end_user.sweets_revues
+    @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def mypage
@@ -54,7 +54,9 @@ class Public::EndUsersController < ApplicationController
   private
 
   def end_user_params
-    params.require(:end_user).permit(:name, :nickname, :introduction, :profile_image)
+    params.require(:end_user).permit(
+      :name, :nickname, :introduction, :user_status, :profile_image
+    )
   end
 
 end

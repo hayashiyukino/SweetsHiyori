@@ -1,0 +1,32 @@
+<!--エラーメッセージ-->
+<%= render "admin/shared/error_messages", resource: @end_user %>
+
+<div class="row justify-content-center">
+  <h5><strong>会員情報編集</strong></h5>
+</div>
+
+<!--<div class="row justify-content-center">-->
+<div class="row">
+  <div class="col-5 text-right">
+    <%= "会員ID" %><br>
+    <%= "名前" %><br>
+    <%= "ニックネーム" %><br>
+    <%= "メールアドレス" %><br>
+    <%= "アイコン画像" %><br>
+    <%= "自己紹介" %><br>
+    <%= "会員ステータス" %>
+  </div>
+
+  <div class="col-7">
+    <%= @end_user.id %>
+    <%= @end_user.name %>
+  </div>
+</div>
+<!--</dev>-->
+
+
+<div class="row justify-content-center">
+  <%= form_with model: @end_user, url: admin_end_user_path, method: :patch do |f| %>
+      <!--%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
+  <% end %>
+</div>

@@ -15,19 +15,17 @@
           <tr>
             <td><%= end_user.id %></td>
             <td>
-              <% if end_user.profile_image.attached? %>
-                <%= image_tag end_user.get_profile_image, size: "100x100" %>
-              <% else %>
-                <%= image_tag 'no_profile_image', size: "100x100" %>
-              <% end %>
+              <%= image_tag end_user.get_profile_image(100,80) %>
             </td>
             <td>
               <%= link_to end_user.nickname, end_user_path(end_user) %>
             </td>
             <td>
-              <%= end_user.sweets_revues.count %>件
+              投稿<%= end_user.sweets_revues.count %>件
             </td>
-            <td>フォロー数</td>
+            <td>
+              <%= end_user.followings.count %>フォロワー
+            </td>
             <td>
               <!--ユーザーとログイン中のユーザーが一致しない場合フォロー機能表示する-->
               <% unless current_end_user == end_user %>

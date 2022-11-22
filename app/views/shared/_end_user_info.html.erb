@@ -1,0 +1,54 @@
+<!--<div class = "icon">-->
+<!--  <#%= image_tag end_user.get_profile_image(100,80) %>-->
+<!--  <#%= link_to edit_infomation_path(end_user) do %>-->
+<!--    <p>編集ボタン</p>-->
+<!--  <#% end %>-->
+<!--</div>-->
+
+  <div class = "infomationbox">
+    <% if admin_signed_in? %>
+      <div>
+        <p>会員ID</p>
+        <%= end_user.id %>
+      </div>
+      <div>
+        <p>名前</p>
+        <%= end_user.name %>
+      </div>
+    <% end %>
+    <div>
+  	  <p>ニックネーム</p>
+  	  <%= end_user.nickname %>
+    </div>
+    <div>
+  	  <p>introduction</p>
+      <%= end_user.introduction %>
+    </div>
+    <div>
+      <%= end_user.sweets_revues.count %>投稿
+    </div>
+    <div>
+      <%= link_to end_user_followings_path(end_user) do %>
+        <%= end_user.followings.count %>フォロワー
+      <% end %>
+    </div>
+    <div>
+      <%= link_to end_user_followers_path(end_user) do %>
+        <%= end_user.followers.count %>フォロー
+      <% end %>
+    </div>
+    <div>
+      <% unless admin_signed_in? %>
+        <% if end_user == current_end_user %>
+          <!-- <#%= link_to "お気に入り"%>-->
+          <%= end_user.favorites.count %>件
+        <% else %>
+          <% if current_end_user.following?(end_user) %>
+            <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
