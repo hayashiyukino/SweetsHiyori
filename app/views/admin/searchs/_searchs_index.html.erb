@@ -1,0 +1,30 @@
+
+  <%= form_with model: search, url: admin_searchs_path, method: :post do |f| %>
+    <div class="form-group form-inline">
+      <div class="col-md-6"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
+      <div class="col-md-3"><%= f.submit "新規登録", class: "btn btn-success" %></div>
+    </div>
+  <% end %>
+
+<div class="row">
+  <table class='table table-hover table-inverse col-md-6'>
+    <thead>
+      <tr>
+        <th colspan="3">ジャンル</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% searchs.each do |search| %>
+      <tr>
+        <td>
+          <%= search.name %>
+        </td>
+        <td>
+          <%= link_to "編集する", edit_admin_search_path(search.id), class: "btn btn-success" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

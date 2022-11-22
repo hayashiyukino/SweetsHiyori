@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'searchs/index'
+    get 'searchs/edit'
+  end
 ## 会員用
 # URL /customers/sign_in ...
   devise_for :end_users, skip: [:passwords], controllers: {
@@ -54,6 +58,8 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :tags, only: [:index, :edit, :create, :update]
+    resources :searchs, only: [:index, :edit, :create, :update]
+    
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
