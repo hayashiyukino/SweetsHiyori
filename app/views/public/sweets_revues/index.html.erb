@@ -37,6 +37,15 @@
             <p><%= sweets_revue.sweets_name %></p>
               <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
             <% end %>
+            
+            
+            <%= sweets_revue.genre.name %><br>
+
+            <% sweets_revue.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+
+
             <!--5段階評価 部分テンプレート-->
             <%= render "review_star", sweets_revue: sweets_revue %>
             <!--コメント数表示-->
