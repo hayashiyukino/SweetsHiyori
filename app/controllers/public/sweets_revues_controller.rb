@@ -6,28 +6,32 @@ class Public::SweetsRevuesController < ApplicationController
 
   def index
     # 何も選択していない状態
-    @sweets_revues = SweetsRevue.all.page(params[:page]).per(9).order(created_at: :desc)
+    # eager_load = SweetsRevueに関連したモデル(:tags)を取ってくる
+    @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(9).order(created_at: :desc)
 
     # ジャンルを選択した場合
     if params[:genre_id].present?
+      @genre = Genre.find(params[:genre_id])
       @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
     end
 
     # タグを選択した状態
+    # タグにチェックがついている
     if params[:tag_ids]
+      # values=タグの値（タグの値はチェックついていない＝0、チェックがついている＝1で送られてくる
+      # １つでも値があるか？
       if params[:tag_ids].values.any?("1")
+        # namesという空の配列を用意
         names = []
-
+        # :tag_idsを１つずつ取り出し、key = タグの名前 value = 0 or 1 が入る
         params[:tag_ids].each do |key, value|
+          # value == "1"のkeyだけ上でnamesの配列に加える
           names << key if value == "1"
         end
-
+        # @sweets_revuesのeager_load(:tags)の.where = tagsテーブルの:nameカラムがnamesの投稿に絞り込む
+        @sweets_revues = @sweets_revues.where(tags: { name: names })
+        # 選択したタグと完全一致
         # @sweets_revues = @sweets_revues.select { |sweets_revue| sweets_revue.tags.pluck(:name) == names }
-        select_sweets_revues = []
-        @sweets_revues.each do |sweets_revue|
-          select_sweets_revues << sweets_revue if sweets_revue.tags.pluck(:name) == names
-        end
-        @sweets_revues = select_sweets_revues
       end
     end
 

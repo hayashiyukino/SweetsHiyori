@@ -28,3 +28,5 @@ class Admin::ConfirmationsController < Devise::ConfirmationsController
   #   super(resource_name, resource)
   # end
 end
+
+ @sweets_revues = @sweets_revues.where(tags: { name: names })
