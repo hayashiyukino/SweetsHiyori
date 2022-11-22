@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'homes/top'
-  end
 ## 会員用
 # URL /customers/sign_in ...
   devise_for :end_users, skip: [:passwords], controllers: {
