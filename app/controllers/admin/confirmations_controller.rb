@@ -29,4 +29,3 @@ class Admin::ConfirmationsController < Devise::ConfirmationsController
   # end
 end
 
- @sweets_revues = @sweets_revues.where(tags: { name: names })

@@ -1,15 +1,13 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
 
   def show
-    # @user = current_customer
-    # redirect_to mypage_path
     @end_user = EndUser.find(params[:id])
     @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def mypage
     @end_user = current_end_user
-    # @sweets_revues = SweetsRevue.all.page(params[:page])
     @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(5).order(created_at: :desc)
 
   end
