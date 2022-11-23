@@ -14,6 +14,10 @@ class EndUser < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  # 退会済みユーザーを表示する
+  def show
+    @end_user = EndUser.with_deleted.find(:id)
+  end
 
   ## 画像投稿出来るようにする
   has_one_attached :profile_image
