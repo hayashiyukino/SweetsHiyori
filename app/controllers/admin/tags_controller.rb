@@ -1,6 +1,6 @@
 class Admin::TagsController < ApplicationController
     before_action :authenticate_admin!
-  
+
   def index
     @tags = Tag.all
     @tag = Tag.new
@@ -18,7 +18,7 @@ class Admin::TagsController < ApplicationController
       render :index
     end
   end
-  
+
   def edit
     @tag = Tag.find(params[:id])
   end
@@ -29,9 +29,15 @@ class Admin::TagsController < ApplicationController
         flash[:notice] = "タグの更新に成功しました"
         redirect_to admin_tags_path
       else
-        flash[:notice] = "タグの更新に失敗しました"
+        flash[:notice] = "タグ更新に失敗しました"
         render :edit
       end
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    redirect_to admin_genres_path
   end
 
 

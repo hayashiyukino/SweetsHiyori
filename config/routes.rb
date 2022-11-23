@@ -56,10 +56,10 @@ Rails.application.routes.draw do
     root "homes#top"
     resources :sweets_revues, only: [:show, :update]
     resources :end_users, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :edit, :create, :update]
-    resources :tags, only: [:index, :edit, :create, :update]
+    resources :genres, only: [:index, :edit, :create, :update, :destroy]
+    resources :tags, only: [:index, :edit, :create, :update, :destroy]
     resources :searchs, only: [:index, :edit, :create, :update]
-    
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

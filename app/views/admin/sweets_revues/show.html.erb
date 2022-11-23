@@ -16,12 +16,10 @@
       <div class = "col-6">
         <div class="col-12 text-right">
             <%= @sweets_revue.tax_included_price %>（税込み）
-            <!--<#%= link_to "編集", edit_sweets_revue_path(@sweets_revue) %>-->
         </div>
           <%= image_tag @sweets_revue.get_sweets_image(280,200) %>
           <div class="review ml-4 mt-2">
             <p>評価</p>
-            <!--<#%= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
             <!--5段階評価 部分テンプレート-->
             <div class="review_star ml-5">
               <%= render "public/sweets_revues/review_star", sweets_revue: @sweets_revue %>
@@ -63,16 +61,14 @@
 
   <div class="col-5">
       <div>
-        コメント一覧
+        コメント一覧(全<%= @sweets_revue.post_comments.count %>件）
       </div>
       <div>
         <% @sweets_revue.post_comments.each do |post_comment| %>
           <%= post_comment.id %>
           <%= post_comment.comment %>
           <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>
-          <% if post_comment.end_user == current_end_user %>
-            <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete %>
-          <% end %>
+          <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete %>
         <% end %>
       </div>
   </div>
