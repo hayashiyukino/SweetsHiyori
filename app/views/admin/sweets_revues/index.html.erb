@@ -1,5 +1,5 @@
 <div class = "row ml-3">
-    <h5><strong><%= end_user.nickname %>さんの投稿一覧</strong></h5>
+    <h5><strong>投稿一覧</strong></h5>
 </div>
 
 <div class="row">
@@ -9,14 +9,15 @@
         <th>投稿ID</th>
         <th></th>
         <th>商品名</th>
-        <th>レビュー</th>
-        <th>コメント数</th>
-        <th>いいね数</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>投稿者</th>
       </tr>
     </thead>
     <tbody>
-      <% sweets_revues.each do |sweets_revue| %>
-        <tr>
+      <% @sweets_revues.each do |sweets_revue| %>
+        <tr class="col-12">
           <td>
             <%= sweets_revue.id %>
           </td>
@@ -31,16 +32,19 @@
           </td>
           <td>
             <!--5段階評価 部分テンプレート-->
-            <div id="review_star_<#%= sweets_revue.id %>"></div>
+            <div id="review_star_<%= sweets_revue.id %>"></div>
             <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
+          </td>
+          <td>
+          <!--いいね数表示-->
+          <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
           </td>
           <td>
             <!--コメント数表示-->
             <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
           </td>
           <td>
-          <!--いいね機能部分テンプレート-->
-          <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
+            <%= link_to sweets_revue.end_user.nickname, admin_end_user_path(sweets_revue.end_user) %>
           </td>
         </tr>
       <% end %>
@@ -49,5 +53,5 @@
 </div>
 
 <div class="text-center mt-3">
-  <%= paginate sweets_revues %>
+  <%= paginate @sweets_revues %>
 </div>

@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_end_user!
 
   # フォローするとき
   # follow(params[:end_user_id])で、models/end_user.rbで定義したメソッドを呼び出す

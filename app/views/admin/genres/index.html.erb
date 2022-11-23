@@ -1,11 +1,4 @@
-<% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @genre.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render "admin/shared/error_messages", resource: @genre %>
 
 <div class="row mb-5">
   <div class="col-md-5 offset-md-1">
@@ -38,7 +31,7 @@
           <%= genre.name %>
         </td>
         <td>
-          <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
+          <%= link_to "削除する", admin_genre_path(genre.id), method: :delete, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
         </td>
       </tr>
       <% end %>

@@ -39,6 +39,7 @@
         </td>
         <td>
           <%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %>
+          <%= link_to "削除する", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
         </td>
       </tr>
       <% end %>

@@ -1,4 +1,6 @@
 class Public::SweetsRevuesController < ApplicationController
+  before_action :authenticate_end_user!, {only: [:create, :edit, :update]}
+  before_action :redirect_root, except: :index
 
   def new
     @sweets_revue = SweetsRevue.new
@@ -111,6 +113,10 @@ class Public::SweetsRevuesController < ApplicationController
     params.require(:sweets_revue).permit(
       :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, { :tag_ids=> [] }, :sweets_image,
       :review_star, :sweets_name, :tax_included_price, :sweets_introduction, :shop_name, :buy_place, :post_status)
+  end
+
+  def redirect_root
+    redirect_to root_path unless end_user_signed_in?
   end
 
 end
