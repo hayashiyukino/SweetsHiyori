@@ -9,6 +9,8 @@ class Admin::SweetsRevuesController < ApplicationController
 
   def index
     @sweets_revues = SweetsRevue.page(params[:page]).per(6).order(created_at: :desc)
+    @sweets_revue_ids = @sweets_revues.pluck(:id)
+    @sweets_revue_review_stars = @sweets_revues.pluck(:review_star)
   end
 
 end
