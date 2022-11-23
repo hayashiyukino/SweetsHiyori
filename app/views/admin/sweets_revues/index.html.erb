@@ -31,9 +31,8 @@
             <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
           </td>
           <td>
-            <!--5段階評価 部分テンプレート-->
+            <!--5段階評価-->
             <div id="review_star_<%= sweets_revue.id %>"></div>
-            <%#= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
           </td>
           <td>
           <!--いいね数表示-->
@@ -57,9 +56,7 @@
 </div>
 
 <script>
-// window.addEventListener('DOMContentLoaded', function() {
 $(document).on('turbolinks:load', function() {
-//   $(document).on('document:load', function() {
     if ($('#raty').length) {
       var sweets_revue_ids = <%= @sweets_revue_ids %>
       var sweets_revue_review_stars = <%= @sweets_revue_review_stars %>

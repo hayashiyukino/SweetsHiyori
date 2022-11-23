@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :end_user do
+    ## ゲストログイン用
+    post 'end_users/guest_sign_in',to: 'end_users/sessions#new_guest'
+  end
+
 
 ## 会員側ルート設定
   scope module: :public do

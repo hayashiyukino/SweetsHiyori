@@ -1,7 +1,6 @@
 <div id="review_star_<%= sweets_revue.id %>"></div>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-//$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function() {
 //   $(document).on('document:load', function() {
     let raty_<%= sweets_revue.id %> = document.querySelector('#review_star_<%= sweets_revue.id %>');
     review_star_<%= sweets_revue.id %>.innerHTML = ""
