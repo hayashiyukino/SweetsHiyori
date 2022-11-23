@@ -8,6 +8,12 @@ class EndUser < ApplicationRecord
   has_many :sweets_revues
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  # 退会済みのユーザーがログインできない制約
+  # is_deleteがfalseならtrueを返す
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   ## 画像投稿出来るようにする
   has_one_attached :profile_image

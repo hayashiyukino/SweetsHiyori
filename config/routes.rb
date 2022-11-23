@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'searchs/index'
-    get 'searchs/edit'
-  end
 ## 会員用
 # URL /customers/sign_in ...
   devise_for :end_users, skip: [:passwords], controllers: {
@@ -39,7 +35,9 @@ Rails.application.routes.draw do
     get 'end_users/infomation/:id/edit' => 'end_users#edit', as: 'edit_infomation'
     # patch 'end_users/infomation/:id' => 'end_users#update', as: "update_end_user"
     patch 'end_users/information' => "end_users#update"
-    get 'end_users/confirm' #=> 'end_users#confirm'
+    # 退会確認画面
+    get 'end_users/confirm'
+    # 論理削除用のルーティング
     patch 'end_users/:id/withdraw' => 'end_users#withdraw', as: 'withdraw_end_user'
     resources :end_users, only: [:index, :show] do
       ##relationships
