@@ -9,9 +9,16 @@
   </div>
   <% @sweets_revues.each do |sweets_revue| %>
     <div class="col-md-3 my-3">
-      <%= link_to sweets_revue_path(sweets_revue) do %>
-        <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
-        <%= sweets_revue.sweets_name %>
+      <% if end_user_signed_in? %>
+        <%= link_to sweets_revue_path(sweets_revue) do %>
+          <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
+          <%= sweets_revue.sweets_name %>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_sweets_revue_path(sweets_revue) do %>
+          <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
+          <%= sweets_revue.sweets_name %>
+        <% end %>
       <% end %>
         <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
     </div>

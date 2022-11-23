@@ -4,6 +4,7 @@ class Admin::TagsController < ApplicationController
   def index
     @tags = Tag.all
     @tag = Tag.new
+    @tag_name = "タグ"
   end
 
   def create

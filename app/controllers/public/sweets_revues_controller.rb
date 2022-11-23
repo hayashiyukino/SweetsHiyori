@@ -1,4 +1,5 @@
 class Public::SweetsRevuesController < ApplicationController
+  before_action :authenticate_end_user!, {only: [:create, :edit, :update]}
   before_action :redirect_root, except: :index
 
   def new
