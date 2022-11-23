@@ -52,7 +52,7 @@ Rails.application.routes.draw do
  ##管理者側ルート設定
   namespace :admin do
     root "homes#top"
-    resources :sweets_revues, only: [:show, :update]
+    resources :sweets_revues, only: [:show, :update, :index]
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :tags, only: [:index, :edit, :create, :update, :destroy]
