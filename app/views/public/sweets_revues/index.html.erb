@@ -5,16 +5,13 @@
         <p>新規投稿</p>
       <% end %>
     </div>
-    <!--部分テンプレートにしたい-->
-    <!--新着順-->
-    <!--いいね数順-->
   </div>
 </div>
 
 <div class = "row">
   <!--サイドバー 検索-->
   <div class = "col-4">
-    <div class="d-flex my-2">
+    <div class="text-center my-3">
       <h5><strong>投稿検索</strong></h5>
     </div>
     <!--検索機能 部分テンプレート-->
@@ -34,8 +31,10 @@
         <% @sweets_revues.each do |sweets_revue| %>
           <div class="pr-3">
             <%= link_to sweets_revue_path(sweets_revue)  do %>
-            <p><%= sweets_revue.sweets_name %></p>
+            <div><%= sweets_revue.sweets_name %></div>
+            <div>
               <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
+            </div>
             <% end %>
 
 
@@ -61,8 +60,8 @@
   			<h3>該当する投稿が見つかりませんでした。</h3>
   		<% end %>
     </div>
+      <%= paginate @sweets_revues %>
   </div>
 </div>
   <!--<div class="row justify-content-center">-->
-  <!--    <3%= paginate @sweets_revues %>-->
   <!--</div>-->

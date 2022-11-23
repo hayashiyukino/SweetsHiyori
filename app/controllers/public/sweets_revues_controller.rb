@@ -9,7 +9,7 @@ class Public::SweetsRevuesController < ApplicationController
   def index
     # 何も選択していない状態
     # eager_load = SweetsRevueに関連したモデル(:tags)を取ってくる
-    @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(9).order(created_at: :desc)
+    @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(6).order(created_at: :desc)
 
     # ジャンルを選択した場合
     if params[:genre_id].present?
