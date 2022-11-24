@@ -1,5 +1,12 @@
 <div class = "row ml-3">
+  <div>
     <h5><strong><%= end_user.nickname %>さんの投稿一覧</strong></h5>
+  </div>
+  <div class="ml-4">
+    <%= link_to new_sweets_revue_path do %>
+      <i class="far fa-plus-square fa-2x"></i>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">
@@ -26,8 +33,10 @@
             <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
           </td>
           <td>
-          <!--いいね機能部分テンプレート-->
-          <%= render 'public/sweets_revues/favorite', sweets_revue: sweets_revue %>
+            <!--いいね機能非同期済み-->
+            <div id="favorite_btn_<%= sweets_revue.id %>">
+              <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+            </div>
           </td>
         </tr>
       <% end %>
