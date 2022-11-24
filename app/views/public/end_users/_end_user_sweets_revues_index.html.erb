@@ -26,8 +26,14 @@
             <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
           </td>
           <td>
-          <!--いいね機能部分テンプレート-->
-          <%= render 'public/sweets_revues/favorite', sweets_revue: sweets_revue %>
+            <!--いいね機能非同期-->
+            <% if current_end_user == end_user %>
+              <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
+            <% else %>
+              <div id="favorite_btn_<%= sweets_revue.id %>">
+                <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+              </div>
+            <% end %>
           </td>
         </tr>
       <% end %>

@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
-  # before_action :authenticate_admin!
-  
+  before_action :authenticate_admin!
+
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -17,23 +17,28 @@ class Admin::GenresController < ApplicationController
       render :index
     end
   end
+
+  # def edit
+  #   @genre = Genre.find(params[:id])
+  # end
+
+  # def update
+  #   @genre = Genre.find(params[:id])
+  #     if @genre.update(genre_params)
+  #       flash[:notice] = "ジャンルの更新に成功しました"
+  #       redirect_to admin_genres_path
+  #     else
+  #       flash[:notice] = "ジャンルの更新に失敗しました"
+  #       render :edit
+  #     end
+  # end
+
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    redirect_to admin_genres_path
+  end
   
-  def edit
-    @genre = Genre.find(params[:id])
-  end
-
-  def update
-    @genre = Genre.find(params[:id])
-      if @genre.update(genre_params)
-        flash[:notice] = "ジャンルの更新に成功しました"
-        redirect_to admin_genres_path
-      else
-        flash[:notice] = "ジャンルの更新に失敗しました"
-        render :edit
-      end
-  end
-
-
   private
 
   def genre_params

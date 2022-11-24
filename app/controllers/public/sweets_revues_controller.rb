@@ -1,37 +1,73 @@
 class Public::SweetsRevuesController < ApplicationController
+  before_action :authenticate_end_user!, {only: [:create, :edit, :update]}
+  before_action :redirect_root, except: :index
 
   def new
     @sweets_revue = SweetsRevue.new
   end
 
   def index
-    @sweets_revues = SweetsRevue.all.page(params[:page]).per(9).order(created_at: :desc)
+    # 何も選択していない状態
+    # eager_load = SweetsRevueに関連したモデル(:tags)を取ってくる
+    @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(6).order(created_at: :desc)
 
-    # タグ検索にチェックがついているかどうかを判断するためのフラグ
-    tag_is_selected = false
-    
+    # ジャンルを選択した場合
+    if params[:genre_id].present?
+      @genre = Genre.find(params[:genre_id])
+      @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
+    end
+
+    # タグを選択した状態
+    # タグにチェックがついている
     if params[:tag_ids]
-      @sweets_revues = []
-      params[:tag_ids].each do |key, value|
-        # 送られてきた[tag_ids]が１だったら（タグにチェックがついていたら）
-        if value == "1"
-          # tag_is_selectedをtrueにする
-          tag_is_selected = true
-          tag_sweets_revues = Tag.find_by(name: key).sweets_revues
-          @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
+      # values=タグの値（タグの値はチェックついていない＝0、チェックがついている＝1で送られてくる
+      # １つでも値があるか？
+      if params[:tag_ids].values.any?("1")
+        # namesという空の配列を用意
+        names = []
+        # :tag_idsを１つずつ取り出し、key = タグの名前 value = 0 or 1 が入る
+        params[:tag_ids].each do |key, value|
+          # value == "1"のkeyだけ上でnamesの配列に加える
+          names << key if value == "1"
         end
-      end
-      # unlessはif文の逆。tag_is_selected = falseだったら、左側の記述を実行する。
-      # tag_is_selected = false はタグにチェックがついていなかったとき
-      @sweets_revues = SweetsRevue.all unless tag_is_selected
-      ## ジャンルが選択されているときに処理を実行する
-      # present? = 値があればtrue　
-      if params[:genre_id].present?
-        @genre = Genre.find(params[:genre_id])
-        @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
+        # @sweets_revuesのeager_load(:tags)の.where = tagsテーブルの:nameカラムがnamesの投稿に絞り込む
+        @sweets_revues = @sweets_revues.where(tags: { name: names })
+        # 選択したタグと完全一致
+        # @sweets_revues = @sweets_revues.select { |sweets_revue| sweets_revue.tags.pluck(:name) == names }
       end
     end
   end
+
+    # @sweets_revues.page(params[:page]).per(9).order(created_at: :desc)
+
+
+    # @sweets_revues = SweetsRevue.all.page(params[:page]).per(9).order(created_at: :desc)
+
+    # # タグ検索にチェックがついているかどうかを判断するためのフラグ
+    # tag_is_selected = false
+
+    # if params[:tag_ids]
+    #   # @sweets_revues = []
+    #   params[:tag_ids].each do |key, value|
+    #     # 送られてきた[tag_ids]が１だったら（タグにチェックがついていたら）
+    #     if value == "1"
+    #       # tag_is_selectedをtrueにする
+    #       tag_is_selected = true
+    #       tag_sweets_revues = Tag.find_by(name: key).sweets_revues
+    #       @sweets_revues = @sweets_revues.empty? ? tag_sweets_revues :  @sweets_revues & tag_sweets_revues
+    #     end
+    #   end
+    # end
+    #   # unlessはif文の逆。tag_is_selected = falseだったら、左側の記述を実行する。
+    #   # tag_is_selected = false はタグにチェックがついていなかったとき
+    #   @sweets_revues = SweetsRevue.all unless tag_is_selected
+    #   ## ジャンルが選択されているときに処理を実行する
+    #   # present? = 値があればtrue
+    #   if params[:genre_id].present?
+    #     @genre = Genre.find(params[:genre_id])
+    #     @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
+    #   end
+      # @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id]) if params[:genre_id].present?
 
   def show
     @sweets_revue = SweetsRevue.find(params[:id])
@@ -77,6 +113,10 @@ class Public::SweetsRevuesController < ApplicationController
     params.require(:sweets_revue).permit(
       :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, { :tag_ids=> [] }, :sweets_image,
       :review_star, :sweets_name, :tax_included_price, :sweets_introduction, :shop_name, :buy_place, :post_status)
+  end
+
+  def redirect_root
+    redirect_to root_path unless end_user_signed_in?
   end
 
 end

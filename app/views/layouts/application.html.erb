@@ -19,9 +19,15 @@
         <!--      <button type = "submit"><i class="fa-solid fa-magnifying-glass fa-flip-horizontal" type="submit"></i></button>-->
         <!--</div>-->
         <div class="container">
-          <a class=navbar-brand href="/">
-            <%= link_to 'Sweets日和', root_path %>
-          </a>
+          <% if admin_signed_in? %>
+            <a class=navbar-brand>
+              <%= link_to 'Sweets日和', admin_root_path %>
+            </a>
+          <% else %>
+            <a class=navbar-brand>
+              <%= link_to 'Sweets日和', root_path %>
+            </a>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
             <!--<span class="navbar-toggler-icon"></span>-->
           </button>
@@ -51,6 +57,11 @@
                   <li>
                     <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
                       <i class="fas fa-gifts"></i>投稿一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to end_users_guest_sign_in_path, class: "nav-link text-dark", method: :post do %>
+                      <i class="fas fa-sign-in-alt"></i>ゲストログイン
                     <% end %>
                   </li>
                   <li>

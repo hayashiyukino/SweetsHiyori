@@ -25,6 +25,7 @@ class SweetsRevue < ApplicationRecord
      # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べ存在していればtrue、存在していなければfalseを返す
      favorites.exists?(end_user_id: end_user.id)
    end
+   
 
   ##画像保存
   has_one_attached :sweets_image

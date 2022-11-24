@@ -30,6 +30,7 @@
     <div>
       <% if end_user == current_end_user %>
         <!-- <#%= link_to "お気に入り"%>-->
+        ブックマーク
         <%= end_user.favorites.count %>件
       <% else %>
         <% if current_end_user.following?(end_user) %>

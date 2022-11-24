@@ -17,7 +17,7 @@ class Admin::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
    if @end_user.update(end_user_params)
-      redirect_to admin_end_user_path(@end_user.id)
+      redirect_to admin_end_users_path
    else
       render :edit
    end
@@ -27,7 +27,7 @@ class Admin::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(
-      :name, :nickname, :introduction, :user_status, :profile_image
+      :name, :nickname, :introduction, :is_deleted, :profile_image
     )
   end
 

@@ -1,18 +1,18 @@
-<div class="row">
-  <h5>Sweets日和へようこそ</h5>
+<div class="row justify-content-center my-5">
+  <h4>Sweets日和へようこそ</h4>
 </div>
 
 <div class="row">
 
-  <div class="col-12 text-warning">
-    <h3><strong>新着情報</strong></h3>
+  <div class="col-12 text-warning center">
+    <h5><strong>新着情報</strong></h5>
   </div>
   <% @sweets_revues.each do |sweets_revue| %>
     <div class="col-md-3 my-3">
-      <%= link_to sweets_revue_path(sweets_revue) do %>
-        <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
-        <%= sweets_revue.sweets_name %>
-      <% end %>
+        <%= link_to sweets_revue_path(sweets_revue) do %>
+          <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
+          <%= sweets_revue.sweets_name %>
+        <% end %>
         <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
     </div>
   <% end %>
