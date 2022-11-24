@@ -9,7 +9,7 @@ class Public::SweetsRevuesController < ApplicationController
   def index
     # 何も選択していない状態
     # eager_load = SweetsRevueに関連したモデル(:tags)を取ってくる
-    @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(9).order(created_at: :desc)
+    @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(6).order(created_at: :desc)
 
     # ジャンルを選択した場合
     if params[:genre_id].present?
@@ -36,6 +36,7 @@ class Public::SweetsRevuesController < ApplicationController
         # @sweets_revues = @sweets_revues.select { |sweets_revue| sweets_revue.tags.pluck(:name) == names }
       end
     end
+  end
 
     # @sweets_revues.page(params[:page]).per(9).order(created_at: :desc)
 
@@ -67,7 +68,6 @@ class Public::SweetsRevuesController < ApplicationController
     #     @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id])
     #   end
       # @sweets_revues = @sweets_revues.where(genre_id: params[:genre_id]) if params[:genre_id].present?
-  end
 
   def show
     @sweets_revue = SweetsRevue.find(params[:id])

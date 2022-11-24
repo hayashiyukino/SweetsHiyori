@@ -2,7 +2,7 @@
     <h5><strong>投稿一覧</strong></h5>
 </div>
 
-<div class="row">
+<div id="raty" class="row">
   <table>
     <thead>
       <tr>
@@ -31,9 +31,8 @@
             <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
           </td>
           <td>
-            <!--5段階評価 部分テンプレート-->
+            <!--5段階評価-->
             <div id="review_star_<%= sweets_revue.id %>"></div>
-            <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
           </td>
           <td>
           <!--いいね数表示-->
@@ -55,3 +54,28 @@
 <div class="text-center mt-3">
   <%= paginate @sweets_revues %>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function() {
+    if ($('#raty').length) {
+      var sweets_revue_ids = <%= @sweets_revue_ids %>
+      var sweets_revue_review_stars = <%= @sweets_revue_review_stars %>
+      for(var i = 0; i < sweets_revue_ids.length; i++) {
+        let raty_number = "raty_" + sweets_revue_ids[i].toString();
+        let raty_review_star_number = '#review_star_' + sweets_revue_ids[i].toString();
+        $(raty_review_star_number).empty();
+        raty_number = document.querySelector(raty_review_star_number);
+        let review_star_number = 'review_star_' + sweets_revue_ids[i].toString();
+        review_star_number.innerHTML = ""
+        let option_number = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            score: sweets_revue_review_stars[i].toString(),
+            readOnly: true,
+        };
+        raty(raty_number ,option_number);
+      }
+    }
+});
+</script>

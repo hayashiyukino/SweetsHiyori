@@ -1,6 +1,5 @@
 <div id="review_star_<%= sweets_revue.id %>"></div>
 <script>
-// $('review_star').empty();
 $(document).on('turbolinks:load', function() {
 //   $(document).on('document:load', function() {
     let raty_<%= sweets_revue.id %> = document.querySelector('#review_star_<%= sweets_revue.id %>');
@@ -15,3 +14,4 @@ $(document).on('turbolinks:load', function() {
     raty(raty_<%= sweets_revue.id %> ,option_<%= sweets_revue.id %>);
 });
 </script>
+

@@ -5,16 +5,13 @@
         <p>新規投稿</p>
       <% end %>
     </div>
-    <!--部分テンプレートにしたい-->
-    <!--新着順-->
-    <!--いいね数順-->
   </div>
 </div>
 
 <div class = "row">
   <!--サイドバー 検索-->
   <div class = "col-4">
-    <div class="d-flex my-2">
+    <div class="text-center my-3">
       <h5><strong>投稿検索</strong></h5>
     </div>
     <!--検索機能 部分テンプレート-->
@@ -34,11 +31,13 @@
         <% @sweets_revues.each do |sweets_revue| %>
           <div class="pr-3">
             <%= link_to sweets_revue_path(sweets_revue)  do %>
-            <p><%= sweets_revue.sweets_name %></p>
+            <div><%= sweets_revue.sweets_name %></div>
+            <div>
               <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
+            </div>
             <% end %>
-            
-            
+
+
             <%= sweets_revue.genre.name %><br>
 
             <% sweets_revue.tags.each do |tag| %>
@@ -50,16 +49,18 @@
             <%= render "review_star", sweets_revue: sweets_revue %>
             <!--コメント数表示-->
             <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
-            <!--いいね機能部分テンプレート-->
-            <%= render 'favorite', sweets_revue: sweets_revue %>
+            <!--いいね機能非同期-->
+            <div id="favorite_btn_<%= sweets_revue.id %>">
+              <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+            </div>
           </div>
         <% end %>
       <% else %>
   			<h3>該当する投稿が見つかりませんでした。</h3>
   		<% end %>
     </div>
+      <%= paginate @sweets_revues %>
   </div>
 </div>
   <!--<div class="row justify-content-center">-->
-  <!--    <3%= paginate @sweets_revues %>-->
   <!--</div>-->
