@@ -49,11 +49,10 @@
             <%= render "review_star", sweets_revue: sweets_revue %>
             <!--コメント数表示-->
             <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
-            <!--いいね機能部分テンプレート-->
-            <!--<div id="<#%= sweets_revue.id.to_s %>">-->
+            <!--いいね機能非同期-->
+            <div id="favorite_btn_<%= sweets_revue.id %>">
               <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
-              <!--</div>-->
-            <!--<#%= render 'favorite', sweets_revue: sweets_revue %>-->
+            </div>
           </div>
         <% end %>
       <% else %>

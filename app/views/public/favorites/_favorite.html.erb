@@ -1,17 +1,15 @@
- <div id="<%= sweets_revue.id.to_s %>">
- <div>
+<div>
   <% if sweets_revue.favorited_by?(current_end_user) %>
     <p>
       <%= link_to sweets_revue_favorites_path(sweets_revue),class: "favorite-link", method: :delete, remote: true do %>
         <i class="fas fa-heart fa-2x icon-color"></i><%= sweets_revue.favorites.count %>
       <% end %>
     </p>
-    <% else %>
+  <% else %>
     <p>
       <%= link_to sweets_revue_favorites_path(sweets_revue), class: "favorite-link", method: :post, remote: true do %>
         <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
       <% end %>
     </p>
   <% end %>
-</div>
 </div>
