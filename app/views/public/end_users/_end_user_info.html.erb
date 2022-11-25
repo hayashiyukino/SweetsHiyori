@@ -1,7 +1,9 @@
-<div class = "icon">
-  <%= image_tag end_user.get_profile_image(100,80) %>
+<div class = "icon-circle">
+  <%= image_tag end_user.get_profile_image(120,120) %>
+</div>
+<div>
   <%= link_to edit_infomation_path(end_user) do %>
-    <p>編集ボタン</p>
+    <i class="fas fa-cog"></i>
   <% end %>
 </div>
 
