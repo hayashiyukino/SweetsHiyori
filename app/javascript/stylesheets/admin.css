@@ -3,3 +3,23 @@
     margin-top: 15px;
  }
 
+/*投稿一覧*/
+  .review_contents_id{
+    width: 5%;
+  }
+  .admin_review_contents_image{
+    width: 15%;
+    height: 100px;
+  }
+  .admin_review_contents_name{
+    width: 25%;
+  }
+  .admin_review_contents_star{
+    width: 20%;
+  }
+  .admin_review_contents_icon{
+    width: 10%;
+  }
+  .review_contents_nickname{
+    width: 10%;
+  }
