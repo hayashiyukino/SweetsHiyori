@@ -1,7 +1,7 @@
 <div>
   <% if current_end_user == sweets_revue.end_user %>
     <i class="far fa-heart fa-2x my_icon-color"></i><%= sweets_revue.favorites.count %>
-  <% elsif %>
+  <% elsif sweets_revue.favorited_by?(current_end_user) %>
     <p>
       <%= link_to sweets_revue_favorites_path(sweets_revue),class: "favorite-link", method: :delete, remote: true do %>
         <i class="fas fa-heart fa-2x favorites_icon-color"></i><%= sweets_revue.favorites.count %>

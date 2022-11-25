@@ -4,6 +4,10 @@
   }
 
 
+/*search*/
+  .genre-box{
+    text-align-last: center;
+  }
   /*タブの表示*/
   .form-box{
     display: flex;
@@ -11,6 +15,7 @@
     flex-direction: row;
     /*画面幅に収まらない場合は折り返す*/
     flex-wrap: wrap;
+    margin-left: 20px;
   }
 
   .form-check-label{
@@ -42,10 +47,44 @@
     text-align: center;
   }
 
+/*end_user_info*/
+  .my_intro_box{
+    border-style: dotted;
+    width: 80%;
+    margin-top: 5px;
+    border-color: #b0c4de;
+  }
+  .intro_label{
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: #b0c4de;
+    border-width: thin;
+  }
+  .intro_field_name{
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 80%;
+    height: 40px;
+  }
+  .intro_field{
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 80%;
+    height: 70px;
+  }
+  .my_count{
+    border-style: solid double;
+    width: 50%;
+    text-align: center;
+    margin-top: 5px;
+    border-color: #b0c4de;
+  }
 
-/*投稿一覧*/
+/*mypage投稿一覧*/
 
-  .review_box{
+  .review-box{
     display: flex;
     width: 100%;
   }
@@ -63,3 +102,30 @@
     width: 30%;
   }
 
+/*sweets_revues_index*/
+  .sweets_revues-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .review-box-n{
+    width: calc(95%/3);
+    margin-right:3px;
+    border-style: outset;
+    border-color:#ffdab9;
+    padding: 5px;
+
+  }
+  .sweets_image{
+    width: 90%;
+    height: 90px;
+  }
+  .count{
+    display: flex;
+  }
+  .icon{
+    margin:1px 4px;
+  }
+  .tag-name{
+    height:100px;
+  }
