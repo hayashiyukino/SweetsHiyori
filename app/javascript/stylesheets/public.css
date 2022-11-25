@@ -27,6 +27,7 @@
     color: #FF66FF;
   }
 
+/*自身の投稿のいいね*/
   .my_icon-color{
     color: #ffc0cb;
   }
@@ -36,4 +37,29 @@
     color: #696969;
   }
 
+/*ページネーション*/
+  .paginate{
+    text-align: center;
+  }
+
+
+/*投稿一覧*/
+
+  .review_box{
+    display: flex;
+    width: 100%;
+  }
+  .review_contents_icon{
+    width: 10%;
+  }
+  .review_contents_star{
+    width: 30%;
+    margin-left: 5px;
+  }
+  .review_contents_image{
+    width: 20%;
+  }
+  .review_contents_name{
+    width: 30%;
+  }
 

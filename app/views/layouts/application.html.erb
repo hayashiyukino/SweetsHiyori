@@ -71,12 +71,12 @@
 
     <main>
       <p id = "notice"><%= notice %></p>
-      <div class="col-12">
+      <div class="end_user_name">
         <% if end_user_signed_in? %>
           <h6 style="color:#b0c4de"><%= current_end_user.name %>さんログイン中</h6>
         <% end %>
       </div>
-      <div class = "container mb-5">
+      <div class="main_body mb-5">
             <%= yield %>
       </div>
     </main>
