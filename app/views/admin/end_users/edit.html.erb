@@ -1,76 +1,47 @@
-<!--エラーメッセージ-->
-<%= render "admin/shared/error_messages", resource: @end_user %>
+<div class="container">
+  <!--エラーメッセージ-->
+  <%= render "admin/shared/error_messages", resource: @end_user %>
 
-<div class="row justify-content-center mt-5">
-  <h5><strong>会員情報編集</strong></h5>
-</div>
-
-<!--<div class="row">-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label">会員ID</div>-->
-<!--    <div class="col-7 input_text"><#%= @end_user.id %></div>-->
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label"></div>-->
-<!--    <div class="col-7 input_text"></div>-->
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label"></div>-->
-<!--    <div class="col-7 input_text"></div>-->
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label"></div>-->
-<!--    <div class="col-7 input_text"></div>-->
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label"></div>-->
-<!--    <div class="col-7 input_text"></div>-->
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label"></div>-->
-<!--    <div class="col-7 input_text"></div>-->
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <div class="col-5 label"></div>-->
-<!--    <div class="col-7 input_text"></div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<div class="row justify-content-center">
-  <div class="col-6 text-right">
-    <div class="label">会員ID</div>
-    <div class="label">名前</div>
-    <div class="label">ニックネーム</div>
-    <div class="label">メールアドレス</div>
-    <div class="label">アイコン画像</div>
-    <div class="label">自己紹介</div>
-    <div class="label">会員ステータス</div>
+  <div class="row justify-content-center mt-5">
+    <h5><strong>会員情報編集</strong></h5>
   </div>
 
-  <div class="col-6 text-left">
-    <div class="label"><%= @end_user.id %></div>
-    <div class="label"><%= @end_user.name %></div>
-    <div class="label"><%= @end_user.nickname %></div>
-    <div class="label"><%= @end_user.email %></div>
-    <div class="label"><%= image_tag @end_user.get_profile_image(100,80) %></div>
-    <div class="label"><%= @end_user.introduction %></div>
+  <div class="row justify-content-center">
+    <div class="col-6 text-right">
+      <div class="label">会員ID</div>
+      <div class="label">名前</div>
+      <div class="label">ニックネーム</div>
+      <div class="label">メールアドレス</div>
+      <div class="label">アイコン画像</div>
+      <div class="label">自己紹介</div>
+      <div class="label">会員ステータス</div>
+    </div>
+
+    <div class="col-6 text-left">
+      <div class="label"><%= @end_user.id %></div>
+      <div class="label"><%= @end_user.name %></div>
+      <div class="label"><%= @end_user.nickname %></div>
+      <div class="label"><%= @end_user.email %></div>
+      <div class="label"><%= image_tag @end_user.get_profile_image(100,80) %></div>
+      <div class="label"><%= @end_user.introduction %></div>
+    </div>
+  </dev>
+
+
+  <div class="row justify-content-center">
+    <%= form_with model: @end_user, url: admin_end_user_path, method: :patch do |f| %>
+      <div class="label">
+        <div class="is_deleted">
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, '有効'  %>
+        </div>
+        <div class="is_deleted">
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted, '退会' %>
+        </div>
+       </div>
+      <%= f.submit '変更を保存', class:"btn btn-success mr-4" %>
+        <!--%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
+    <% end %>
   </div>
-</dev>
-
-
-<div class="row justify-content-center">
-  <%= form_with model: @end_user, url: admin_end_user_path, method: :patch do |f| %>
-    <div class="label">
-      <div class="is_deleted">
-          <%= f.radio_button :is_deleted, false %>
-          <%= f.label :is_deleted, '有効'  %>
-      </div>
-      <div class="is_deleted">
-          <%= f.radio_button :is_deleted, true %>
-          <%= f.label :is_deleted, '退会' %>
-      </div>
-     </div>
-    <%= f.submit '変更を保存', class:"btn btn-success mr-4" %>
-      <!--%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
-  <% end %>
 </div>
