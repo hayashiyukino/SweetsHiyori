@@ -33,3 +33,16 @@
   .label-user-name{
     width: 10%;
   }
+
+  /*会員一覧*/
+  .end-user-contens{
+    width: 100%;
+    align-items: center;
+  }
+  .end-user-text1{
+    width: 10%;
+  }
+  .end-user-text2{
+    width: calc(80%/5);
+  }
+
