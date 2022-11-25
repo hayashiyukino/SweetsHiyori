@@ -48,7 +48,7 @@
             <!--5段階評価 部分テンプレート-->
             <%= render "review_star", sweets_revue: sweets_revue %>
             <!--コメント数表示-->
-            <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
+            <i class="far fa-comment fa-2x comment_icon-color"></i><%= sweets_revue.post_comments.count %>
             <!--いいね機能非同期-->
             <div id="favorite_btn_<%= sweets_revue.id %>">
               <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>

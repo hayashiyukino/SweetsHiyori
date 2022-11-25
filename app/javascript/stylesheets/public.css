@@ -3,7 +3,7 @@
     margin-top: 5px;
   }
 
- 
+
   /*タブの表示*/
   .form-box{
     display: flex;
@@ -21,8 +21,19 @@
   .icon-box, .review{
     display: flex;
   }
-  /*いいねした時の♡の色*/
-  .icon-color{
+
+/*いいねした時の♡の色*/
+  .favorites_icon-color{
     color: #FF66FF;
   }
+
+  .my_icon-color{
+    color: #ffc0cb;
+  }
+
+/*コメントアイコン*/
+  .comment_icon-color{
+    color: #696969;
+  }
+
 
