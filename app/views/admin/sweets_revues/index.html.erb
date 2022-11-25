@@ -1,59 +1,69 @@
-<div class = "row ml-3">
-    <h5><strong>投稿一覧</strong></h5>
-</div>
+<div class="container">
 
-<div id="raty" class="row">
-  <table>
-    <thead>
-      <tr>
-        <th>投稿ID</th>
-        <th></th>
-        <th>商品名</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th>投稿者</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @sweets_revues.each do |sweets_revue| %>
-        <tr class="col-12">
-          <td>
-            <%= sweets_revue.id %>
-          </td>
-          <td>
-            <%= link_to admin_sweets_revue_path(sweets_revue)  do %>
-              <%= image_tag sweets_revue.get_sweets_image(100, 80) %>
-            <% end %>
-          </td>
-          <td>
+  <div class = "row ml-3">
+    <h4><strong>投稿一覧</strong></h4>
+  </div>
+
+  <dev class="row label"><strong>
+    <dev class="label-id">投稿ID</dev>
+    <dev class="label-name">商品名</dev>
+    <dev class="label-user-name">投稿者</dev>
+    <dev class="label-user-name">閲覧制限</dev>
+  </strong></dev>
+
+  <div id="raty" class="row mt-4">
+    <% @sweets_revues.each do |sweets_revue| %>
+      <% if sweets_revue.post_status == false %>
+        <div class="review-box"><strong><%= sweets_revue.id %></strong>
+          <div class="">閲覧制限がかかっている為この投稿は見れません</div>
+        </div>
+      <% else %>
+        <div class="review-box">
+          <div class="review-contents-id">
+            <strong><%= sweets_revue.id %></strong>
+          </div>
+          <div class="admin-review-contents-image">
+             <%= link_to admin_sweets_revue_path(sweets_revue)  do %>
+               <%= image_tag sweets_revue.get_sweets_image(100, 80) %>
+             <% end %>
+          </div>
+          <div class="admin-review-contents-name">
             <%= link_to sweets_revue.sweets_name, admin_sweets_revue_path(sweets_revue.id) %>
             <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
-          </td>
-          <td>
-            <!--5段階評価-->
+          </div>
+          <div class="admin-review-contents-star">
+            <!--5段階評価 部分テンプレート-->
             <div id="review_star_<%= sweets_revue.id %>"></div>
-          </td>
-          <td>
-          <!--いいね数表示-->
-          <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
-          </td>
-          <td>
+            <!--<#%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>-->
+          </div>
+          <div class="admin-review-contents-icon">
             <!--コメント数表示-->
-            <i class="far fa-comment fa-2x"></i><%= sweets_revue.post_comments.count %>
-          </td>
-          <td>
+            <i class="far fa-comment fa-2x comment_icon-colo"></i>
+            <%= sweets_revue.post_comments.count %>
+          </div>
+          <div class="admin-review-contents-icon">
+            <i class="far fa-heart fa-2x my_icon-color"></i><%= sweets_revue.favorites.count %>
+          </div>
+          <dev class="review-contents-nickname">
             <%= link_to sweets_revue.end_user.nickname, admin_end_user_path(sweets_revue.end_user) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </dev>
+          <dev class="end-user-text2">
+            <% if sweets_revue.post_status == false %>
+              <h6 class="text-red">停止中</h6>
+            <% else %>
+              <h6 class="text-black-50">-----</h6>
+            <% end %>
+          </dev>
+        </div>
+      <!--<3% end %>-->
+    <% end %>
+  </div>
 </div>
 
-<div class="text-center mt-3">
+<div class="row text-center mt-3">
   <%= paginate @sweets_revues %>
 </div>
+
 
 <script>
 $(document).on('turbolinks:load', function() {

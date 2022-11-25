@@ -28,7 +28,7 @@
   }
 
 /*いいねした時の♡の色*/
-  .favorites_icon-color{
+  .favorites-icon-color{
     color: #FF66FF;
   }
 
@@ -38,7 +38,7 @@
   }
 
 /*コメントアイコン*/
-  .comment_icon-color{
+  .comment-icon-color{
     color: #696969;
   }
 
@@ -87,6 +87,10 @@
   .review-box{
     display: flex;
     width: 100%;
+  }
+  .review_contents{
+    width:80%;
+    height:60px;
   }
   .review_contents_icon{
     width: 10%;
