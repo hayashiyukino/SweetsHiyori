@@ -4,22 +4,32 @@
  }
 
 /*投稿一覧*/
-  .review_contents_id{
+  .review-contents-id{
     width: 5%;
   }
-  .admin_review_contents_image{
+  .admin-review-contents-image{
     width: 15%;
     height: 100px;
   }
-  .admin_review_contents_name{
+  .admin-review-contents-name{
     width: 25%;
   }
-  .admin_review_contents_star{
+  .admin-review-contents-star{
     width: 20%;
   }
-  .admin_review_contents_icon{
+  .admin-review-contents-icon{
     width: 10%;
   }
-  .review_contents_nickname{
+  .review-contents-nickname{
+    width: 10%;
+  }
+
+  .label-id{
+    width: 20%;
+  }
+  .label-name{
+    width: 65%;
+  }
+  .label-user-name{
     width: 10%;
   }

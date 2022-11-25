@@ -1,51 +1,51 @@
 <div class="container">
 
   <div class = "row ml-3">
-    <h5><strong>投稿一覧</strong></h5>
+    <h4><strong>投稿一覧</strong></h4>
   </div>
 
-  <dev class="label">
-    <dev class=""><strong>投稿ID</strong></dev>
-    <dev class=""><strong>商品名</strong></dev>
-    <dev class=""><strong>投稿者</strong></dev>
+  <dev class="row label">
+    <dev class="label-id"><strong>投稿ID</strong></dev>
+    <dev class="label-name"><strong>商品名</strong></dev>
+    <dev class="label-user-name"><strong>投稿者</strong></dev>
   </dev>
-  <div id="raty" class="row">
-  <div class="row mt-4">
-   <% @sweets_revues.each do |sweets_revue| %>
-    <div class="review-box">
-      <div class="review_contents_id">
-        <strong><%= sweets_revue.id %></strong>
-      </div>
-      <div class="admin_review_contents_image">
-         <%= link_to admin_sweets_revue_path(sweets_revue)  do %>
-           <%= image_tag sweets_revue.get_sweets_image(100, 80) %>
-         <% end %>
-      </div>
-      <div class="admin_review_contents_name">
-        <%= link_to sweets_revue.sweets_name, admin_sweets_revue_path(sweets_revue.id) %>
-        <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
-      </div>
-      <div class="admin_review_contents_star">
-        <!--5段階評価 部分テンプレート-->
-        <div id="review_star_<%= sweets_revue.id %>"></div>
-        <!--<#%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>-->
-      </div>
-      <div class="admin_review_contents_icon">
-        <!--コメント数表示-->
-        <i class="far fa-comment fa-2x comment_icon-color"></i>
-        <%= sweets_revue.post_comments.count %>
-      </div>
-      <div class="admin_review_contents_icon">
-        <!--いいね機能非同期済み-->
-        <div id="favorite_btn_<%= sweets_revue.id %>">
-          <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+
+  <div id="raty" class="row mt-4">
+    <% @sweets_revues.each do |sweets_revue| %>
+      <div class="review-box">
+        <div class="review-contents-id">
+          <strong><%= sweets_revue.id %></strong>
         </div>
+        <div class="admin-review-contents-image">
+           <%= link_to admin_sweets_revue_path(sweets_revue)  do %>
+             <%= image_tag sweets_revue.get_sweets_image(100, 80) %>
+           <% end %>
+        </div>
+        <div class="admin-review-contents-name">
+          <%= link_to sweets_revue.sweets_name, admin_sweets_revue_path(sweets_revue.id) %>
+          <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="admin-review-contents-star">
+          <!--5段階評価 部分テンプレート-->
+          <div id="review_star_<%= sweets_revue.id %>"></div>
+          <!--<#%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>-->
+        </div>
+        <div class="admin-review-contents-icon">
+          <!--コメント数表示-->
+          <i class="far fa-comment fa-2x comment-icon-color"></i>
+          <%= sweets_revue.post_comments.count %>
+        </div>
+        <div class="admin-review-contents-icon">
+          <!--いいね機能非同期済み-->
+          <div id="favorite_btn_<%= sweets_revue.id %>">
+            <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+          </div>
+        </div>
+        <dev class="review-contents-nickname">
+          <%= link_to sweets_revue.end_user.nickname, admin_end_user_path(sweets_revue.end_user) %>
+        </dev>
       </div>
-      <dev class="review_contents_nickname">
-        <%= link_to sweets_revue.end_user.nickname, admin_end_user_path(sweets_revue.end_user) %>
-      </dev>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
