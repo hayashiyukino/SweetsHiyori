@@ -88,6 +88,10 @@
     display: flex;
     width: 100%;
   }
+  .review_contents{
+    width:80%;
+    height:60px;
+  }
   .review_contents_icon{
     width: 10%;
   }

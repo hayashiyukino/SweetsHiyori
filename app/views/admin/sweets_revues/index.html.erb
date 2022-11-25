@@ -13,11 +13,11 @@
 
   <div id="raty" class="row mt-4">
     <% @sweets_revues.each do |sweets_revue| %>
-      <!--<3% if sweets_revue.post_status == false %>-->
-      <!--  <div class="review-box"><strong><3%= sweets_revue.id %></strong>-->
-      <!--    <div class="">閲覧制限がかかっている為この投稿は見れません</div>-->
-      <!--  </div>-->
-      <!--<3% else %>-->
+      <% if sweets_revue.post_status == false %>
+        <div class="review-box"><strong><%= sweets_revue.id %></strong>
+          <div class="">閲覧制限がかかっている為この投稿は見れません</div>
+        </div>
+      <% else %>
         <div class="review-box">
           <div class="review-contents-id">
             <strong><%= sweets_revue.id %></strong>
