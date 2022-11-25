@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>SweetsHiyori</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,68 +11,59 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-sm navbar-light" style ="background-color: #d2b48c">
-        <!--<div class="row">-->
-        <!--    <div class="search_box">-->
-        <!--      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
-        <!--      <button type = "submit"><i class="fa-solid fa-magnifying-glass fa-flip-horizontal" type="submit"></i></button>-->
-        <!--</div>-->
+<body class="d-flex flex-column">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light" style ="background-color: #d2b48c">
         <div class="container">
+          <!--<a class="navbar-brand p-3" href="/"><#%= image_tag('logo.png') %></a>-->
           <% if admin_signed_in? %>
-            <a class=navbar-brand>
-              <%= link_to 'Sweets日和', admin_root_path %>
-            </a>
+            <a class="navbar-brand p-3"><%= link_to 'Sweets日和', admin_root_path %></a>
           <% else %>
-            <a class=navbar-brand>
-              <%= link_to 'Sweets日和', root_path %>
-            </a>
+            <a class="navbar-brand p-3"><%= link_to 'Sweets日和', root_path %></a>
           <% end %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-            <!--<span class="navbar-toggler-icon"></span>-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="row">
-            <div class="navbar-collapse collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-                <% if end_user_signed_in? %>
-                  <%= render 'layouts/end_user_header' %>
-                <% elsif admin_signed_in? %>
-                  <%= render 'layouts/admin_header' %>
-                <% else %>
-                  <li>
-                    <%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>
-                      <i class="fas fa-user-plus"></i>新規登録
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>
-                      <i class="fas fa-sign-in-alt"></i>ログイン
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to about_path, class: "nav-link text-dark" do %>
-                      <i class="fas fa-asterisk"></i>About
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
-                      <i class="fas fa-gifts"></i>投稿一覧
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to end_users_guest_sign_in_path, class: "nav-link text-dark", method: :post do %>
-                      <i class="fas fa-sign-in-alt"></i>ゲストログイン
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to admin_session_path, class: "nav-link text-dark" do %>
-                    .
-                    <% end %>
-                  </li>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if end_user_signed_in? %>
+                <%= render 'layouts/end_user_header' %>
+              <% elsif admin_signed_in? %>
+                <%= render 'layouts/admin_header' %>
+              <% else %>
+                <li>
+                  <%= link_to new_end_user_registration_path, class: "nav-link text-dark" do %>
+                    <i class="fas fa-user-plus"></i>新規登録
                 <% end %>
-              </ul>
-            </div>
+                </li>
+                <li>
+                  <%= link_to new_end_user_session_path, class: "nav-link text-dark" do %>
+                    <i class="fas fa-sign-in-alt"></i>ログイン
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to about_path, class: "nav-link text-dark" do %>
+                    <i class="fas fa-asterisk"></i>About
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to sweets_revues_path, class: "nav-link text-dark" do %>
+                    <i class="far fa-list-alt"></i>投稿一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to end_users_guest_sign_in_path, class: "nav-link text-dark", method: :post do %>
+                    <i class="fas fa-sign-in-alt"></i>ゲストログイン
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_session_path, class: "nav-link text-dark" do %>
+                  .
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
           </div>
         </div>
       </nav>
@@ -79,15 +71,21 @@
 
     <main>
       <p id = "notice"><%= notice %></p>
-      <div class = "container mb-5">
+      <div class="end_user_name">
+        <% if end_user_signed_in? %>
+          <h6 style="color:#b0c4de"><%= current_end_user.name %>さんログイン中</h6>
+        <% end %>
+      </div>
+      <div class="main_body mb-5">
             <%= yield %>
       </div>
     </main>
 
     <footer>
-      <div class="fixed-bottom" style ="background-color: #d2b48c">
+      <div class="fixed-bottom text-center" style ="background-color: #d2b48c">
         <p>Copyright © Infratop Inc. All Rights Reserved.</p>
       </div>
     </footer>
   </body>
 </html>
+

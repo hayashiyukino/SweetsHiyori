@@ -1,42 +1,44 @@
-<div class = "icon">
-  <%= image_tag end_user.get_profile_image(100,80) %>
-  <%= link_to edit_infomation_path(end_user) do %>
-    <p>編集ボタン</p>
+<div class = "icon-circle">
+  <%= image_tag end_user.get_profile_image(120,120) %>
+</div>
+<div>
+  <% if end_user == current_end_user %>
+    <%= link_to edit_infomation_path(end_user) do %>
+      <i class="fas fa-cog"></i>編集
+    <% end %>
   <% end %>
 </div>
 
   <div class = "infomationbox">
-    <div>
-  	  <p>ニックネーム</p>
-  	  <%= end_user.nickname %>
+    <div class="my_intro_box">
+  	  <div class="intro_label">ニックネーム</div>
+  	  <div class="intro_field_name"><%= end_user.nickname %></div>
+  	  <div class="intro_label">introduction</div>
+  	  <div class="intro_field"><%= end_user.introduction %></div>
     </div>
-    <div>
-  	  <p>introduction</p>
-      <%= end_user.introduction %>
-    </div>
-    <div>
+    <div class="my_count">
       <%= end_user.sweets_revues.count %>投稿
     </div>
-    <div>
+    <div class="my_count">
       <%= link_to end_user_followings_path(end_user) do %>
         <%= end_user.followings.count %>フォロワー
       <% end %>
     </div>
-    <div>
+    <div class="my_count">
       <%= link_to end_user_followers_path(end_user) do %>
         <%= end_user.followers.count %>フォロー
       <% end %>
     </div>
-    <div>
+    <div class="my_count">
       <% if end_user == current_end_user %>
         <!-- <#%= link_to "お気に入り"%>-->
         ブックマーク
         <%= end_user.favorites.count %>件
       <% else %>
         <% if current_end_user.following?(end_user) %>
-          <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+          <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "link text-dark" %>
         <% else %>
-          <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
+          <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %>
         <% end %>
       <% end %>
     </div>
