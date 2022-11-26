@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   scope module: :public do
     ## homes
     root "homes#top"
-    get 'about' => 'homes#about'
     ## sweets_revues
     resources :sweets_revues, except: [:destroy] do
       ## post_comments

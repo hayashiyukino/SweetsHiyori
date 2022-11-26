@@ -1,8 +1,10 @@
 <div class = "row">
   <!--サイドバー 検索欄-->
   <div class = "col-3">
-    <!--検索機能 部分テンプレート-->
-    <%= render 'search' %>
+    <% if end_user_signed_in? %>
+      <!--検索機能 部分テンプレート-->
+      <%= render 'search' %>
+    <% end %>
   </div>
   <!--メイン 投稿閲覧-->
   <div class="col-9">
@@ -27,7 +29,7 @@
               <%= link_to sweets_revue_path(sweets_revue)  do %>
                 <div>商品名：<%= sweets_revue.sweets_name %></div>
                 <div class="sweets_image">
-                  <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
+                  <%= image_tag sweets_revue.get_sweets_image(160,130) %>
                 </div>
               <% end %>
               <div class="genre-name">
