@@ -13,13 +13,12 @@
 
 <body class="d-flex flex-column">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light" style ="background-color: #d2b48c">
+      <nav class="navbar navbar-expand-lg navbar-light" style ="background-color: lemonchiffon">
         <div class="container">
-          <!--<a class="navbar-brand p-3" href="/"><#%= image_tag('logo.png') %></a>-->
           <% if admin_signed_in? %>
-            <a class="navbar-brand p-3"><%= link_to 'Sweets日和', admin_root_path %></a>
+            <a class="navbar-brand p-3"><%= link_to 'Sweets日和', admin_root_path, class: "link" %></a>
           <% else %>
-            <a class="navbar-brand p-3"><%= link_to 'Sweets日和', root_path %></a>
+            <a class="navbar-brand p-3"><%= link_to 'Sweets日和', root_path, class: "link" %></a>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +81,7 @@
     </main>
 
     <footer>
-      <div class="fixed-bottom text-center" style ="background-color: #d2b48c">
+      <div class="fixed-bottom text-center" style ="background-color: lemonchiffon">
         <p>Copyright © Infratop Inc. All Rights Reserved.</p>
       </div>
     </footer>

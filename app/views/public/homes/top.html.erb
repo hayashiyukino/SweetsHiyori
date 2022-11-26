@@ -9,7 +9,6 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <!--<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">-->
         <div class="first-slide"></div>
         <div class="container">
           <div class="carousel-caption text-left">
@@ -21,20 +20,19 @@
         <div class="second-slide"></div>
         <div class="container">
           <div class="carousel-caption">
-            <h1>はじめに</h1>
-            <p>こちらのサイトでは様々なスイーツの情報の共有を目的としたサイトです。</p>
+            <h2>はじめに</h2>
+            <h4>こちらのサイトでは様々なスイーツの情報の共有を目的としたサイトです。</h4>
             <div class="row">
               <div class="col-lg-4">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <p class="circle">レビュー</p>
               </div><!-- /.col-lg-4 -->
               <div class="col-lg-4">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <p class="circle">探す</p>
               </div><!-- /.col-lg-4 -->
               <div class="col-lg-4">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <p class="circle">繋がる</p>
               </div><!-- /.col-lg-4 -->
             </div>
-            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
           </div>
         </div>
       </div>
@@ -42,13 +40,12 @@
         <div class="third-slide"></div>
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>①投稿する：</h1>
-            <p>しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。</p>
-            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            <h3>①投稿する：</h3>
+            <h5>コンビニスイーツからデパ地下や洋菓子店のスイーツ、地元のスイーツなど実際に召し上がったスイーツをレビューしてみんなと共有しましょう！</h5>
             <% if end_user_signed_in? %>
-              <p><a class="btn btn-lg btn-primary" href="sweets_revues/new" role="button">新規投稿へ</a></p>
+              <p><a class="btn btn-outline-secondary" href="sweets_revues/new" role="button">新規投稿へ</a></p>
             <% else %>
-              <p><a class="btn btn-lg btn-primary" href="end_users/sign_in" role="button">新規投稿へ</a></p>
+              <p><a class="btn btn-outline-secondary" href="end_users/sign_in" role="button">ログイン</a></p>
             <% end %>
           </div>
         </div>
@@ -57,10 +54,9 @@
         <div class="four-slide"></div>
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>②探す：</h1>
-            <p>しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。</p>
-            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
-            <p><a class="btn btn-lg btn-primary" href="sweets_revues" role="button">投稿をみる</a></p>
+            <h3>②探す：</h3>
+            <h5>価格や用途、その時食べたいジャンル等、該当するスイーツを探すことが出来ます！</h5>
+            <p><a class="btn btn-outline-secondary" href="sweets_revues" >投稿をみる</a></p>
           </div>
         </div>
       </div>
@@ -68,10 +64,11 @@
         <div class="five-slide"></div>
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>③繋がる：</h1>
-            <p>しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。</p>
-            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
-            <p><a class="btn btn-lg btn-primary" href="end_users" role="button">会員をみる</a></p>
+            <h3>③スイーツ好きと繋がる：</h3>
+            <h5>気になる投稿をしているユーザーをフォローすることが出来ます！</h5>
+            <% if end_user_signed_in? %>
+              <p><a class="btn btn-outline-secondary" href="end_users" role="button">会員をみる</a></p>
+            <% end %>
           </div>
         </div>
       </div>
