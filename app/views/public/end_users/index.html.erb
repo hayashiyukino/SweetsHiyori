@@ -28,14 +28,17 @@
               <%= end_user.followings.count %>フォロワー
             </td>
             <td>
+              <div id="follow_<%= @end_user_id %>">
+              <%= render "public/relationships/follow", end_user: end_user %>
+              </div>
               <!--ユーザーとログイン中のユーザーが一致しない場合フォロー機能表示する-->
-              <% unless current_end_user == end_user %>
-                <% if current_end_user.following?(end_user) %>
-                  <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info btn-sm btn-block" %>
-                <% else %>
-                  <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success btn-sm btn-block" %>
-                <% end %>
-              <% end %>
+              <!--<#% unless current_end_user == end_user %>-->
+              <!--  <#% if current_end_user.following?(end_user) %>-->
+              <!--    <#%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info btn-sm btn-block" %>-->
+              <!--  <#% else %>-->
+              <!--    <#%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success btn-sm btn-block" %>-->
+              <!--  <#% end %>-->
+              <!--<#% end %>-->
             </td>
           </tr>
         <% end %>
