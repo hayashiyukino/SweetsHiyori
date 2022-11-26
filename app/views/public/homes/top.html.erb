@@ -1,25 +1,90 @@
-<div class="container">
-  <div class="row justify-content-center my-5">
-    <h4>Sweets日和へようこそ</h4>
-  </div>
 
-  <div class="row">
-
-    <div class="col-12 text-warning center">
-      <h5><strong>新着情報</strong></h5>
-    </div>
-    <% @sweets_revues.each do |sweets_revue| %>
-      <div class="col-md-3 my-3">
-          <%= link_to sweets_revue_path(sweets_revue) do %>
-            <%= image_tag sweets_revue.get_sweets_image(120,90) %><br>
-            <%= sweets_revue.sweets_name %>
-          <% end %>
-          <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <!--<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">-->
+        <div class="first-slide"></div>
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>Sweets日和へようこそ</h1>
+          </div>
+        </div>
       </div>
-    <% end %>
-    <div class="col-md-12 mb-3">
-      <h6 class="text-right"><%= link_to "全ての投稿を見る", sweets_revues_path %></h6>
+      <div class="carousel-item">
+        <div class="second-slide"></div>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>はじめに</h1>
+            <p>こちらのサイトでは様々なスイーツの情報の共有を目的としたサイトです。</p>
+            <div class="row">
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              </div><!-- /.col-lg-4 -->
+            </div>
+            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="third-slide"></div>
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>①投稿する：</h1>
+            <p>しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。</p>
+            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            <% if end_user_signed_in? %>
+              <p><a class="btn btn-lg btn-primary" href="sweets_revues/new" role="button">新規投稿へ</a></p>
+            <% else %>
+              <p><a class="btn btn-lg btn-primary" href="end_users/sign_in" role="button">新規投稿へ</a></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="four-slide"></div>
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>②探す：</h1>
+            <p>しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。</p>
+            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            <p><a class="btn btn-lg btn-primary" href="sweets_revues" role="button">投稿をみる</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="five-slide"></div>
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>③繋がる：</h1>
+            <p>しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。</p>
+            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            <p><a class="btn btn-lg btn-primary" href="end_users" role="button">会員をみる</a></p>
+          </div>
+        </div>
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <!-- <span class="sr-only">Previous</span> -->
+      <span class="sr-only">前へ</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <!-- <span class="sr-only">Next</span> -->
+      <span class="sr-only">次へ</span>
+    </a>
 
-  </div>
 </div>
