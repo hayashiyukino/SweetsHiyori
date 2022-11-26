@@ -1,59 +1,59 @@
 <div class="col-12 my-3">
-  <%= link_to end_user_path(@end_user) do %>
-    <%= image_tag @sweets_revue.end_user.get_profile_image(80,90) %>
+  <%= link_to end_user_path(end_user) do %>
+    <%= image_tag sweets_revue.end_user.get_profile_image(80,90) %>
   <% end %>
 </div>
 
 <div class="col-12 mx-auto">
-  <h4><strong><%= @sweets_revue.sweets_name %></strong></h4>
+  <h4><strong><%= sweets_revue.sweets_name %></strong></h4>
 </div>
 
 
 <div class = "col-6">
   <div class="col-12 text-right">
-      <%= @sweets_revue.tax_included_price %>（税込み）
-      <%= link_to "編集", edit_sweets_revue_path(@sweets_revue) %>
+      <%= sweets_revue.tax_included_price %>（税込み）
+      <%= link_to "編集", edit_sweets_revue_path(sweets_revue) %>
   </div>
   <div class="col-12">
-    <%= image_tag @sweets_revue.get_sweets_image(280,200) %>
+    <%= image_tag sweets_revue.get_sweets_image(280,200) %>
   </div>
   <div class="review ml-4 mt-4">
     <div>評価</div>
     <!--5段階評価 部分テンプレート-->
     <div class="review_star ml-4">
-      <%= render "public/sweets_revues/review_star", sweets_revue: @sweets_revue %>
+      <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
     </div>
   </div>
   <div class="icon-box mt-3">
     <div class="icon ml-5">
       <!--いいね機能非同期済み-->
-      <div id="favorite_btn_<%= @sweets_revue.id %>">
-        <%= render 'public/favorites/favorite', sweets_revue: @sweets_revue %>
+      <div id="favorite_btn_<%= sweets_revue.id %>">
+        <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
       </div>
     </div>
     <div class="icon ml-5">
       <!--コメント数-->
-      <i class="far fa-comment fa-2x comment-icon-color"></i><%= @sweets_revue.post_comments.count %>
+      <i class="far fa-comment fa-2x comment-icon-color"></i><%= sweets_revue.post_comments.count %>
     </div>
   </div>
 </div>
 
 <div class="col-6">
   <div class="row-2 mt-4 box">
-    <%= @sweets_revue.shop_name %>
+    <%= sweets_revue.shop_name %>
   </div>
   <div class="row-2 mt-4 box">
-    <%= @sweets_revue.buy_place %><br>
+    <%= sweets_revue.buy_place %><br>
   </div>
   <div class="row-2 mt-4 box">
-    <%= @sweets_revue.genre.name %><br>
+    <%= sweets_revue.genre.name %><br>
   </div>
   <div class="row-2 mt-4 box">
-    <% @sweets_revue.tags.each do |tag| %>
+    <% sweets_revue.tags.each do |tag| %>
       <%= tag.name %>
     <% end %>
   </div>
   <div class="row-2 mt-4 box">
-    <%= @sweets_revue.sweets_introduction %>
+    <%= sweets_revue.sweets_introduction %>
   </div>
 </div>
