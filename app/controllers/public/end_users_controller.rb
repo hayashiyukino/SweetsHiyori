@@ -1,6 +1,7 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
 
+
   def show
     @end_user = EndUser.find(params[:id])
     @sweets_revues = @end_user.sweets_revues.all.page(params[:page]).per(5).order(created_at: :desc)
@@ -50,7 +51,7 @@ class Public::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(
-      :name, :nickname, :introduction, :user_status, :profile_image
+      :name, :nickname, :introduction, :is_deleted, :profile_image
     )
   end
 
