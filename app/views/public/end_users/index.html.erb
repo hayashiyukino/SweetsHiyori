@@ -28,6 +28,7 @@
               <%= end_user.followings.count %>フォロワー
             </td>
             <td>
+              <!--フォロー機能非同期済み-->
               <div id="follow_<%= end_user.id %>">
                 <%= render partial: "public/relationships/follow", locals:{ end_user: end_user } %>
               </div>
