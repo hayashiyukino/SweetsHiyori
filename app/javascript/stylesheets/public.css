@@ -180,17 +180,18 @@
     border-style: outset;
     border-color:#ffdab9;
     padding: 5px;
-
+    /*text-align: center;*/
   }
-  .sweets_image{
-    width: 90%;
-    height: 90px;
-  }
+  /*.sweets_image{*/
+  /*  width: 90%;*/
+  /*}*/
   .count{
     display: flex;
   }
   .icon{
-    margin:1px 4px;
+    /*margin:1px;*/
+    text-align: center;
+    width: 100%;
   }
   .tag-name{
     height:100px;

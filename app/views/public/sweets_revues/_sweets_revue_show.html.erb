@@ -16,8 +16,8 @@
         <%= link_to "編集", edit_sweets_revue_path(sweets_revue) %>
       <% end %>
   </div>
-  <div class="col-12">
-    <%= image_tag sweets_revue.get_sweets_image(280,200) %>
+  <div class="text-center">
+    <%= image_tag sweets_revue.get_sweets_image(230,230) %>
   </div>
   <div class="review ml-4 mt-4">
     <div>評価</div>
@@ -42,20 +42,21 @@
 
 <div class="col-6">
   <div class="row-2 mt-4 box">
-    <%= sweets_revue.shop_name %>
+    商品名 : <%= sweets_revue.shop_name %>
   </div>
   <div class="row-2 mt-4 box">
-    <%= sweets_revue.buy_place %><br>
+    購入場所 : <%= sweets_revue.buy_place %><br>
   </div>
   <div class="row-2 mt-4 box">
-    <%= sweets_revue.genre.name %><br>
+    ジャンル : <%= sweets_revue.genre.name %><br>
   </div>
   <div class="row-2 mt-4 box">
+    タグ :
     <% sweets_revue.tags.each do |tag| %>
       <%= tag.name %>
     <% end %>
   </div>
   <div class="row-2 mt-4 box">
-    <%= sweets_revue.sweets_introduction %>
+    コメント : <%= sweets_revue.sweets_introduction %>
   </div>
 </div>

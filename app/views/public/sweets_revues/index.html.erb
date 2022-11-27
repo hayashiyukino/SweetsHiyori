@@ -30,8 +30,8 @@
             <% else %>
               <%= link_to sweets_revue_path(sweets_revue)  do %>
                 <div>商品名：<%= sweets_revue.sweets_name %></div>
-                <div class="sweets_image">
-                  <%= image_tag sweets_revue.get_sweets_image(160,130) %>
+                <div class="sweets_image text-center">
+                  <%= image_tag sweets_revue.get_sweets_image(130,130) %>
                 </div>
               <% end %>
               <div class="genre-name">
@@ -43,7 +43,7 @@
                   <%= tag.name %>
                 <% end %>
               </div>
-              <div>
+              <div class="text-center">
                 <!--5段階評価 部分テンプレート-->
                 <%= render "review_star", sweets_revue: sweets_revue %>
               </div>
