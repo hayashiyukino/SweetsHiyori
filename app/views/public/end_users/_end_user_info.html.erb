@@ -20,12 +20,12 @@
       <%= end_user.sweets_revues.count %>投稿
     </div>
     <div class="my_count">
-      <%= link_to end_user_followings_path(end_user) do %>
+      <%= link_to end_user_followers_path(end_user) do %>
         <%= end_user.followers.count %>フォロワー
       <% end %>
     </div>
     <div class="my_count">
-      <%= link_to end_user_followers_path(end_user) do %>
+      <%= link_to end_user_followings_path(end_user) do %>
         <%= end_user.followings.count %>フォロー
       <% end %>
     </div>

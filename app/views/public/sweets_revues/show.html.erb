@@ -8,20 +8,31 @@
 
     <div class="col-5">
         <!--コメントフォーム-->
-        <div class="row-5 mt-5">
+        <div class="row mt-5">
+          <div class="col-12 p-inherit">
           <%= form_with model: [@sweets_revue, @post_comment] do |f| %>
-            <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-            <%= f.submit "投稿" %>
+            <%= f.text_area :comment, size: "40*30", placeholder: "コメントをここに" %>
+            <%= f.submit "投稿", class: "btn btn-outline-success" %>
           <% end %>
+          </div>
         </div>
-        <div>
+        <div class="row">
+          <div class="col-12 m-3">
+            <h5><strong><コメント一覧></strong></h5>
+          </div>
           <% @sweets_revue.post_comments.each do |post_comment| %>
-            <%= post_comment.id %>
-            <%= post_comment.comment %>
-            <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>
-            <% if post_comment.end_user == current_end_user %>
-              <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete %>
-            <% end %>
+          <div class="table p-inherit">
+            <span class="body"><%= post_comment.id %></span>
+            <span class="body"><%= post_comment.comment %></span>
+            <span class="body">
+              <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>
+            </span>
+            <span>
+              <% if post_comment.end_user == current_end_user %>
+                <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete %>
+              <% end %>
+            </span>
+          </div>
           <% end %>
         </div>
     </div>

@@ -2,9 +2,9 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-  color: #5a5a5a;
-}
+/*body {*/
+/*  color: #5a5a5a;*/
+/*}*/
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -67,6 +67,26 @@ body {
 /*投稿詳細ページ*/
   .icon-box, .review{
     display: flex;
+  }
+  .table{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .table span {
+    display: inline-block;
+  }
+  .table span:first-child {
+    width: 10%;
+  }
+  .table span:nth-child(2) {
+    width: 50%;
+  }
+  .table span:nth-child(3) {
+    width: 20%;
+  }
+  .table span:nth-child(4) {
+    width: 20%;
   }
 
 /*いいねした時の♡の色*/
