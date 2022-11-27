@@ -4,12 +4,12 @@
     <h4><strong>投稿一覧</strong></h4>
   </div>
 
-  <dev class="row label"><strong>
-    <dev class="label-id">投稿ID</dev>
-    <dev class="label-name">商品名</dev>
-    <dev class="label-user-name">投稿者</dev>
-    <dev class="label-user-name">閲覧制限</dev>
-  </strong></dev>
+  <dev class="row label">
+    <dev class="label-id"><strong>投稿ID</strong></dev>
+    <dev class="label-name"><strong>商品名</strong></dev>
+    <dev class="label-user-name"><strong>投稿者</strong></dev>
+    <dev class="label-post_status"><strong>閲覧制限</strong></dev>
+  </dev>
 
   <div id="raty" class="row mt-4">
     <% @sweets_revues.each do |sweets_revue| %>
@@ -55,7 +55,7 @@
             <% end %>
           </dev>
         </div>
-      <!--<3% end %>-->
+      <% end %>
     <% end %>
   </div>
 </div>
