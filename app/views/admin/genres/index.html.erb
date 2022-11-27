@@ -9,7 +9,7 @@
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
       <div class="d-flex">
         <div class="class mr-2"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
-        <div class><%= f.submit "新規登録", class: "btn btn-outline-success" %></div>
+        <div><%= f.submit "新規登録", class: "btn btn-outline-success" %></div>
       </div>
     <% end %>
   </div>

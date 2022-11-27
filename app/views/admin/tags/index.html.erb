@@ -1,48 +1,41 @@
-<% if @tag.errors.any? %>
-  <%= @tag.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @tag.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container">
+  <%= render "admin/shared/error_messages", resource: @tag %>
 
-<div class="row mb-5">
-  <div class="col-md-5 offset-md-1">
+  <div class="row justify-content-center mb-5">
     <h4><span class="title">タグ一覧・追加</span></h4>
   </div>
-</div>
 
-
-<div class="row">
-  <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
-    <div class="form-group form-inline">
-      <div class="col-md-6"><%= f.text_field :name, placeholder: "タグ名" %></div>
-      <div class="col-md-3"><%= f.submit "新規登録", class: "btn btn-success" %></div>
+  <div class="row justify-content-center">
+    <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
+    <div class="d-flex">
+      <div class="class mr-2"><%= f.text_field :name, placeholder: "タグ名" %></div>
+      <div><%= f.submit "新規登録", class: "btn btn-outline-success" %></div>
     </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="form-box col-8 mt-5 saiz: 10">
+      <!--タグ検索-->
+      <% @tags.each do |tag| %>
+        <!--[:tag_ids]だけだと、他の[tag_ids]と区別がつかないので、[:tag_ids, t.name]としている-->
+        <div class="form-check-label">
+          <!--<#%= link_to admin_tag_path(tag.id), class: "text-dark" do %>-->
+          <%= link_to edit_admin_tag_path(tag.id), class: "text-dark" do %>
+            <%= tag.name %>
+          <% end %>
+          <%= link_to admin_tag_path(tag.id), class: "text-danger", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+             ×
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<!--このページで編集したい-->
+  <!--<#%= render "tag_edit", tag: @tag_id %>-->
+
 </div>
 
-<div class="row">
-  <table class='table table-hover table-inverse col-md-6'>
-    <thead>
-      <tr>
-        <th colspan="3">タグ</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tags.each do |tag| %>
-      <tr>
-        <td>
-          <%= tag.name %>
-        </td>
-        <td>
-          <%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %>
-          <%= link_to "削除する", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+
+
+

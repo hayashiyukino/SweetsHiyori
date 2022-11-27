@@ -1,23 +1,20 @@
-<!--<3% if @tag.errors.any? %>-->
-<!--  <3%= @genre.errors.count %>件のエラーが発生しました-->
-<!--  <ul>-->
-<!--    <3% @genre.errors.full_messages.each do |message| %>-->
-<!--      <li><3%= message %></li>-->
-<!--    <3% end %>-->
-<!--  </ul>-->
-<!--<3% end %>-->
 
-<div class="row mb-5">
-  <div class="col-md-5 offset-md-1">
+<div class="container">
+  <%= render "admin/shared/error_messages", resource: @tag %>
+
+  <div class="row justify-content-center mb-2">
     <h4><span class="title">タグ編集</span></h4>
   </div>
-</div>
 
-<div class="row">
-  <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f| %>
-    <div class="form-group form-inline">
-      <div class="col-md-6"><%= f.text_field :name, placeholder: "タグ名" %></div>
-      <div class="col-md-3"><%= f.submit '変更を保存', class: "btn btn-success" %></div>
-   </div>
-  <% end %>
-</div>
+  <div class="row justify-content-center">
+    <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f| %>
+    <div class="d-flex">
+      <div class="class mr-2"><%= f.text_field :name, placeholder: "タグ名" %></div>
+      <div><%= f.submit "変更を保存", class: "btn btn-outline-success" %></div>
+    </div>
+    <% end %>
+  </div>
+
+
+
+</did>

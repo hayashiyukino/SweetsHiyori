@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
-  has_many :sweets_revues, dependent: :destroy
+  has_many :sweets_revues
 
   validates :name, uniqueness: true
 end
