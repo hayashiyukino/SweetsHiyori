@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   scope module: :public do
     ## homes
     root "homes#top"
-    get 'about' => 'homes#about'
     ## sweets_revues
     resources :sweets_revues, except: [:destroy] do
       ## post_comments
@@ -58,10 +57,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root "homes#top"
     resources :sweets_revues, only: [:show, :update, :index]
+    patch 'sweets_revues/:id/stoppage' => 'sweets_revues#stoppage', as: 'stoppage_sweets_revue'
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :tags, only: [:index, :edit, :create, :update, :destroy]
-    resources :searchs, only: [:index, :edit, :create, :update]
+    # resources :searchs, only: [:index, :edit, :create, :update]
 
   end
 

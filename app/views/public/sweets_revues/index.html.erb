@@ -1,8 +1,10 @@
 <div class = "row">
   <!--サイドバー 検索欄-->
   <div class = "col-3">
-    <!--検索機能 部分テンプレート-->
-    <%= render 'search' %>
+    <% if end_user_signed_in? %>
+      <!--検索機能 部分テンプレート-->
+      <%= render 'search' %>
+    <% end %>
   </div>
   <!--メイン 投稿閲覧-->
   <div class="col-9">
@@ -19,37 +21,43 @@
   		<% if @sweets_revues.present? %>
         <% @sweets_revues.each do |sweets_revue| %>
           <div class="review-box-n mb-3">
-            <%= link_to sweets_revue_path(sweets_revue)  do %>
-              <div>商品名：<%= sweets_revue.sweets_name %></div>
-              <div class="sweets_image">
-                <%= image_tag sweets_revue.get_sweets_image(80, 60) %>
+            <% if sweets_revue.post_status == false %>
+              <div class="mt-5 mx-5">
+                <strong>閲覧制限がかかっている為この投稿は見れません</strong>
               </div>
-            <% end %>
-            <div class="genre-name">
-              ジャンル：<%= sweets_revue.genre.name %><br>
-            </div>
-            <div class="tag-name">
-              タグ：<br>
-              <% sweets_revue.tags.each do |tag| %>
-                <%= tag.name %>
+            <% else %>
+              <%= link_to sweets_revue_path(sweets_revue)  do %>
+                <div>商品名：<%= sweets_revue.sweets_name %></div>
+                <div class="sweets_image">
+                  <%= image_tag sweets_revue.get_sweets_image(160,130) %>
+                </div>
               <% end %>
-            </div>
-            <div>
-              <!--5段階評価 部分テンプレート-->
-              <%= render "review_star", sweets_revue: sweets_revue %>
-            </div>
-            <div class="count mt-2">
-              <!--コメント数表示-->
-              <div class="icon">
-                <i class="far fa-comment fa-2x comment_icon-color"></i><%= sweets_revue.post_comments.count %>
+              <div class="genre-name">
+                ジャンル：<%= sweets_revue.genre.name %><br>
               </div>
-              <!--いいね機能非同期-->
-              <div class="icon">
-                <div id="favorite_btn_<%= sweets_revue.id %>">
-                  <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+              <div class="tag-name">
+                タグ：<br>
+                <% sweets_revue.tags.each do |tag| %>
+                  <%= tag.name %>
+                <% end %>
+              </div>
+              <div>
+                <!--5段階評価 部分テンプレート-->
+                <%= render "review_star", sweets_revue: sweets_revue %>
+              </div>
+              <div class="count mt-2">
+                <!--コメント数表示-->
+                <div class="icon">
+                  <i class="far fa-comment fa-2x comment-icon-color"></i><%= sweets_revue.post_comments.count %>
+                </div>
+                <!--いいね機能非同期-->
+                <div class="icon">
+                  <div id="favorite_btn_<%= sweets_revue.id %>">
+                    <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       <% else %>
@@ -59,5 +67,3 @@
       <%= paginate @sweets_revues %>
   </div>
 </div>
-  <!--<div class="row justify-content-center">-->
-  <!--</div>-->

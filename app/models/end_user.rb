@@ -8,7 +8,7 @@ class EndUser < ApplicationRecord
   has_many :sweets_revues
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   # 退会済みのユーザーがログインできない制約
   # is_deleteがfalseならtrueを返す
   def active_for_authentication?

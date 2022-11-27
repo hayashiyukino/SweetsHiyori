@@ -1,6 +1,6 @@
 class Public::SweetsRevuesController < ApplicationController
-  before_action :authenticate_end_user!, {only: [:create, :edit, :update]}
-  before_action :redirect_root, except: :index
+  # indexとshowアクション以外のアクションが動く前にユーザーがログインしていなければルートページが表示される
+  before_action :redirect_root, except: [:index, :show]
 
   def new
     @sweets_revue = SweetsRevue.new
@@ -83,10 +83,6 @@ class Public::SweetsRevuesController < ApplicationController
     if @sweets_revue.save
       redirect_to sweets_revue_path(@sweets_revue), notice: "投稿しました！"
     else
-    #   @bsweets_revues = SweetsRevue.all
-      #byebug
-      # flash.now[:alert] = "投稿に失敗しました"
-      # render 'new'
       render :new, notice: "投稿に失敗しました"
     end
   end
@@ -111,8 +107,8 @@ class Public::SweetsRevuesController < ApplicationController
   def sweets_revue_params
     # { :tag_ids=> [] } : 送られてきた値を配列に格納する
     params.require(:sweets_revue).permit(
-      :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, { :tag_ids=> [] }, :sweets_image,
-      :review_star, :sweets_name, :tax_included_price, :sweets_introduction, :shop_name, :buy_place, :post_status)
+      :end_user_id, :genre_id, :revue_tag_relation_id, :favorite_id, :post_comment_id, :sweets_image,
+      :review_star, :sweets_name, :tax_included_price, :sweets_introduction, :shop_name, :buy_place, :post_status, { :tag_ids=> [] })
   end
 
   def redirect_root

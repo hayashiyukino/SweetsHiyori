@@ -3,3 +3,49 @@
     margin-top: 15px;
  }
 
+/*投稿一覧*/
+  .review-contents-id{
+    width: 5%;
+  }
+  .admin-review-contents-image{
+    width: 15%;
+    height: 100px;
+  }
+  .admin-review-contents-name{
+    width: 25%;
+  }
+  .admin-review-contents-star{
+    width: 20%;
+  }
+  .admin-review-contents-icon{
+    width: 10%;
+  }
+  .review-contents-nickname{
+    width: 10%;
+  }
+
+
+  .label-id{
+    width: 20%;
+  }
+  .label-name{
+    width: 50%;
+  }
+  .label-user-name{
+    width: 10%;
+  }
+  .label-post_status{
+    width: 10%;
+  }
+
+  /*会員一覧*/
+  .end-user-contens{
+    width: 100%;
+    align-items: center;
+  }
+  .end-user-text1{
+    width: 10%;
+  }
+  .end-user-text2{
+    width: calc(80%/5);
+  }

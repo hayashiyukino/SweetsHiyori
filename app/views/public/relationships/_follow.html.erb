@@ -1,0 +1,8 @@
+<!--ユーザーとログイン中のユーザーが一致しない場合フォロー機能表示する-->
+<% unless current_end_user == end_user %>
+  <% if current_end_user.following?(end_user) %>
+    <%= link_to "フォロー外す", end_user_relationships_path(end_user), method: :delete,  remote: true, class: "btn btn-outline-info btn-sm btn-block" %>
+  <% else %>
+    <%= link_to "フォローする", end_user_relationships_path(end_user), method: :post,  remote: true, class: "btn btn-outline-success btn-sm btn-block" %>
+  <% end %>
+<% end %>

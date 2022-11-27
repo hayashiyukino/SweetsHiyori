@@ -1,7 +1,7 @@
 <div class = "row ml-3">
   <% if end_user == current_end_user %>
     <div class="mr-2">
-      <%= link_to new_sweets_revue_path do %>
+      <%= link_to new_sweets_revue_path, data: {turbolinks: false} do %>
         <i class="far fa-edit fa-2x" style="color:a9a9a9"></i>
       <% end %>
     </div>
@@ -14,31 +14,37 @@
 <div class="row mt-4">
   <% sweets_revues.each do |sweets_revue| %>
     <div class="review-box">
-      <div class="review_contents_image">
-        <%= link_to sweets_revue_path(sweets_revue)  do %>
-          <%= image_tag sweets_revue.get_sweets_image(80, 80) %>
-        <% end %>
-      </div>
-      <div class="review_contents_name">
-        <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
-        <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
-      </div>
-      <div class="review_contents_star">
-        <!--5段階評価 部分テンプレート-->
-        <div id="review_star_<#%= sweets_revue.id %>"></div>
-        <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
-      </div>
-      <div class="review_contents_icon">
-        <!--コメント数表示-->
-        <i class="far fa-comment fa-2x comment_icon-color"></i>
-        <%= sweets_revue.post_comments.count %>
-      </div>
-      <div class="review_contents_icon">
-        <!--いいね機能非同期済み-->
-        <div id="favorite_btn_<%= sweets_revue.id %>">
-          <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+      <% if sweets_revue.post_status == false %>
+        <div class="review_contents ml-3">
+          <strong>閲覧制限がかかっている為この投稿は見れません</strong>
         </div>
-      </div>
+      <% else %>
+        <div class="review_contents_image">
+          <%= link_to sweets_revue_path(sweets_revue)  do %>
+            <%= image_tag sweets_revue.get_sweets_image(80, 80) %>
+          <% end %>
+        </div>
+        <div class="review_contents_name">
+          <%= link_to sweets_revue.sweets_name, sweets_revue_path(sweets_revue.id) %>
+          <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="review_contents_star">
+          <!--5段階評価 部分テンプレート-->
+          <div id="review_star_<#%= sweets_revue.id %>"></div>
+          <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
+        </div>
+        <div class="review_contents_icon">
+          <!--コメント数表示-->
+          <i class="far fa-comment fa-2x comment-icon-color"></i>
+          <%= sweets_revue.post_comments.count %>
+        </div>
+        <div class="review_contents_icon">
+          <!--いいね機能非同期済み-->
+          <div id="favorite_btn_<%= sweets_revue.id %>">
+            <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

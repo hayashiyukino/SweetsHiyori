@@ -1,50 +1,38 @@
-<div class = "row ml-3">
-    <h5><strong>会員一覧</strong></h5>
-</div>
+<div class="container">
 
-<div class="row">
-  <table>
-    <thead>
-      <tr>
-        <th>会員ID</th>
-        <th></th>
-        <th>名前</th>
-        <th>ニックネーム</th>
-        <th>投稿数</th>
-        <th>フォロワー数</th>
-        <th>会員ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @end_users.each do |end_user| %>
-          <tr>
-            <td><%= end_user.id %></td>
-            <td>
-              <%= image_tag end_user.get_profile_image(100,80) %>
-            </td>
-            <td>
-              <%= link_to end_user.name, admin_end_user_path(end_user) %>
-            </td>
-            <td>
-              <%= link_to end_user.nickname, admin_end_user_path(end_user) %>
-            </td>
-            <td>
-              <%= end_user.sweets_revues.count %>件
-            </td>
-            <td>
-              <%= end_user.followings.count %>
-            </td>
-            <td>
-              <% if end_user.is_deleted == false %>
-                <h5 class="text-success">有効</h5>
-              <% else %>
-                <h5 class="text-black-50">退会</h5>
-              <% end %>
-            </td>
-          </tr>
+  <div class="row ml-3">
+    <h4><strong>会員一覧</strong></h4>
+  </div>
+
+  <div class="end-user-contens row mt-4">
+    <% @end_users.each do |end_user| %>
+      <div class="end-user-text1">
+        <strong>ID-<%= end_user.id %></strong>
+      </div>
+      <div class="end-user-text2">
+        <%= image_tag end_user.get_profile_image(100,80) %>
+      </div>
+      <div class="end-user-text2">
+        <%= link_to end_user.name, admin_end_user_path(end_user) %>
+      </div>
+      <div class="end-user-text2">
+        <%= link_to end_user.nickname, admin_end_user_path(end_user) %>
+      </div>
+      <div class="end-user-text1">
+        投稿<%= end_user.sweets_revues.count %>件
+      </div>
+      <div class="end-user-text2">
+        <%= end_user.followings.count %>フォロワー
+      </div>
+      <dev class="end-user-text2">
+        <% if end_user.is_deleted == false %>
+          <h6 class="text-success">有効</h6>
+        <% else %>
+          <h6 class="text-black-50">退会</h6>
         <% end %>
-    </tbody>
-  </table>
+      </dev>
+    <% end %>
+  </div>
 </div>
 
 <div class="text-center mt-3">
