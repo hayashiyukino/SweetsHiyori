@@ -35,11 +35,10 @@
         ブックマーク
         <%= end_user.favorites.count %>件
       <% else %>
-        <% if current_end_user.following?(end_user) %>
-          <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "link text-dark" %>
-        <% else %>
-          <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %>
-        <% end %>
+        <!--フォロー機能非同期済み-->
+        <div id="follow_<%= end_user.id %>">
+          <%= render partial: "public/relationships/follow", locals:{ end_user: end_user } %>
+        </div>
       <% end %>
     </div>
   </div>

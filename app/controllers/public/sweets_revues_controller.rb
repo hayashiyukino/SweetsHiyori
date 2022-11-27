@@ -1,6 +1,6 @@
 class Public::SweetsRevuesController < ApplicationController
-  before_action :authenticate_end_user!, {only: [:create, :edit, :update, :new]}
-  before_action :redirect_root, except: :index
+  # indexとshowアクション以外のアクションが動く前にユーザーがログインしていなければルートページが表示される
+  before_action :redirect_root, except: [:index, :show]
 
   def new
     @sweets_revue = SweetsRevue.new

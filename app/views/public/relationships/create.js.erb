@@ -1,0 +1,2 @@
+<!--対象の子要素(前半部分)のhtmlを、カッコ内のもの(後半部分)に変更する。-->
+$('#follow_<%= @end_user.id %>').html("<%= j(render partial: 'public/relationships/follow', locals: {end_user: @end_user}) %>");
