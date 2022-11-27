@@ -70,7 +70,7 @@
   }
   .table{
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     width: 100%;
   }
   .table span {
@@ -87,6 +87,11 @@
   }
   .table span:nth-child(4) {
     width: 20%;
+  }
+
+/*会員一覧*/
+  .user-body{
+    width: calc(80%/6);
   }
 
 /*いいねした時の♡の色*/
