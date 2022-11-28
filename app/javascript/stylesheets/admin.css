@@ -1,6 +1,26 @@
+  /*会員一覧*/
+  .end-user-contens{
+    width: 100%;
+    align-items: center;
+  }
+  .end-user-text1{
+    width: 10%;
+  }
+  .end-user-text2{
+    width: calc(80%/5);
+  }
+  
 /*会員情報編集ページ*/
  .label{
-    margin-top: 15px;
+    margin-top: 10px;
+ }
+ .label-img, .label-intro{
+    margin-top: 10px;
+    height: 80px;
+ }
+ .label-status{
+    margin-top: 10px;
+    display: flex;
  }
 
 /*投稿一覧*/
@@ -13,17 +33,4 @@
     text-align: center;
   }
 
-
-
-
-  /*会員一覧*/
-  .end-user-contens{
-    width: 100%;
-    align-items: center;
-  }
-  .end-user-text1{
-    width: 10%;
-  }
-  .end-user-text2{
-    width: calc(80%/5);
-  }
+  

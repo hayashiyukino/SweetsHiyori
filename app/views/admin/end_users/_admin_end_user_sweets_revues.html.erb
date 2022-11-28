@@ -2,7 +2,6 @@
     <h5><strong><%= end_user.nickname %>さんの投稿一覧</strong></h5>
 </div>
 
-
 <div class="row mt-4">
   <% sweets_revues.each do |sweets_revue| %>
     <div class="review-box">
@@ -35,7 +34,7 @@
   <% end %>
 </div>
 
-<div class="paginate mt-3">
+<div class="d-flex justify-content-center">
   <%= paginate sweets_revues %>
 </div>
 

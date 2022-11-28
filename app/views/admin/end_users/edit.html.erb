@@ -12,8 +12,8 @@
       <div class="label">名前</div>
       <div class="label">ニックネーム</div>
       <div class="label">メールアドレス</div>
-      <div class="label">アイコン画像</div>
-      <div class="label">自己紹介</div>
+      <div class="label-img">アイコン画像</div>
+      <div class="label-intro">自己紹介</div>
       <div class="label">会員ステータス</div>
     </div>
 
@@ -22,25 +22,22 @@
       <div class="label"><%= @end_user.name %></div>
       <div class="label"><%= @end_user.nickname %></div>
       <div class="label"><%= @end_user.email %></div>
-      <div class="label"><%= image_tag @end_user.get_profile_image(100,80) %></div>
-      <div class="label"><%= @end_user.introduction %></div>
+      <div class="label-img"><%= image_tag @end_user.get_profile_image(100,80) %></div>
+      <div class="label-intro"><%= @end_user.introduction %></div>
+      <%= form_with model: @end_user, url: admin_end_user_path, method: :patch do |f| %>
+        <div class="label-status">
+          <div class="is_deleted">
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, '有効'  %>
+          </div>
+          <div class="is_deleted ml-3">
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, '退会' %>
+          </div>
+         </div>
+        <%= f.submit '変更を保存', class:"btn btn-outline-success mr-4",  data: { confirm: "本当に変更しますか？" } %>
+      <% end %>
     </div>
   </dev>
 
-
-  <div class="row justify-content-center">
-    <%= form_with model: @end_user, url: admin_end_user_path, method: :patch do |f| %>
-      <div class="label">
-        <div class="is_deleted">
-            <%= f.radio_button :is_deleted, false %>
-            <%= f.label :is_deleted, '有効'  %>
-        </div>
-        <div class="is_deleted">
-            <%= f.radio_button :is_deleted, true %>
-            <%= f.label :is_deleted, '退会' %>
-        </div>
-       </div>
-      <%= f.submit '変更を保存', class:"btn btn-success mr-4" %>
-    <% end %>
-  </div>
 </div>
