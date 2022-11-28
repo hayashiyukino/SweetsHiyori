@@ -24,13 +24,17 @@
     width: 10%;
   }
 
+
   .label-id{
     width: 20%;
   }
   .label-name{
-    width: 65%;
+    width: 50%;
   }
   .label-user-name{
+    width: 10%;
+  }
+  .label-post_status{
     width: 10%;
   }
 

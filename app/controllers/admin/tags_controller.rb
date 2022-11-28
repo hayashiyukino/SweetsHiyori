@@ -4,7 +4,11 @@ class Admin::TagsController < ApplicationController
   def index
     @tags = Tag.all
     @tag = Tag.new
-    @tag_name = "タグ"
+    # if params[:id].present?
+    #   set_tag
+    # else
+    #   @tag = Tag.new
+    # end
   end
 
   def create
@@ -37,7 +41,8 @@ class Admin::TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    redirect_to admin_genres_path
+    flash[:notice] = "タグの削除に成功しました"
+    redirect_to admin_tags_path
   end
 
 
