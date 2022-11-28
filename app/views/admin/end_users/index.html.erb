@@ -7,7 +7,7 @@
         <div class="user-box-n p-inherit">
           <div class="user-body"><%= image_tag end_user.get_profile_image(80,80) %></div>
           <div class="user-body"><%= end_user.id %> : <%= link_to end_user.name, admin_end_user_path(end_user) %></div>
-          <div class="user-body"><%= link_to end_user.nickname, admin_end_user_path(end_user) %></div>
+          <div class="user-body"><%= end_user.nickname %></div>
           <div class="user-body">投稿<%= end_user.sweets_revues.count %>件</div>
           <div class="user-body"><%= end_user.followers.count %>フォロワー</div>
           <div class="user-body">

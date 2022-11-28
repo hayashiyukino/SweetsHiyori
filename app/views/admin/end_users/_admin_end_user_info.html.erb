@@ -1,34 +1,29 @@
-<div class="col-4">
-    <div class = "icon">
-      <%= image_tag end_user.get_profile_image(100,80) %>
-      <%= link_to edit_admin_end_user_path(end_user) do %>
-    <p>編集ボタン</p>
+<div class = "icon-circle">
+  <%= image_tag end_user.get_profile_image(120,120) %>
+</div>
+<div>
+  <%= link_to edit_admin_end_user_path(end_user) do %>
+    <i class="fas fa-cog"></i>編集
   <% end %>
 </div>
-<div class = "infomationbox">
-  <div>
-    <p>会員ID</p>
-    <%= end_user.id %>
+
+  <div class = "infomationbox">
+    <div class="my_intro_box">
+  	  <div class="intro_label">名前</div>
+  	  <div class="intro_field_name"><%= end_user.name %></div>
+  	  <div class="intro_label">ニックネーム</div>
+  	  <div class="intro_field_name"><%= end_user.nickname %></div>
+  	  <div class="intro_label">introduction</div>
+  	  <div class="intro_field"><%= end_user.introduction %></div>
+    </div>
+    <div class="my_count">
+      <%= end_user.sweets_revues.count %>投稿
+    </div>
+    <div class="my_count">
+        <%= end_user.followers.count %>フォロワー
+    </div>
+    <div class="my_count">
+        <%= end_user.followings.count %>フォロー
+    </div>
   </div>
-  <div>
-    <p>名前</p>
-    <%= end_user.name %>
-  </div>
-  <div>
-	  <p>ニックネーム</p>
-	  <%= end_user.nickname %>
-  </div>
-  <div>
-	  <p>introduction</p>
-    <%= end_user.introduction %>
-  </div>
-  <div>
-    <%= end_user.sweets_revues.count %>投稿
-  </div>
-  <div>
-    <%= end_user.followings.count %>フォロワー
-  </div>
-  <div>
-    <%= end_user.followers.count %>フォロー
-  </div>
-</div>
+
