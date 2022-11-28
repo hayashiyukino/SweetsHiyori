@@ -44,9 +44,6 @@ class Public::EndUsersController < ApplicationController
   end
 
 
-  # def confirm
-  # end
-
   private
 
   def end_user_params
