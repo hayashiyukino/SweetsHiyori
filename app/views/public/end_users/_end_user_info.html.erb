@@ -3,8 +3,10 @@
 </div>
 <div>
   <% if end_user == current_end_user %>
-    <%= link_to edit_infomation_path(end_user) do %>
-      <i class="fas fa-cog"></i>編集
+    <% if current_end_user.name != 'ゲストサンプル' %>
+      <%= link_to edit_infomation_path(end_user) do %>
+        <i class="fas fa-cog"></i>編集
+      <% end %>
     <% end %>
   <% end %>
 </div>
