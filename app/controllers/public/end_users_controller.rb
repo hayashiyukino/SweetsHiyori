@@ -50,7 +50,7 @@ class Public::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(
-      :name, :nickname, :introduction, :user_status, :profile_image
+      :name, :nickname, :introduction, :is_deleted, :profile_image
     )
   end
 
