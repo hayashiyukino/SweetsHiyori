@@ -16,8 +16,9 @@ class Admin::SweetsRevuesController < ApplicationController
   #投稿の閲覧制限
   def stoppage
     @sweets_revue = SweetsRevue.find(params[:id])
-    @sweets_revue.update(post_status: params[:sweets_revue][:post_status]
+    @sweets_revue.update(post_status: params[:sweets_revue][:post_status])
     redirect_to admin_sweets_revues_path(@sweets_revue)
+    #redirect_to admin_sweets_revues_path(@sweets_revue)
   end
 
 end

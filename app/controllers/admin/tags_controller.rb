@@ -4,11 +4,6 @@ class Admin::TagsController < ApplicationController
   def index
     @tags = Tag.all
     @tag = Tag.new
-    # if params[:id].present?
-    #   set_tag
-    # else
-    #   @tag = Tag.new
-    # end
   end
 
   def create
