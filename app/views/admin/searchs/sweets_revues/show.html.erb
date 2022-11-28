@@ -1,0 +1,45 @@
+<div class="container">
+  <dev class="row justify-content-center">
+    <div class="col-7">
+      <div class="row">
+        <%= render 'admin/sweets_revues/admin_sweets_revue_show', sweets_revue: @sweets_revue, end_user: @end_user %>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="row">
+        <div class="col-10 m-3">
+          <h5><strong><コメント一覧></strong></h5>
+        </div>
+        <% @sweets_revue.post_comments.each do |post_comment| %>
+        <div class="table p-inherit">
+          <span class="body"><%= post_comment.id %></span>
+          <span class="body"><%= post_comment.comment %></span>
+          <span class="body">
+            <%= link_to post_comment.end_user.nickname, admin_end_user_path(post_comment.end_user_id) %>
+          </span>
+          <span>
+            <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete %>
+          </span>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= form_with model: @sweets_revue, url: admin_stoppage_sweets_revue_path, method: :patch do |f| %>
+      <div class="label-status">
+        <div class="post_status">
+          <%= f.radio_button :post_status, false %>
+          <%= f.label :post_status, '閲覧不可'  %>
+        </div>
+        <div class="post_status ml-3">
+          <%= f.radio_button :post_status, true %>
+          <%= f.label :post_status, '閲覧可能' %>
+        </div>
+      </div>
+      <%= f.submit '変更を保存', class:"btn btn-success mr-4", data: { confirm: "本当に変更しますか？" } %>
+    <% end %>
+  </div>
+</div>
