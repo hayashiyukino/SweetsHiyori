@@ -18,27 +18,12 @@ class Admin::GenresController < ApplicationController
     end
   end
 
-  # def edit
-  #   @genre = Genre.find(params[:id])
-  # end
-
-  # def update
-  #   @genre = Genre.find(params[:id])
-  #     if @genre.update(genre_params)
-  #       flash[:notice] = "ジャンルの更新に成功しました"
-  #       redirect_to admin_genres_path
-  #     else
-  #       flash[:notice] = "ジャンルの更新に失敗しました"
-  #       render :edit
-  #     end
-  # end
-
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
     redirect_to admin_genres_path
   end
-  
+
   private
 
   def genre_params
