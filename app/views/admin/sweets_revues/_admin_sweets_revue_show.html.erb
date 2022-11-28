@@ -1,5 +1,5 @@
 <div class="col-12 my-3">
-  <%= link_to end_user_path(end_user) do %>
+  <%= link_to admin_end_user_path(end_user) do %>
     <%= image_tag sweets_revue.end_user.get_profile_image(80,90) %>
   <% end %>
 </div>
@@ -12,9 +12,6 @@
 <div class = "col-6">
   <div class="col-12 text-right">
       <%= sweets_revue.tax_included_price %>（税込み）
-      <% if end_user == current_end_user %>
-        <%= link_to "編集", edit_sweets_revue_path(sweets_revue) %>
-      <% end %>
   </div>
   <div class="text-center">
     <%= image_tag sweets_revue.get_sweets_image(230,230) %>
@@ -29,9 +26,7 @@
   <div class="icon-box mt-3">
     <div class="icon ml-5">
       <!--いいね機能非同期済み-->
-      <div id="favorite_btn_<%= sweets_revue.id %>">
-        <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
-      </div>
+      <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
     </div>
     <div class="icon ml-5">
       <!--コメント数-->

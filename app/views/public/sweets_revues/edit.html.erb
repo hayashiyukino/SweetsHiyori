@@ -18,7 +18,6 @@
       <div class="form-group row">
         <%= f.label :tax_included_price, "税込価格", class: "col-4" %>
         <%= f.text_field :tax_included_price, placeholder: "税込価格", class: "col-8" %>
-        <span class="d-flex align-items-center ml-1">円</span>
       </div>
       <div class="form-group row">
         <%= f.label :sweets_introduction, "コメント", class: "col-4" %>
@@ -37,8 +36,8 @@
         <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--ジャンル--" %>
       </div>
       <div class="form-group row">
-        <%= f.label :tag_id, "タグ（複数選択可)", class: "col-4" %><br>
-        <div class="col-8">
+        <%= f.label :tag_id, "タグ（複数選択可)", class: "col-12" %><br>
+        <div class="form-box col-12">
         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) do |tag| %>
           <!--第一引数：タグIDのリストを渡し、複数のタグをsweets_revueに紐づける-->
           <!--第二引数：タグオブジェクトのリスト-->

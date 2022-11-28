@@ -2,9 +2,9 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-  color: #5a5a5a;
-}
+/*body {*/
+/*  color: #5a5a5a;*/
+/*}*/
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -68,7 +68,39 @@ body {
   .icon-box, .review{
     display: flex;
   }
+  .table{
+    display: flex;
+    /*flex-wrap: wrap;*/
+    width: 100%;
+  }
+  .table span {
+    display: inline-block;
+  }
+  .table span:first-child {
+    width: 10%;
+  }
+  .table span:nth-child(2) {
+    width: 50%;
+  }
+  .table span:nth-child(3) {
+    width: 20%;
+  }
+  .table span:nth-child(4) {
+    width: 20%;
+  }
 
+/*会員一覧*/
+  .user-box-n{
+    width: calc(95%/5);
+    margin-right:3px;
+    border-style: outset;
+    border-color:#ffdab9;
+    padding: 5px;
+  }
+  .user-body{
+    text-align: center;
+  }
+  
 /*いいねした時の♡の色*/
   .favorites-icon-color{
     color: #FF66FF;
@@ -160,17 +192,14 @@ body {
     border-style: outset;
     border-color:#ffdab9;
     padding: 5px;
-
-  }
-  .sweets_image{
-    width: 90%;
-    height: 90px;
   }
   .count{
     display: flex;
   }
   .icon{
-    margin:1px 4px;
+    /*margin:1px;*/
+    text-align: center;
+    width: 100%;
   }
   .tag-name{
     height:100px;
