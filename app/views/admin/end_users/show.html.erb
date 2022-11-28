@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <!--ユーザー情報部分テンプレート-->
-    <%= render "admin_end_user_info", end_user: @end_user %>
-  </div>
-  <div class="col-8">
-    <!--投稿部分テンプレート-->
-    <%= render 'admin/end_users/admin_end_user_sweets_revues', sweets_revues: @sweets_revues, end_user: @end_user %>
+    <div class="col-4">
+      <!--ユーザー情報部分テンプレート-->
+      <%= render "admin_end_user_info", end_user: @end_user %>
+    </div>
+    <div class="col-8 mt-4">
+      <!--投稿部分テンプレート-->
+      <%= render 'admin/end_users/admin_end_user_sweets_revues', sweets_revues: @sweets_revues, end_user: @end_user %>
+    </div>
   </div>
 </div>

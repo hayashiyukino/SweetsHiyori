@@ -15,7 +15,7 @@
   <% sweets_revues.each do |sweets_revue| %>
     <div class="review-box">
       <% if sweets_revue.post_status == false %>
-        <div class="review_contents ml-3">
+        <div class="review_contents text-center p-3">
           <strong>閲覧制限がかかっている為この投稿は見れません</strong>
         </div>
       <% else %>
@@ -49,7 +49,7 @@
   <% end %>
 </div>
 
-<div class="paginate mt-3">
+<div class="d-flex justify-content-center">
   <%= paginate sweets_revues %>
 </div>
 

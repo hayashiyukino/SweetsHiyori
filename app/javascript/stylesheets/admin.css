@@ -1,43 +1,3 @@
-/*会員情報編集ページ*/
- .label{
-    margin-top: 15px;
- }
-
-/*投稿一覧*/
-  .review-contents-id{
-    width: 5%;
-  }
-  .admin-review-contents-image{
-    width: 15%;
-    height: 100px;
-  }
-  .admin-review-contents-name{
-    width: 25%;
-  }
-  .admin-review-contents-star{
-    width: 20%;
-  }
-  .admin-review-contents-icon{
-    width: 10%;
-  }
-  .review-contents-nickname{
-    width: 10%;
-  }
-
-
-  .label-id{
-    width: 20%;
-  }
-  .label-name{
-    width: 50%;
-  }
-  .label-user-name{
-    width: 10%;
-  }
-  .label-post_status{
-    width: 10%;
-  }
-
   /*会員一覧*/
   .end-user-contens{
     width: 100%;
@@ -49,3 +9,28 @@
   .end-user-text2{
     width: calc(80%/5);
   }
+  
+/*会員情報編集ページ*/
+ .label{
+    margin-top: 10px;
+ }
+ .label-img, .label-intro{
+    margin-top: 10px;
+    height: 80px;
+ }
+ .label-status{
+    margin-top: 10px;
+    display: flex;
+ }
+
+/*投稿一覧*/
+  .admin_review-box-n{
+    width: calc(95%/4);
+    margin-right:3px;
+    border-style: outset;
+    border-color:#ffdab9;
+    padding: 5px;
+    text-align: center;
+  }
+
+  
