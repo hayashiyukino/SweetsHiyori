@@ -3,5 +3,5 @@ class Tag < ApplicationRecord
   # 中間テーブルを介してSweetsRevueテーブルへの関連付け
   has_many :sweets_revues, through: :revue_tag_relations
 
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 end
