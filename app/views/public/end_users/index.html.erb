@@ -1,25 +1,24 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-10">
-      <h4 class="mb-3">会員一覧</h4>
+    <div class="col-12">
+      <h4 class="text-center mb-3">会員一覧</h4>
+    </div>
       <% @end_users.each do |end_user| %>
-        <div class="table p-inherit">
-          <span class="user-body"><%= end_user.id %></span>
-          <span class="user-body"><%= image_tag end_user.get_profile_image(100,80) %></span>
-          <span class="user-body"><%= link_to end_user.nickname, end_user_path(end_user) %></span>
-          <span class="user-body">投稿<%= end_user.sweets_revues.count %>件</span>
-          <span class="user-body"><%= end_user.followers.count %>フォロワー</span>
-          <span class="user-body">
+        <div class="user-box-n p-inherit">
+          <div class="user-body"><%= image_tag end_user.get_profile_image(80,80) %></div>
+          <div class="user-body"><%= end_user.id %> : <%= link_to end_user.nickname, end_user_path(end_user) %></div>
+          <div class="user-body">投稿<%= end_user.sweets_revues.count %>件</div>
+          <div class="user-body"><%= end_user.followers.count %>フォロワー</div>
+          <div class="user-body">
             <!--フォロー機能非同期済み-->
             <div id="follow_<%= end_user.id %>">
               <%= render partial: "public/relationships/follow", locals:{ end_user: end_user } %>
             </div>
-          </span>
+          </div>
         </div>
       <% end %>
-      <div class="d-flex justify-content-center">
-        <%= paginate @end_users %>
-      </div>
-    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate @end_users %>
   </div>
 </div>

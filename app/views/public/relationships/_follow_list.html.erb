@@ -1,24 +1,12 @@
-<% if end_users.exists? %>
-  <table class='table'>
-    <thead>
-      <tr>
-        <th>image</th>
-        <th>nickname</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-  <% end_users.each do |end_user| %>
-    <tbody>
-        <tr>
-          <td><%= image_tag end_user.get_profile_image(100,80) %></td>
-          <td><%= end_user.nickname %></td>
-          <td>フォロワー数 : <%= end_user.followers.count %></td>
-          <td>投稿数 : <%= end_user.sweets_revues.count %></td>
-        <td><%= link_to 'Show', end_user %></td>
-        </tr>
-    </tbody>
+  <% if end_users.exists? %>
+    <% end_users.each do |end_user| %>
+      <div class="user-box-n p-inherit">
+        <div class="user-body"><%= image_tag end_user.get_profile_image(80,80) %></div>
+        <div class="user-body"><%= end_user.id %> : <%= link_to end_user.nickname, end_user_path(end_user) %></div>
+        <div class="user-body">投稿<%= end_user.sweets_revues.count %>件</div>
+        <div class="user-body"><%= end_user.followers.count %>フォロワー</div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>ユーザーはいません</p>
   <% end %>
-  </table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>

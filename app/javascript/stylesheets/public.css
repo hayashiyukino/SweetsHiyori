@@ -90,10 +90,17 @@
   }
 
 /*会員一覧*/
-  .user-body{
-    width: calc(80%/6);
+  .user-box-n{
+    width: calc(95%/5);
+    margin-right:3px;
+    border-style: outset;
+    border-color:#ffdab9;
+    padding: 5px;
   }
-
+  .user-body{
+    text-align: center;
+  }
+  
 /*いいねした時の♡の色*/
   .favorites-icon-color{
     color: #FF66FF;
@@ -185,11 +192,7 @@
     border-style: outset;
     border-color:#ffdab9;
     padding: 5px;
-    /*text-align: center;*/
   }
-  /*.sweets_image{*/
-  /*  width: 90%;*/
-  /*}*/
   .count{
     display: flex;
   }
