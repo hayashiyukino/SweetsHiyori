@@ -18,6 +18,17 @@
   background-color: orange;
 }
 
+.circle{
+  /*display: inline-block;*/
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: gainsboro;
+  text-align: center;
+  line-height: 140px;
+  color: #00008b;
+}
+
 
 /*新規登録ページ*/
   .field{
