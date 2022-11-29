@@ -10,7 +10,6 @@ class Public::SweetsRevuesController < ApplicationController
     # 何も選択していない状態
     # eager_load = SweetsRevueに関連したモデル(:tags)を取ってくる
     @sweets_revues = SweetsRevue.all.eager_load(:tags).page(params[:page]).per(6).order(created_at: :desc)
-    #@all_sweets_revues_count = SweetsRevue.all.count
 
     # ジャンルを選択した場合
     if params[:genre_id].present?
@@ -52,7 +51,7 @@ class Public::SweetsRevuesController < ApplicationController
 
   def create
     @sweets_revue = SweetsRevue.new(sweets_revue_params)
-    # 上の処理でレビューの値がscoreに送られるのでparamsで保存し、review_starカラムに代入する
+    # 上の処理でレビューの値がscoreに送られるのでparamsで値を受け取り、review_starカラムに代入する
     @sweets_revue.review_star = params[:score]
     @sweets_revue.end_user_id = current_end_user.id
     if @sweets_revue.save
