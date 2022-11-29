@@ -41,5 +41,6 @@ class SweetsRevue < ApplicationRecord
   ## バリデーション
     validates :sweets_name, presence: true
     validates :tax_included_price, presence: true
+    validates :review_star, presence: true
 
 end

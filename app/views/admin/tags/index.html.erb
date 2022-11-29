@@ -20,7 +20,6 @@
       <% @tags.each do |tag| %>
         <!--[:tag_ids]だけだと、他の[tag_ids]と区別がつかないので、[:tag_ids, t.name]としている-->
         <div class="form-check-label">
-          <!--<#%= link_to admin_tag_path(tag.id), class: "text-dark" do %>-->
           <%= link_to edit_admin_tag_path(tag.id), class: "text-dark" do %>
             <%= tag.name %>
           <% end %>
@@ -31,9 +30,6 @@
       <% end %>
     </div>
   </div>
-<!--このページで編集したい-->
-  <!--<#%= render "tag_edit", tag: @tag_id %>-->
-
 </div>
 
 

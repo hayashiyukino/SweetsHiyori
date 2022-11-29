@@ -16,9 +16,7 @@ class Admin::SweetsRevuesController < ApplicationController
   #投稿の閲覧制限
   def stoppage
     @sweets_revue = SweetsRevue.find(params[:id])
-    # post_statusカラムをfalseに変更することにより削除フラグを立てる
-    @sweets_revue.update(post_status: false)
-    flash[:notice] = "閲覧制限をかけました"
+    @sweets_revue.update(post_status: params[:sweets_revue][:post_status])
     redirect_to admin_sweets_revues_path(@sweets_revue)
   end
 

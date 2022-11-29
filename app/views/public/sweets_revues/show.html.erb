@@ -21,9 +21,9 @@
           <div class="col-12 m-3">
             <h5><strong><コメント一覧></strong></h5>
           </div>
-          <% @sweets_revue.post_comments.each do |post_comment| %>
+          <% @sweets_revue.post_comments.each_with_index do |post_comment, i| %>
           <div class="table p-inherit">
-            <span class="body"><%= post_comment.id %></span>
+            <span class="body"><%= i + 1 %></span>
             <span class="body"><%= post_comment.comment %></span>
             <span class="body">
               <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>

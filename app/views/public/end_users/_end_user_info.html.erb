@@ -11,36 +11,34 @@
   <% end %>
 </div>
 
-  <div class = "infomationbox">
-    <div class="my_intro_box">
-  	  <div class="intro_label">ニックネーム</div>
-  	  <div class="intro_field_name"><%= end_user.nickname %></div>
-  	  <div class="intro_label">introduction</div>
-  	  <div class="intro_field"><%= end_user.introduction %></div>
-    </div>
-    <div class="my_count">
-      <%= end_user.sweets_revues.count %>投稿
-    </div>
-    <div class="my_count">
-      <%= link_to end_user_followers_path(end_user) do %>
-        <%= end_user.followers.count %>フォロワー
-      <% end %>
-    </div>
-    <div class="my_count">
-      <%= link_to end_user_followings_path(end_user) do %>
-        <%= end_user.followings.count %>フォロー
-      <% end %>
-    </div>
-    <div class="my_count">
-      <% if end_user == current_end_user %>
-        <!-- <#%= link_to "お気に入り"%>-->
-        ブックマーク
-        <%= end_user.favorites.count %>件
-      <% else %>
-        <!--フォロー機能非同期済み-->
-        <div id="follow_<%= end_user.id %>">
-          <%= render partial: "public/relationships/follow", locals:{ end_user: end_user } %>
-        </div>
-      <% end %>
-    </div>
+<div class = "infomationbox">
+  <div class="my_intro_box">
+	  <div class="intro_label">ニックネーム</div>
+	  <div class="intro_field_name"><%= end_user.nickname %></div>
+	  <div class="intro_label">introduction</div>
+	  <div class="intro_field"><%= end_user.introduction %></div>
   </div>
+  <div class="my_count">
+    <%= end_user.sweets_revues.count %>投稿
+  </div>
+  <div class="my_count">
+    <%= link_to end_user_followers_path(end_user) do %>
+      <%= end_user.followers.count %>フォロワー
+    <% end %>
+  </div>
+  <div class="my_count">
+    <%= link_to end_user_followings_path(end_user) do %>
+      <%= end_user.followings.count %>フォロー
+    <% end %>
+  </div>
+  <div class="my_count">
+    <% if end_user == current_end_user %>
+      ブックマーク
+      <%= end_user.favorites.count %>件
+    <% else %>
+      <div id="follow_<%= end_user.id %>">
+        <%= render partial: "public/relationships/follow", locals:{ end_user: end_user } %>
+      </div>
+    <% end %>
+  </div>
+</div>

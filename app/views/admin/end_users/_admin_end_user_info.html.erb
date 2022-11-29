@@ -7,23 +7,23 @@
   <% end %>
 </div>
 
-  <div class = "infomationbox">
-    <div class="my_intro_box">
-  	  <div class="intro_label">名前</div>
-  	  <div class="intro_field_name"><%= end_user.name %></div>
-  	  <div class="intro_label">ニックネーム</div>
-  	  <div class="intro_field_name"><%= end_user.nickname %></div>
-  	  <div class="intro_label">introduction</div>
-  	  <div class="intro_field"><%= end_user.introduction %></div>
-    </div>
-    <div class="my_count">
-      <%= end_user.sweets_revues.count %>投稿
-    </div>
-    <div class="my_count">
-        <%= end_user.followers.count %>フォロワー
-    </div>
-    <div class="my_count">
-        <%= end_user.followings.count %>フォロー
-    </div>
+<div class = "infomationbox">
+  <div class="my_intro_box">
+	  <div class="intro_label">名前</div>
+	  <div class="intro_field_name"><%= end_user.name %></div>
+	  <div class="intro_label">ニックネーム</div>
+	  <div class="intro_field_name"><%= end_user.nickname %></div>
+	  <div class="intro_label">introduction</div>
+	  <div class="intro_field"><%= end_user.introduction %></div>
   </div>
+  <div class="my_count">
+    <%= end_user.sweets_revues.count %>投稿
+  </div>
+  <div class="my_count">
+      <%= end_user.followers.count %>フォロワー
+  </div>
+  <div class="my_count">
+      <%= end_user.followings.count %>フォロー
+  </div>
+</div>
 
