@@ -33,14 +33,14 @@
   </div>
   <div class="icon-box mt-3">
     <div class="icon ml-5">
+      <!--コメント数-->
+      <i class="far fa-comment fa-2x comment-icon-color"></i><%= sweets_revue.post_comments.count %>
+    </div>
+    <div class="icon ml-5">
       <!--いいね機能非同期済み-->
       <div id="favorite_btn_<%= sweets_revue.id %>">
         <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
       </div>
-    </div>
-    <div class="icon ml-5">
-      <!--コメント数-->
-      <i class="far fa-comment fa-2x comment-icon-color"></i><%= sweets_revue.post_comments.count %>
     </div>
   </div>
 </div>

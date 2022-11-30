@@ -33,8 +33,10 @@
   </div>
   <div class="my_count">
     <% if end_user == current_end_user %>
-      ブックマーク
-      <%= end_user.favorites.count %>件
+      <!--ブックマーク-->
+      <%= link_to favorites_end_user_path(@end_user) do %>
+        いいね<%= end_user.favorites.count %>件
+      <% end %>
     <% else %>
       <div id="follow_<%= end_user.id %>">
         <%= render partial: "public/relationships/follow", locals:{ end_user: end_user } %>

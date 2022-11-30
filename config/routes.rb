@@ -48,6 +48,12 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      # いいね一覧用のルーティング
+      # member doを使うとユーザーidが含まれているurlになる
+      member do
+        get :favorites
+      end
+
     end
 
   end
