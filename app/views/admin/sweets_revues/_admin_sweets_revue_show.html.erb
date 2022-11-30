@@ -18,15 +18,15 @@
   </div>
   <div class="review ml-4 mt-4">
     <div>評価</div>
-    <!--5段階評価 部分テンプレート-->
+    <!--5段階評価-->
     <div class="review_star ml-4">
       <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
     </div>
   </div>
   <div class="icon-box mt-3">
     <div class="icon ml-5">
-      <!--いいね機能非同期済み-->
-      <i class="far fa-heart fa-2x"></i><%= sweets_revue.favorites.count %>
+      <!--いいね数-->
+      <i class="far fa-heart fa-2x my_icon-color"></i><%= sweets_revue.favorites.count %>
     </div>
     <div class="icon ml-5">
       <!--コメント数-->
