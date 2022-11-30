@@ -2,7 +2,7 @@
   <!--サイドバー-検索欄-->
   <div class = "col-3">
     <% if end_user_signed_in? %>
-      <!--検索機能部分テンプレート-->
+      <!--検索機能-->
       <%= render 'search' %>
     <% end %>
   </div>
@@ -11,10 +11,9 @@
     <div class="tite mb-4">
   　　<!--タイトル表示の切り替え-->
       <% if @genre %>
-  			<h2><%= @genre.name %>の投稿一覧 (全<%= @sweets_revues_count %>件)</h2>
+  			<h2><%= @genre.name %>の商品一覧 (全<%= @sweets_revues_count %>件)</h2>
   		<% else %>
-  			<h2>投稿一覧 (全<%= @sweets_revues_count %>件)</h2>
-  			<!--<h2>商品一覧 (全%= @sweets_revues.count %>件)</h2>-->
+  			<h2>商品一覧 (全<%= @sweets_revues_count %>件)</h2>
   		<% end %>
 		</div>
 		<!--絞り込み表示-->
@@ -43,7 +42,7 @@
                 <% end %>
               </div>
               <div class="text-center">
-                <!--5段階評価 部分テンプレート-->
+                <!--5段階評価-->
                 <%= render "review_star", sweets_revue: sweets_revue %>
               </div>
               <div class="count mt-2">
@@ -51,7 +50,7 @@
                 <div class="icon">
                   <i class="far fa-comment fa-2x comment-icon-color"></i><%= sweets_revue.post_comments.count %>
                 </div>
-                <!--いいね機能非同期-->
+                <!--いいね機能-->
                 <div class="icon">
                   <div id="favorite_btn_<%= sweets_revue.id %>">
                     <%= render 'public/favorites/favorite', sweets_revue: sweets_revue %>
