@@ -32,6 +32,12 @@ class Public::EndUsersController < ApplicationController
       render :edit
     end
   end
+  # いいねした記事一覧
+  def favorites
+    @end_user = EndUser.find(params[:id])
+    favorites = Favorite.where(end_user_id: @end_user.id).pluck(:sweets_revue_id)
+    @favorite_sweets_revues = SweetsRevue.find(favorites)
+  end
 
   #下記は退会確認画面用
   def withdraw
