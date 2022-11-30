@@ -29,7 +29,7 @@
           <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
         </div>
         <div class="review_contents_star">
-          <!--5段階評価 部分テンプレート-->
+          <!--5段階評価-->
           <div id="review_star_<#%= sweets_revue.id %>"></div>
           <%= render "public/sweets_revues/review_star", sweets_revue: sweets_revue %>
         </div>
