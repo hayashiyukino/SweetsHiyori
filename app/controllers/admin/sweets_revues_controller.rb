@@ -8,9 +8,10 @@ class Admin::SweetsRevuesController < ApplicationController
   end
 
   def index
-    @sweets_revues = SweetsRevue.page(params[:page]).per(12).order(created_at: :desc)
+    @sweets_revues = SweetsRevue.all.page(params[:page]).per(12).order(created_at: :desc)
     @sweets_revue_ids = @sweets_revues.pluck(:id)
     @sweets_revue_review_stars = @sweets_revues.pluck(:review_star)
+    @sweets_revues_count = @sweets_revues.count
   end
 
   #投稿の閲覧制限

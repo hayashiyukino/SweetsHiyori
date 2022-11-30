@@ -1,6 +1,6 @@
 <div class="container">
   <div class = "row ml-3">
-    <h4><strong>投稿一覧</strong></h4>
+    <h4><strong>投稿一覧(全<%= @sweets_revues_count %>件)</strong></h4>
   </div>
   <div id="raty" class="row mt-4">
     <div class="sweets_revues-box">
@@ -16,7 +16,7 @@
             <br><%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
           </div>
           <div class="text-center">
-            <!--5段階評価 部分テンプレート-->
+            <!--5段階評価-->
             <div id="review_star_<%= sweets_revue.id %>"></div>
           </div>
           <div class="count mt-2">
@@ -24,7 +24,7 @@
             <div class="icon">
               <i class="far fa-comment fa-2x comment-icon-color"></i><%= sweets_revue.post_comments.count %>
             </div>
-            <!--いいね機能非同期-->
+            <!--いいね数-->
             <div class="icon">
               <i class="far fa-heart fa-2x my_icon-color"></i><%= sweets_revue.favorites.count %>
             </div>

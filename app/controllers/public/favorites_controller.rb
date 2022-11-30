@@ -11,11 +11,8 @@ class Public::FavoritesController < ApplicationController
     @sweets_revue = SweetsRevue.find(params[:sweets_revue_id])
     favorite = current_end_user.favorites.find_by(sweets_revue_id: @sweets_revue.id)
     favorite.destroy
-    
-  
-  
   end
-  
+
 
 
 end

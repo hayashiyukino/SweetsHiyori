@@ -1,7 +1,13 @@
 <div class="col-12 my-3">
-  <%= link_to end_user_path(end_user) do %>
-    <%= image_tag sweets_revue.end_user.get_profile_image(80,90) %>
+  <% if end_user.is_deleted == false %>
+    <%= link_to end_user_path(end_user) do %>
+      <%= image_tag sweets_revue.end_user.get_profile_image(80,90) %>
+      <%= sweets_revue.end_user.nickname %>
+    <% end %>
+  <% else %>
+    <div class="text-danger">退会済みユーザー</div>
   <% end %>
+
 </div>
 
 <div class="col-12 mx-auto">
