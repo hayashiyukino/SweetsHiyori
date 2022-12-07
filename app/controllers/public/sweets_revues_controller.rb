@@ -64,6 +64,11 @@ class Public::SweetsRevuesController < ApplicationController
 
   def edit
     @sweets_revue = SweetsRevue.find(params[:id])
+    if @sweets_revue.end_user == current_end_user
+      render "edit"
+    else
+      redirect_to sweets_revue_path(@sweets_revue)
+    end
   end
 
   def update
