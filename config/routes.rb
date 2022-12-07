@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_scope :end_user do
     ## ゲストログイン用
-    post 'end_users/guest_sign_in',to: 'end_users/sessions#new_guest'
+    post 'end_users/guest_sign_in',to: 'public/sessions#new_guest'
   end
 
 
