@@ -81,6 +81,12 @@ class Public::SweetsRevuesController < ApplicationController
     end
   end
 
+  def destroy
+    @sweets_revue = SweetsRevue.find(params[:id])
+    @sweets_revue.destroy
+    redirect_to mypage_path, notice: "削除しました！"
+  end
+
   private
 
   def sweets_revue_params

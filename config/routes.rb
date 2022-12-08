@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     ## homes
     root "homes#top"
     ## sweets_revues
-    resources :sweets_revues, except: [:destroy] do
+    resources :sweets_revues do
       ## post_comments
       # sweets_revuesに対してコメントされるので親子関係になる
       # ネストしたURLを作成することでparams[:sweets_revue_id]でPostImageのidが取得できるようになる

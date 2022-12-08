@@ -17,6 +17,9 @@
       <% if sweets_revue.post_status == false %>
         <div class="review_contents text-center p-3">
           <strong>閲覧制限がかかっている為この投稿は見れません</strong>
+          <% if end_user == current_end_user %>
+            <%= link_to "削除", sweets_revue_path(sweets_revue.id), class: "text-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          <% end %>
         </div>
       <% else %>
         <div class="review_contents_image">

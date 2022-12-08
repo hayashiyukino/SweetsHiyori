@@ -19,6 +19,7 @@
       <%= sweets_revue.tax_included_price %>（税込み）
       <% if end_user == current_end_user %>
         <%= link_to "編集", edit_sweets_revue_path(sweets_revue) %>
+        <%= link_to "削除", sweets_revue_path(sweets_revue.id), class: "text-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
       <% end %>
   </div>
   <div class="text-center">
