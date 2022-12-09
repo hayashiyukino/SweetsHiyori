@@ -32,6 +32,9 @@
                   <%= image_tag sweets_revue.get_sweets_image(130,130) %>
                 </div>
               <% end %>
+              <div>
+                投稿日：<%= sweets_revue.created_at.strftime('%Y/%m/%d') %>
+              </div>
               <div class="genre-name">
                 ジャンル：<%= sweets_revue.genre.name %><br>
               </div>
