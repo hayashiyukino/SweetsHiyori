@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-3">
     <div class="col-12">
-      <h4 class="text-center mb-3">Followings User</h4>
+      <h4 class="text-center mb-3"><%= @end_user.nickname %>さんがフォローしているユーザー</h4>
     </div>
     <%= render 'follow_list', end_users: @end_users %>
   </div>
