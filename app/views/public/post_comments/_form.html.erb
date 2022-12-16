@@ -1,0 +1,5 @@
+<!--コメントフォーム-->
+<%= form_with model: [sweets_revue, post_comment] do |f| %>
+  <%= f.text_area :comment, size: "40*30", placeholder: "コメントをここに" %>
+  <%= f.submit "投稿", class: "btn btn-outline-success" %>
+<% end %>

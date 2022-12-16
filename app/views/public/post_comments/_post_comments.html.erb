@@ -1,0 +1,18 @@
+<!--コメント一覧-->
+<!--コメントに番号を割り振りたいときは以下のiを与えたコード-->
+<!--<#% @sweets_revue.post_comments.each_with_index do |post_comment, i| %>-->
+<% sweets_revue.post_comments.each_with_index do |post_comment| %>
+<div class="table p-inherit">
+  <!--<span class="body"><#%= i + 1 %></span>-->
+  <span class="comment-body"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+  <span class="comment-body"><%= post_comment.comment %></span>
+  <span class="comment-body">
+    <%= link_to post_comment.end_user.nickname, end_user_path(post_comment.end_user_id) %>
+  </span>
+  <span>
+    <% if post_comment.end_user == current_end_user %>
+      <%= link_to "削除", sweets_revue_post_comment_path(post_comment.sweets_revue, post_comment), method: :delete, remote: true %>
+    <% end %>
+  </span>
+</div>
+<% end %>
